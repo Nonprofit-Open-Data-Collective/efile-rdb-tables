@@ -21,6 +21,7 @@ head( concordance )
 ```
 
 ```
+
                                               xpath           variable_name
 1            /Return/ReturnHeader/Filer/NameControl     F9_00_NAME_ORG_CTRL
 2 /Return/ReturnHeader/Filer/BusinessNameControlTxt     F9_00_NAME_ORG_CTRL
@@ -70,6 +71,7 @@ head( concordance )
 4           2012      FALSE            TRUE            <NA>      <NA>
 5           2016      FALSE            TRUE            <NA>      <NA>
 6           2012      FALSE            TRUE            <NA>      <NA>
+
 ```
 
 
