@@ -2,6 +2,14 @@
 
 Build scripts and documentation of the one-to-many tables in the IRS 990 efile database.
 
+Each RDB table has a unique structure and many are "pathological" according to strict XML standards, so extracting one-to-many tables is challenging. 
+
+The solution is creating a report that attempts to extract tables using default package settings. If that fails the reports 
+
+See a sample build report: 
+
+[F9-P07-T01-COMPENSATION](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/table-report-template-demo.html)
+
 ## Install the efile package **irs990efile**: 
 
 ```r
