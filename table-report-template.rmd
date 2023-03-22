@@ -17,9 +17,9 @@ output:
 
 ```{r}
 # SET TABLE FOR THE REPORT
-table.name <- "F9-P08-T01-REVENUE-PROGRAMS"
+table.name <- "F9-P07-T01-COMPENSATION"
 folder.name <- paste0( "TABLE-", table.name )
-sample.size <- 25
+sample.size <- 100
 ```
 
 
@@ -183,7 +183,6 @@ unique( rdb.tables[ concordance$rdb_relationship == "MANY" ] )
 
 
 
-
 <br>
 <br>
 <br>
@@ -195,6 +194,56 @@ unique( rdb.tables[ concordance$rdb_relationship == "MANY" ] )
 <br>
 
 
+```{r, echo=F}
+t.xpaths <- 
+  concordance %>%
+  filter( rdb_table == table.name ) %>% 
+  select( xpath ) %>% 
+  unique() %>% 
+  arrange() %>% 
+  mutate( id=row_number() ) 
+
+# t.xpaths %>% 
+#   kable( align="l" )
+
+xpaths <- as.character( t.xpaths$xpath )
+
+el <- create_edgelist_v1( xpaths )
+nd <- FromDataFrameNetwork( network=el )
+print( nd )
+```
+
+
+```{r, fig.height=20}
+SetGraphStyle( nd, rankdir = "LR")
+SetEdgeStyle( nd, arrowhead = "vee", color = "grey20", penwidth = 2 )
+SetNodeStyle( nd, 
+              style = "filled,rounded", 
+              shape = "box", 
+              fillcolor = "LightBlue", 
+              fontname = "helvetica", 
+              fontcolor="black",
+              tooltip = GetDefaultTooltip )
+
+# SetNodeStyle(acme$IT, fillcolor = "LightBlue", penwidth = "5px")
+plot( nd )
+```
+
+
+```{r}
+find_group_names_v2( table.name )
+```
+
+
+<br>
+<br>
+<br>
+
+<hr>
+
+<br>
+<br>
+<br>
 
 # Build the Table
 
