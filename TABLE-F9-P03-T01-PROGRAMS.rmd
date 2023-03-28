@@ -48,7 +48,7 @@ sample.size <- 25
 #   "//Form990PartIII/Activity2",
 #   "//IRS990/ProgSrvcAccomActy2Grp",
 #   "//IRS990EZ/ProgSrvcAccomActy2Grp" )
-
+# 
 # # ACTIVITY 3
 # 
 # table.headers <- c(
