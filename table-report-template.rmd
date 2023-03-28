@@ -16,7 +16,8 @@ output:
 
 
 ```{r}
-# SET TABLE FOR THE REPORT
+# SET TABLE PARAMETERS FOR THE REPORT;
+# ALSO SEE DATA STEP BELOW
 
 table.name <- "F9-P08-T01-REVENUE-PROGRAMS"
 
@@ -42,61 +43,16 @@ folder.name <- paste0( "TABLE-", table.name )
 sample.size <- 25
 ```
 
-
-
-```{r, eval=F}
-table.name <- "F9-P03-T01-PROGRAMS"
-
-table.headers <- c(
-  "//IRS990/Activity2",
-  "//IRS990/Activity3",
-  "//IRS990/ActivityOther",
-  "//Form990PartIII/Activity2",
-  "//Form990PartIII/Activity3",
-  "//Form990PartIII/ActivityOther",
-  "//IRS990/ProgSrvcAccomActy2Grp",
-  "//IRS990/ProgSrvcAccomActy3Grp",
-  "//IRS990/ProgSrvcAccomActyOtherGrp",
-  "//IRS990/ProgramServiceAccomplishments",
-  "//IRS990EZ/ProgSrvcAccomActy2Grp",
-  "//IRS990EZ/ProgSrvcAccomActy3Grp",
-  "//IRS990EZ/ProgSrvcAccomActyOtherGrp",
-  "//IRS990EZ/ProgramServiceAccomplishment",
-  "//IRS990EZ/ProgramSrvcAccomplishmentGrp" )
-
-# # ACTIVITY 2
-# 
-# table.headers <- c(
-#   "//IRS990/Activity2",
-#   "//Form990PartIII/Activity2",
-#   "//IRS990/ProgSrvcAccomActy2Grp",
-#   "//IRS990EZ/ProgSrvcAccomActy2Grp" )
-
-# # ACTIVITY 3
-# 
-# table.headers <- c(
-#   "//IRS990/Activity3",
-#   "//Form990PartIII/Activity3",
-#   "//IRS990/ProgSrvcAccomActy3Grp",
-#   "//IRS990EZ/ProgSrvcAccomActy3Grp" )
-# 
-# # OTHER
-# 
-# table.headers <- c(
-#   "//IRS990/ActivityOther",
-#   "//Form990PartIII/ActivityOther",
-#   "//IRS990/ProgSrvcAccomActyOtherGrp",
-#   "//IRS990EZ/ProgSrvcAccomActyOtherGrp" )
-
-folder.name <- paste0( "TABLE-", table.name )
-sample.size <- 25
-```
-
-
 ---
 title: "TABLE NAME: `r table.name`"
 ---
 
+
+
+
+
+
+# Setup
 
 
 ```{r setup, include=FALSE}
@@ -104,7 +60,6 @@ knitr::opts_chunk$set( echo=TRUE, message=F, warning=F, fig.width=10 )
 ```
 
 
-# Setup
 
 ## Load Packages
 
@@ -145,6 +100,8 @@ source( "R/utils.R")
 
 
 
+
+
 ## Data
 
 ```{r}
@@ -153,9 +110,32 @@ source( "R/utils.R")
 #######  UPDATE TO MATCH TABLE
 #######
 
+
+
+
+# IF THE TABLE IS IN THE 990/990EZ MAIN FORM
+
 index <- 
   tinyindex %>% 
   dplyr::filter( FormType %in% c("990","990EZ") )
+
+
+
+
+# IF THE TABLE IS IN A SCHEDULE: 
+# index <- read_csv( "schedule-samples/SCHEDA.csv" )
+
+###  ALL SCHEDULES
+###
+#   "SCHEDA", "SCHEDB", "SCHEDC", 
+#   "SCHEDD", "SCHEDE", "SCHEDF", 
+#   "SCHEDG", "SCHEDH", "SCHEDI", 
+#   "SCHEDJ", "SCHEDK", "SCHEDL", 
+#   "SCHEDM", "SCHEDN", "SCHEDO", 
+#   "SCHEDR"
+
+
+
 
 head( index )
 ```
