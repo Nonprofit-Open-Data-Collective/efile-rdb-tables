@@ -1,10 +1,10 @@
 ###
-### RDB TABLE LOG
+###   RDB TABLE LOG
 ###
 
-### Record the table name and the
-### custom table header group names
-### if they are necessary. 
+###  Record the table name and the
+###  custom table header group names
+###  if they are necessary. 
 
 
 
