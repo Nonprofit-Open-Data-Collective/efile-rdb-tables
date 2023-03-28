@@ -8,12 +8,90 @@
 
 
 
+
+###
 ### [1] "F9-P03-T01-PROGRAMS"     
+###
+
+
+#  NO GROUP (TABLE HEADER) FOR ACTIVITY 1
+
+|/Return/ReturnData/IRS990/ActivityCd                                                    |11 |
+|/Return/ReturnData/IRS990/ActivityCode                                                  |12 |
+|/Return/ReturnData/IRS990/Desc                                                          |18 |
+|/Return/ReturnData/IRS990/Description                                                   |19 |
+|/Return/ReturnData/IRS990/Expense                                                       |20 |
+|/Return/ReturnData/IRS990/ExpenseAmt                                                    |21 |
+|/Return/ReturnData/IRS990/GrantAmt                                                      |45 |
+|/Return/ReturnData/IRS990/Grants                                                        |46 |
+
+|/Return/ReturnData/IRS990/Revenue                                                       |65 |
+|/Return/ReturnData/IRS990/RevenueAmt                                                    |66 |
+|/Return/ReturnData/IRS990/TotalOfOtherProgramServiceExp                                 |67 |
+|/Return/ReturnData/IRS990/TotalOfOtherProgramServiceGrnt                                |68 |
+|/Return/ReturnData/IRS990/TotalOfOtherProgramServiceRev                                 |69 |
+|/Return/ReturnData/IRS990/TotalOtherProgSrvcExpenseAmt                                  |70 |
+|/Return/ReturnData/IRS990/TotalOtherProgSrvcGrantAmt                                    |71 |
+|/Return/ReturnData/IRS990/TotalOtherProgSrvcRevenueAmt                                  |72 |
+
+|/Return/ReturnData/IRS990EZ/GrantAmt                                                    |73 |
+|/Return/ReturnData/IRS990EZ/Grants                                                      |74 |
+
+|/Return/ReturnData/IRS990/Form990PartIII/ActivityCode                                   |32 |
+|/Return/ReturnData/IRS990/Form990PartIII/Description                                    |38 |
+|/Return/ReturnData/IRS990/Form990PartIII/Expense                                        |39 |
+|/Return/ReturnData/IRS990/Form990PartIII/Grants                                         |40 |
+|/Return/ReturnData/IRS990/Form990PartIII/Revenue                                        |41 |
+
+|/Return/ReturnData/IRS990/Form990PartIII/TotalOfOtherProgramServiceExp                  |42 |
+|/Return/ReturnData/IRS990/Form990PartIII/TotalOfOtherProgramServiceGrnt                 |43 |
+|/Return/ReturnData/IRS990/Form990PartIII/TotalOfOtherProgramServiceRev                  |44 |
+
+|/Return/ReturnData/IRS990/ProgramServiceAccomplishments/DescriptionProgramServiceAccom  |62 |
+|/Return/ReturnData/IRS990/ProgramServiceAccomplishments/GrantsAndAllocations            |63 |
+|/Return/ReturnData/IRS990/ProgramServiceAccomplishments/ProgramServiceExpenses          |64 |
 
 
 
-### [2] "F9-P07-T02-CONTRACTORS"        
+# GENERIC GROUP - NO ACTIVITY NUMBER
 
+table.headers <- c(
+  "//IRS990/ProgramServiceAccomplishments",
+  "//IRS990EZ/ProgramServiceAccomplishment",
+  "//IRS990EZ/ProgramSrvcAccomplishmentGrp" )
+  
+  
+# ACTIVITY 2
+
+table.headers <- c(
+  "//IRS990/Activity2",
+  "//Form990PartIII/Activity2",
+  "//IRS990/ProgSrvcAccomActy2Grp",
+  "//IRS990EZ/ProgSrvcAccomActy2Grp" )
+
+# ACTIVITY 3
+
+table.headers <- c(
+  "//IRS990/Activity3",
+  "//Form990PartIII/Activity3",
+  "//IRS990/ProgSrvcAccomActy3Grp",
+  "//IRS990EZ/ProgSrvcAccomActy3Grp" )
+
+# OTHER
+
+table.headers <- c(
+  "//IRS990/ActivityOther",
+  "//Form990PartIII/ActivityOther",
+  "//IRS990/ProgSrvcAccomActyOtherGrp",
+  "//IRS990EZ/ProgSrvcAccomActyOtherGrp" )
+
+
+
+
+
+
+
+### [2] "F9-P07-T02-CONTRACTORS"   
 
 
 
