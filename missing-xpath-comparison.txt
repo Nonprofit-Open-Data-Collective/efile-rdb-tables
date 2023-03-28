@@ -1,0 +1,125 @@
+## ALL GROUP XPATHS - THEY ARE FINE
+
+
+## [1] ""                                                        
+## [2] "/Return/ReturnData/IRS990/Activity2"                     
+## [3] "/Return/ReturnData/IRS990/Activity3"                     
+## [4] "/Return/ReturnData/IRS990/ProgSrvcAccomActy2Grp"         
+## [5] "/Return/ReturnData/IRS990/ProgSrvcAccomActy3Grp"         
+## [6] "/Return/ReturnData/IRS990/ProgSrvcAccomActyOtherGrp"     
+## [7] "/Return/ReturnData/IRS990EZ/ProgramServiceAccomplishment"
+## [8] "/Return/ReturnData/IRS990EZ/ProgramSrvcAccomplishmentGrp"
+
+
+
+
+table.headers <- c(
+  "//IRS990/Activity2",
+  "//IRS990/Activity3",
+  "//IRS990/ActivityOther",
+  "//Form990PartIII/Activity2",
+  "//Form990PartIII/Activity3",
+  "//Form990PartIII/ActivityOther",
+  "//IRS990/ProgSrvcAccomActy2Grp",
+  "//IRS990/ProgSrvcAccomActy3Grp",
+  "//IRS990/ProgSrvcAccomActyOtherGrp",
+  "//IRS990/ProgramServiceAccomplishments",
+  "//IRS990EZ/ProgSrvcAccomActy2Grp",
+  "//IRS990EZ/ProgSrvcAccomActy3Grp",
+  "//IRS990EZ/ProgSrvcAccomActyOtherGrp",
+  "//IRS990EZ/ProgramServiceAccomplishment",
+  "//IRS990EZ/ProgramSrvcAccomplishmentGrp" )
+  
+  
+
+
+|xpath                                                                                   |id |
+|:---------------------------------------------------------------------------------------|:--|
+|/Return/ReturnData/IRS990/Activity2/ActivityCode                                        |1  |
+|/Return/ReturnData/IRS990/Activity2/Description                                         |2  |
+|/Return/ReturnData/IRS990/Activity2/Expense                                             |3  |
+|/Return/ReturnData/IRS990/Activity2/Grants                                              |4  |
+|/Return/ReturnData/IRS990/Activity2/Revenue                                             |5  |
+|/Return/ReturnData/IRS990/Activity3/ActivityCode                                        |6  |
+|/Return/ReturnData/IRS990/Activity3/Description                                         |7  |
+|/Return/ReturnData/IRS990/Activity3/Expense                                             |8  |
+|/Return/ReturnData/IRS990/Activity3/Grants                                              |9  |
+|/Return/ReturnData/IRS990/Activity3/Revenue                                             |10 |
+|/Return/ReturnData/IRS990/ActivityCd                                                    |11 |
+|/Return/ReturnData/IRS990/ActivityCode                                                  |12 |
+|/Return/ReturnData/IRS990/ActivityOther/ActivityCode                                    |13 |
+|/Return/ReturnData/IRS990/ActivityOther/Description                                     |14 |
+|/Return/ReturnData/IRS990/ActivityOther/Expense                                         |15 |
+|/Return/ReturnData/IRS990/ActivityOther/Grants                                          |16 |
+|/Return/ReturnData/IRS990/ActivityOther/Revenue                                         |17 |
+|/Return/ReturnData/IRS990/Desc                                                          |18 |
+|/Return/ReturnData/IRS990/Description                                                   |19 |
+|/Return/ReturnData/IRS990/Expense                                                       |20 |
+|/Return/ReturnData/IRS990/ExpenseAmt                                                    |21 |
+|/Return/ReturnData/IRS990/Form990PartIII/Activity2/ActivityCode                         |22 |
+|/Return/ReturnData/IRS990/Form990PartIII/Activity2/Description                          |23 |
+|/Return/ReturnData/IRS990/Form990PartIII/Activity2/Expense                              |24 |
+|/Return/ReturnData/IRS990/Form990PartIII/Activity2/Grants                               |25 |
+|/Return/ReturnData/IRS990/Form990PartIII/Activity2/Revenue                              |26 |
+|/Return/ReturnData/IRS990/Form990PartIII/Activity3/ActivityCode                         |27 |
+|/Return/ReturnData/IRS990/Form990PartIII/Activity3/Description                          |28 |
+|/Return/ReturnData/IRS990/Form990PartIII/Activity3/Expense                              |29 |
+|/Return/ReturnData/IRS990/Form990PartIII/Activity3/Grants                               |30 |
+|/Return/ReturnData/IRS990/Form990PartIII/Activity3/Revenue                              |31 |
+|/Return/ReturnData/IRS990/Form990PartIII/ActivityCode                                   |32 |
+|/Return/ReturnData/IRS990/Form990PartIII/ActivityOther/ActivityCode                     |33 |
+|/Return/ReturnData/IRS990/Form990PartIII/ActivityOther/Description                      |34 |
+|/Return/ReturnData/IRS990/Form990PartIII/ActivityOther/Expense                          |35 |
+|/Return/ReturnData/IRS990/Form990PartIII/ActivityOther/Grants                           |36 |
+|/Return/ReturnData/IRS990/Form990PartIII/ActivityOther/Revenue                          |37 |
+|/Return/ReturnData/IRS990/Form990PartIII/Description                                    |38 |
+|/Return/ReturnData/IRS990/Form990PartIII/Expense                                        |39 |
+|/Return/ReturnData/IRS990/Form990PartIII/Grants                                         |40 |
+|/Return/ReturnData/IRS990/Form990PartIII/Revenue                                        |41 |
+|/Return/ReturnData/IRS990/Form990PartIII/TotalOfOtherProgramServiceExp                  |42 |
+|/Return/ReturnData/IRS990/Form990PartIII/TotalOfOtherProgramServiceGrnt                 |43 |
+|/Return/ReturnData/IRS990/Form990PartIII/TotalOfOtherProgramServiceRev                  |44 |
+|/Return/ReturnData/IRS990/GrantAmt                                                      |45 |
+|/Return/ReturnData/IRS990/Grants                                                        |46 |
+|/Return/ReturnData/IRS990/ProgSrvcAccomActy2Grp/ActivityCd                              |47 |
+|/Return/ReturnData/IRS990/ProgSrvcAccomActy2Grp/Desc                                    |48 |
+|/Return/ReturnData/IRS990/ProgSrvcAccomActy2Grp/ExpenseAmt                              |49 |
+|/Return/ReturnData/IRS990/ProgSrvcAccomActy2Grp/GrantAmt                                |50 |
+|/Return/ReturnData/IRS990/ProgSrvcAccomActy2Grp/RevenueAmt                              |51 |
+|/Return/ReturnData/IRS990/ProgSrvcAccomActy3Grp/ActivityCd                              |52 |
+|/Return/ReturnData/IRS990/ProgSrvcAccomActy3Grp/Desc                                    |53 |
+|/Return/ReturnData/IRS990/ProgSrvcAccomActy3Grp/ExpenseAmt                              |54 |
+|/Return/ReturnData/IRS990/ProgSrvcAccomActy3Grp/GrantAmt                                |55 |
+|/Return/ReturnData/IRS990/ProgSrvcAccomActy3Grp/RevenueAmt                              |56 |
+|/Return/ReturnData/IRS990/ProgSrvcAccomActyOtherGrp/ActivityCd                          |57 |
+|/Return/ReturnData/IRS990/ProgSrvcAccomActyOtherGrp/Desc                                |58 |
+|/Return/ReturnData/IRS990/ProgSrvcAccomActyOtherGrp/ExpenseAmt                          |59 |
+|/Return/ReturnData/IRS990/ProgSrvcAccomActyOtherGrp/GrantAmt                            |60 |
+|/Return/ReturnData/IRS990/ProgSrvcAccomActyOtherGrp/RevenueAmt                          |61 |
+|/Return/ReturnData/IRS990/ProgramServiceAccomplishments/DescriptionProgramServiceAccom  |62 |
+|/Return/ReturnData/IRS990/ProgramServiceAccomplishments/GrantsAndAllocations            |63 |
+|/Return/ReturnData/IRS990/ProgramServiceAccomplishments/ProgramServiceExpenses          |64 |
+|/Return/ReturnData/IRS990/Revenue                                                       |65 |
+|/Return/ReturnData/IRS990/RevenueAmt                                                    |66 |
+|/Return/ReturnData/IRS990/TotalOfOtherProgramServiceExp                                 |67 |
+|/Return/ReturnData/IRS990/TotalOfOtherProgramServiceGrnt                                |68 |
+|/Return/ReturnData/IRS990/TotalOfOtherProgramServiceRev                                 |69 |
+|/Return/ReturnData/IRS990/TotalOtherProgSrvcExpenseAmt                                  |70 |
+|/Return/ReturnData/IRS990/TotalOtherProgSrvcGrantAmt                                    |71 |
+|/Return/ReturnData/IRS990/TotalOtherProgSrvcRevenueAmt                                  |72 |
+|/Return/ReturnData/IRS990EZ/GrantAmt                                                    |73 |
+|/Return/ReturnData/IRS990EZ/Grants                                                      |74 |
+|/Return/ReturnData/IRS990EZ/ProgSrvcAccomActy2Grp/Desc                                  |75 |
+|/Return/ReturnData/IRS990EZ/ProgSrvcAccomActy2Grp/GrantAmt                              |76 |
+|/Return/ReturnData/IRS990EZ/ProgSrvcAccomActy3Grp/Desc                                  |77 |
+|/Return/ReturnData/IRS990EZ/ProgSrvcAccomActy3Grp/GrantAmt                              |78 |
+|/Return/ReturnData/IRS990EZ/ProgSrvcAccomActyOtherGrp/Desc                              |79 |
+|/Return/ReturnData/IRS990EZ/ProgSrvcAccomActyOtherGrp/GrantAmt                          |80 |
+|/Return/ReturnData/IRS990EZ/ProgramServiceAccomplishment/DescriptionProgramServiceAccom |81 |
+|/Return/ReturnData/IRS990EZ/ProgramServiceAccomplishment/GrantsAndAllocations           |82 |
+|/Return/ReturnData/IRS990EZ/ProgramServiceAccomplishment/IncludesForeignGrants          |83 |
+|/Return/ReturnData/IRS990EZ/ProgramServiceAccomplishment/ProgramServiceExpenses         |84 |
+|/Return/ReturnData/IRS990EZ/ProgramSrvcAccomplishmentGrp/DescriptionProgramSrvcAccomTxt |85 |
+|/Return/ReturnData/IRS990EZ/ProgramSrvcAccomplishmentGrp/ForeignGrantsInd               |86 |
+|/Return/ReturnData/IRS990EZ/ProgramSrvcAccomplishmentGrp/GrantsAndAllocationsAmt        |87 |
+|/Return/ReturnData/IRS990EZ/ProgramSrvcAccomplishmentGrp/ProgramServiceExpensesAmt      |88 |

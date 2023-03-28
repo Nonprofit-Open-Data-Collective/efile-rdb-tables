@@ -1,1 +1,5 @@
 
+/Return/ReturnData/IRS990/ProgramServiceRevenueGrp/BusinessCd
+/Return/ReturnData/IRS990/ProgramServiceRevenueGrp/Desc
+/Return/ReturnData/IRS990/ProgramServiceRevenueGrp/RelatedOrExemptFuncIncomeAmt
+/Return/ReturnData/IRS990/ProgramServiceRevenueGrp/TotalRevenueColumnAmt

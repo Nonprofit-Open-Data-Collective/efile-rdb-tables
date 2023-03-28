@@ -1,3 +1,220 @@
+setwd("C:/Users/jdlec/Dropbox (Personal)/00 - URBAN/03-PROJECTS/comp-data/np-human-capital-project/00-r-packages/efile-rdb-tables/TEMP")
+
+
+library( irs990efile )  # functions for parsing efile XMLs
+library( dplyr )        # data wrangling
+library( purrr )        # data wrangling 
+library( pander )       # formatting
+library( knitr )        # formatting
+library( DT )           # table printing
+library( httr )         # web requests 
+library( xmltools )     # xml utilities
+library( xml2 )         # xml utilities
+library( XML )          # xml utilities 
+library( data.tree )    # network visualization
+library( networkD3 )    # network visualization
+library( igraph )       # network visualization
+
+source( "rdb-functions-v2.R")
+source( "utils.R")
+
+
+
+index <- 
+  tinyindex %>% 
+  dplyr::filter( FormType %in% c("990","990EZ") )
+
+
+
+
+
+t.xpaths <- 
+  concordance %>%
+  filter( rdb_table == table.name ) %>% 
+  select( xpath ) %>% 
+  unique() %>% 
+  arrange( xpath ) %>% 
+  mutate( id=row_number() ) 
+
+t.xpaths %>% 
+  kable( align="l" )
+
+
+
+
+
+
+# SET TABLE FOR THE REPORT
+
+table.name <- "F9-P08-T01-REVENUE-PROGRAMS"
+
+# table.headers <- NULL
+
+table.headers <- 
+  c("//Form990PartVIII/ProgramServiceRevenue",
+    "//IRS990/ProgramServiceRevenue",
+    "//IRS990/ProgramServiceRevenueGrp")
+
+folder.name <- paste0( "TABLE-", table.name )
+sample.size <- 25
+
+
+
+
+########################################
+########################################
+########################################
+
+table.name <- "F9-P03-T01-PROGRAMS"
+
+table.headers <- c(
+  "//IRS990/Activity2",
+  "//IRS990/Activity3",
+  "//IRS990/ActivityOther",
+  "//Form990PartIII/Activity2",
+  "//Form990PartIII/Activity3",
+  "//Form990PartIII/ActivityOther",
+  "//IRS990/ProgSrvcAccomActy2Grp",
+  "//IRS990/ProgSrvcAccomActy3Grp",
+  "//IRS990/ProgSrvcAccomActyOtherGrp",
+  "//IRS990/ProgramServiceAccomplishments",
+  "//IRS990EZ/ProgSrvcAccomActy2Grp",
+  "//IRS990EZ/ProgSrvcAccomActy3Grp",
+  "//IRS990EZ/ProgSrvcAccomActyOtherGrp",
+  "//IRS990EZ/ProgramServiceAccomplishment",
+  "//IRS990EZ/ProgramSrvcAccomplishmentGrp" )
+
+# ACTIVITY 2
+
+table.headers <- c(
+  "//IRS990/Activity2",
+  "//Form990PartIII/Activity2",
+  "//IRS990/ProgSrvcAccomActy2Grp",
+  "//IRS990EZ/ProgSrvcAccomActy2Grp" )
+
+# # ACTIVITY 3
+# 
+# table.headers <- c(
+#   "//IRS990/Activity3",
+#   "//Form990PartIII/Activity3",
+#   "//IRS990/ProgSrvcAccomActy3Grp",
+#   "//IRS990EZ/ProgSrvcAccomActy3Grp" )
+# 
+# # OTHER
+# 
+# table.headers <- c(
+#   "//IRS990/ActivityOther",
+#   "//Form990PartIII/ActivityOther",
+#   "//IRS990/ProgSrvcAccomActyOtherGrp",
+#   "//IRS990EZ/ProgSrvcAccomActyOtherGrp" )
+
+folder.name <- paste0( "TABLE-", table.name )
+sample.size <- 25
+
+url <- "https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201300879349300235_public.xml"
+
+##################################
+##################################
+##################################
+
+
+
+
+
+
+
+xpaths <- as.character( t.xpaths$xpath )
+el <- create_edgelist_v1( xpaths )
+nd <- FromDataFrameNetwork( network=el )
+print( nd )
+
+
+
+SetGraphStyle( nd, rankdir = "LR")
+SetEdgeStyle( nd, arrowhead = "vee", color = "grey20", penwidth = 2 )
+SetNodeStyle( nd, 
+              style = "filled,rounded", 
+              shape = "box", 
+              fillcolor = "LightBlue", 
+              fontname = "helvetica", 
+              fontcolor="black",
+              tooltip = GetDefaultTooltip )
+
+# SetNodeStyle(acme$IT, fillcolor = "LightBlue", penwidth = "5px")
+plot( nd )
+
+
+
+
+# create new folder
+dir.create( folder.name )
+setwd( folder.name )
+
+# create sample
+set.seed( 1234 )
+sample.index <- sample_n( index, sample.size )
+write.csv( index, "sample-index.csv", row.names=F )
+sample.urls <- sample.index$URL
+
+# erase existing log files
+file.create("XPATH-LOG.txt") 
+file.create("FAIL-LOG.txt")
+
+
+
+
+# [1] "https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201913079349300206_public.xml"
+# [2] "https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201443229349200149_public.xml"
+# [3] "https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201300879349300235_public.xml"
+# [4] "https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201832899349200503_public.xml"
+# [5] "https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201931619349200438_public.xml"
+# [6] "https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201231369349301558_public.xml"
+# [7] "https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201921359349201242_public.xml"
+
+
+url <- "https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201913079349300206_public.xml"
+
+start.build.time <- Sys.time()    # --------------------
+
+results.list <- list()
+xpath.list <- list()
+
+
+for( i in 1:length( sample.urls ) )
+{
+  
+  url <- sample.urls[i]
+  
+  results.list[[i]] <- 
+    build_rdb_table_v2( url, 
+                        table.name, 
+                        table.headers=table.headers )
+  
+  xpath.list[[i]]   <- 
+    get_table_xpaths( url, table.name )
+  
+  if( i %% 100 == 0 ){ print(i) }
+  
+}
+
+
+end.build.time <- Sys.time()      # --------------------
+
+
+df <- dplyr::bind_rows( results.list )
+
+
+fail.log <- readLines( "FAIL-LOG.txt" )
+all.xpaths <- xpath.list %>% unlist() %>% unique() %>% sort()
+cat( all.xpaths, sep="\n", file="XPATH-LOG.txt" )
+
+
+
+
+
+
+
+
 # GENERAL TABLE BUILDING FOR NON SIMPLISTIC TABLE STRUCTURE
 
 # library( dplyr )
@@ -17,7 +234,7 @@
 #' @description identifies all possible roots/xpaths from a table name
 #'
 #' @export
-find_group_names_v2 <- function( table.name )
+find_table_headers <- function( table.name )
 {
   # data(concordance)
   TABLE <- dplyr::filter( concordance, rdb_table == table.name )
@@ -87,17 +304,17 @@ collapse_nodes <- function( lc.xpaths )
 #' including the subgrouped roots and data as well
 #'
 #' @export
-get_table_v2 <- function( doc, group.names, table.name )
+get_table_v2 <- function( doc, table.name, table.headers )
 {
 
   data( concordance )
 
   TABLE <- dplyr::filter( concordance, rdb_table == table.name )
   original.xpaths <- TABLE$xpath %>% as.character()
-  all.groups <- paste0( group.names, collapse="|" )
+  all.table.versions <- paste0( table.headers, collapse="|" )
   # print(all.groups)
 
-  nd <- xml2::xml_find_all( doc, all.groups )
+  nd <- xml2::xml_find_all( doc, all.table.versions )
   
   if( length( nd ) == 0 ){ return(NULL) }
   
@@ -185,16 +402,17 @@ get_table_v2 <- function( doc, group.names, table.name )
 #' located within the specific RDB table. 
 #'
 #' @export
-get_table_xpaths <- function( url, table.name )
+get_table_xpaths <- function( url, table.name, table.headers )
 {
   doc <- NULL
   try( doc <- xml2::read_xml( file(url) ), silent=T ) 
   if( is.null(doc) ){ return( NULL ) }
   xml2::xml_ns_strip( doc )
 
-  group.names <- find_group_names_v2( table.name=table.name )
-  all.groups <- paste0( group.names, collapse="|" )
-  nd <- xml2::xml_find_all( doc, all.groups )
+  if( is.null(table.headers) )
+  { table.headers <- find_table_headers( table.name=table.name ) }
+  all.headers <- paste0( table.headers, collapse="|" )
+  nd <- xml2::xml_find_all( doc, all.headers )
   
   unique.xpaths <- 
     nd %>% 
@@ -214,7 +432,7 @@ get_table_xpaths <- function( url, table.name )
 #' it is generalized so it still works on previously working tables
 #'
 #' @export
-build_rdb_table_v2 <- function( url, table.name )
+build_rdb_table_v2 <- function( url, table.name, table.headers=NULL )
 {
 
   # load the XML document
@@ -301,12 +519,14 @@ build_rdb_table_v2 <- function( url, table.name )
 
   ####  BUILD TABLE 
   
-  # reminder to add find_group_names and re_name
+  # reminder to add find_table_headers and re_name
   # to get_table_v2 once they are working properly
   
-  group.names <- find_group_names_v2( table.name=table.name )
-  df <- get_table_v2( doc, group.names, table.name  )
+  if( is.null(table.headers) )
+  { table.headers <- find_table_headers( table.name=table.name ) }
   
+  df <- get_table_v2( doc, table.name, table.headers  )
+
   if( is.null(df) ){ return( NULL ) }
   
   v.map <- get_var_map( table.name=table.name )

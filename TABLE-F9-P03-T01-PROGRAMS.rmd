@@ -15,36 +15,8 @@ output:
 <br>
 
 
+
 ```{r}
-# SET TABLE FOR THE REPORT
-
-table.name <- "F9-P08-T01-REVENUE-PROGRAMS"
-
-
-### Use two levels of the path 
-### to ensure the table header
-### is unique (headers can be
-### reused in schedules).
-###
-### Use a double-slash at the
-### start of the table header: 
-###
-### "//Form990PartVIII/ProgramServiceRevenue"
-
-# table.headers <- NULL
-
-table.headers <- 
-  c("//Form990PartVIII/ProgramServiceRevenue",
-    "//IRS990/ProgramServiceRevenue",
-    "//IRS990/ProgramServiceRevenueGrp")
-
-folder.name <- paste0( "TABLE-", table.name )
-sample.size <- 25
-```
-
-
-
-```{r, eval=F}
 table.name <- "F9-P03-T01-PROGRAMS"
 
 table.headers <- c(
@@ -63,6 +35,11 @@ table.headers <- c(
   "//IRS990EZ/ProgSrvcAccomActyOtherGrp",
   "//IRS990EZ/ProgramServiceAccomplishment",
   "//IRS990EZ/ProgramSrvcAccomplishmentGrp" )
+
+
+folder.name <- paste0( "TABLE-", table.name )
+sample.size <- 25
+
 
 # # ACTIVITY 2
 # 
@@ -87,9 +64,6 @@ table.headers <- c(
 #   "//Form990PartIII/ActivityOther",
 #   "//IRS990/ProgSrvcAccomActyOtherGrp",
 #   "//IRS990EZ/ProgSrvcAccomActyOtherGrp" )
-
-folder.name <- paste0( "TABLE-", table.name )
-sample.size <- 25
 ```
 
 

@@ -17,7 +17,7 @@
 #' @description identifies all possible roots/xpaths from a table name
 #'
 #' @export
-find_group_names_v2 <- function( table.name )
+find_table_headers <- function( table.name )
 {
   # data(concordance)
   TABLE <- dplyr::filter( concordance, rdb_table == table.name )
@@ -87,17 +87,17 @@ collapse_nodes <- function( lc.xpaths )
 #' including the subgrouped roots and data as well
 #'
 #' @export
-get_table_v2 <- function( doc, group.names, table.name )
+get_table_v2 <- function( doc, table.name, table.headers )
 {
 
   data( concordance )
 
   TABLE <- dplyr::filter( concordance, rdb_table == table.name )
   original.xpaths <- TABLE$xpath %>% as.character()
-  all.groups <- paste0( group.names, collapse="|" )
+  all.table.versions <- paste0( table.headers, collapse="|" )
   # print(all.groups)
 
-  nd <- xml2::xml_find_all( doc, all.groups )
+  nd <- xml2::xml_find_all( doc, all.table.versions )
   
   if( length( nd ) == 0 ){ return(NULL) }
   
@@ -185,25 +185,27 @@ get_table_v2 <- function( doc, group.names, table.name )
 #' located within the specific RDB table. 
 #'
 #' @export
-get_table_xpaths <- function( url, table.name )
+get_table_xpaths <- function( url, table.name, table.headers )
 {
   doc <- NULL
   try( doc <- xml2::read_xml( file(url) ), silent=T ) 
   if( is.null(doc) ){ return( NULL ) }
   xml2::xml_ns_strip( doc )
-
-  group.names <- find_group_names_v2( table.name=table.name )
-  all.groups <- paste0( group.names, collapse="|" )
-  nd <- xml2::xml_find_all( doc, all.groups )
+  
+  if( is.null(table.headers) )
+  { table.headers <- find_table_headers( table.name=table.name ) }
+  all.headers <- paste0( table.headers, collapse="|" )
+  nd <- xml2::xml_find_all( doc, all.headers )
   
   unique.xpaths <- 
     nd %>% 
     xmltools::xml_get_paths() %>% 
     unlist() %>% 
     unique()
-    
+  
   return( unique.xpaths )
 }
+
 
 
 ###---------------------------------------------------
@@ -214,7 +216,7 @@ get_table_xpaths <- function( url, table.name )
 #' it is generalized so it still works on previously working tables
 #'
 #' @export
-build_rdb_table_v2 <- function( url, table.name )
+build_rdb_table_v2 <- function( url, table.name, table.headers=NULL )
 {
 
   # load the XML document
@@ -301,11 +303,13 @@ build_rdb_table_v2 <- function( url, table.name )
 
   ####  BUILD TABLE 
   
-  # reminder to add find_group_names and re_name
+  # reminder to add find_table_headers and re_name
   # to get_table_v2 once they are working properly
   
-  group.names <- find_group_names_v2( table.name=table.name )
-  df <- get_table_v2( doc, group.names, table.name  )
+  if( is.null(table.headers) )
+  { table.headers <- find_table_headers( table.name=table.name ) }
+  
+  df <- get_table_v2( doc, table.name, table.headers  )
   
   if( is.null(df) ){ return( NULL ) }
   
