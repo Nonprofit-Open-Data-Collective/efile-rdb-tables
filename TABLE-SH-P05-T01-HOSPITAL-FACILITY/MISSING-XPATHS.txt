@@ -1,0 +1,3 @@
+/Return/ReturnData/IRS990ScheduleH/HospitalFacilitiesGrp/BusinessName
+/Return/ReturnData/IRS990ScheduleH/HospitalFacilitiesGrp/FacilityNum
+/Return/ReturnData/IRS990ScheduleH/HospitalFacilitiesGrp/USAddress

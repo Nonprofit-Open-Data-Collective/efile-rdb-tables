@@ -1,0 +1,3 @@
+
+/Return/ReturnData/IRS990ScheduleC/Section527PoliticalOrgGrp/OrganizationBusinessName
+/Return/ReturnData/IRS990ScheduleC/Section527PoliticalOrgGrp/USAddress

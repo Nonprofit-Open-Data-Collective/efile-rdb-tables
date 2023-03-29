@@ -1,0 +1,13 @@
+
+/Return/ReturnData/IRS990/OtherExpenses
+/Return/ReturnData/IRS990/OtherExpenses/Description
+/Return/ReturnData/IRS990/OtherExpenses/Fundraising
+/Return/ReturnData/IRS990/OtherExpenses/ManagementAndGeneral
+/Return/ReturnData/IRS990/OtherExpenses/ProgramServices
+/Return/ReturnData/IRS990/OtherExpenses/Total
+/Return/ReturnData/IRS990/OtherExpensesGrp
+/Return/ReturnData/IRS990/OtherExpensesGrp/Desc
+/Return/ReturnData/IRS990/OtherExpensesGrp/FundraisingAmt
+/Return/ReturnData/IRS990/OtherExpensesGrp/ManagementAndGeneralAmt
+/Return/ReturnData/IRS990/OtherExpensesGrp/ProgramServicesAmt
+/Return/ReturnData/IRS990/OtherExpensesGrp/TotalAmt

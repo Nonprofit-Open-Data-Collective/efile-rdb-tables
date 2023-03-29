@@ -1,0 +1,6 @@
+
+/Return/ReturnData/IRS990ScheduleF/ForeignIndividualsGrantsGrp/CashGrantAmt
+/Return/ReturnData/IRS990ScheduleF/ForeignIndividualsGrantsGrp/MannerOfCashDisbursementTxt
+/Return/ReturnData/IRS990ScheduleF/ForeignIndividualsGrantsGrp/RecipientCnt
+/Return/ReturnData/IRS990ScheduleF/ForeignIndividualsGrantsGrp/RegionTxt
+/Return/ReturnData/IRS990ScheduleF/ForeignIndividualsGrantsGrp/TypeOfAssistanceTxt

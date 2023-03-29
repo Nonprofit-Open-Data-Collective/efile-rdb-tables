@@ -1,0 +1,8 @@
+
+/Return/ReturnData/IRS990ScheduleF/GrantsToOrgOutsideUSGrp/CashGrantAmt
+/Return/ReturnData/IRS990ScheduleF/GrantsToOrgOutsideUSGrp/DescriptionOfNonCashAsstTxt
+/Return/ReturnData/IRS990ScheduleF/GrantsToOrgOutsideUSGrp/MannerOfCashDisbursementTxt
+/Return/ReturnData/IRS990ScheduleF/GrantsToOrgOutsideUSGrp/NonCashAssistanceAmt
+/Return/ReturnData/IRS990ScheduleF/GrantsToOrgOutsideUSGrp/PurposeOfGrantTxt
+/Return/ReturnData/IRS990ScheduleF/GrantsToOrgOutsideUSGrp/RegionTxt
+/Return/ReturnData/IRS990ScheduleF/GrantsToOrgOutsideUSGrp/ValuationMethodUsedDesc

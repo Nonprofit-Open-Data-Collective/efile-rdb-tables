@@ -1,0 +1,7 @@
+
+/Return/ReturnData/IRS990ScheduleH/ManagementCoAndJntVenturesGrp/EntityName
+/Return/ReturnData/IRS990ScheduleH/ManagementCoAndJntVenturesGrp/EntityName/BusinessNameLine1Txt
+/Return/ReturnData/IRS990ScheduleH/ManagementCoAndJntVenturesGrp/OfcrEtcProfitOrOwnershipPct
+/Return/ReturnData/IRS990ScheduleH/ManagementCoAndJntVenturesGrp/OrgProfitOrOwnershipPct
+/Return/ReturnData/IRS990ScheduleH/ManagementCoAndJntVenturesGrp/PhysiciansProfitOrOwnershipPct
+/Return/ReturnData/IRS990ScheduleH/ManagementCoAndJntVenturesGrp/PrimaryActivitiesTxt

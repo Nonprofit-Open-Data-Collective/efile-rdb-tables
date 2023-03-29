@@ -1,11 +1,5 @@
-/Return/ReturnData/IRS990/Form990PartVIISectionA
-/Return/ReturnData/IRS990/Form990PartVIISectionAGrp
-/Return/ReturnData/IRS990EZ/OfficerDirectorTrusteeEmplGrp
-/Return/ReturnData/IRS990EZ/OfficerDirectorTrusteeEmplGrp/ExpenseAccountOtherAllwncAmt
-/Return/ReturnData/IRS990EZ/OfficerDirectorTrusteeKeyEmpl
 /Return/ReturnData/IRS990EZ/OfficerDirectorTrusteeKeyEmpl/AddressUS
 /Return/ReturnData/IRS990EZ/OfficerDirectorTrusteeKeyEmpl/AddressUS/AddressLine1
 /Return/ReturnData/IRS990EZ/OfficerDirectorTrusteeKeyEmpl/AddressUS/City
 /Return/ReturnData/IRS990EZ/OfficerDirectorTrusteeKeyEmpl/AddressUS/State
 /Return/ReturnData/IRS990EZ/OfficerDirectorTrusteeKeyEmpl/AddressUS/ZIPCode
-/Return/ReturnData/IRS990EZ/OfficerDirectorTrusteeKeyEmpl/ExpenseAccountOtherAllowances

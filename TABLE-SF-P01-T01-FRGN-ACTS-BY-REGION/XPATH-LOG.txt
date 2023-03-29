@@ -1,0 +1,7 @@
+
+/Return/ReturnData/IRS990ScheduleF/AccountActivitiesOutsideUSGrp/EmployeeCnt
+/Return/ReturnData/IRS990ScheduleF/AccountActivitiesOutsideUSGrp/OfficesCnt
+/Return/ReturnData/IRS990ScheduleF/AccountActivitiesOutsideUSGrp/RegionTotalExpendituresAmt
+/Return/ReturnData/IRS990ScheduleF/AccountActivitiesOutsideUSGrp/RegionTxt
+/Return/ReturnData/IRS990ScheduleF/AccountActivitiesOutsideUSGrp/SpecificServicesProvidedTxt
+/Return/ReturnData/IRS990ScheduleF/AccountActivitiesOutsideUSGrp/TypeOfActivitiesConductedTxt

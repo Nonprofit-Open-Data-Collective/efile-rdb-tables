@@ -1,0 +1,12 @@
+
+/Return/ReturnData/IRS990/ContractorCompensation
+/Return/ReturnData/IRS990/ContractorCompensation/AddressOfContractor
+/Return/ReturnData/IRS990/ContractorCompensation/AddressOfContractor/AddressUS
+/Return/ReturnData/IRS990/ContractorCompensation/NameOfContractor
+/Return/ReturnData/IRS990/ContractorCompensation/NameOfContractor/NameBusiness
+/Return/ReturnData/IRS990/ContractorCompensationGrp
+/Return/ReturnData/IRS990/ContractorCompensationGrp/ContractorAddress
+/Return/ReturnData/IRS990/ContractorCompensationGrp/ContractorAddress/ForeignAddress
+/Return/ReturnData/IRS990/ContractorCompensationGrp/ContractorAddress/USAddress
+/Return/ReturnData/IRS990/ContractorCompensationGrp/ContractorName
+/Return/ReturnData/IRS990/ContractorCompensationGrp/ContractorName/BusinessName

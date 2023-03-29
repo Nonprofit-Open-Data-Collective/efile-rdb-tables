@@ -1,0 +1,3 @@
+
+/Return/ReturnData/IRS990EZ/CompensationHighestPaidEmplGrp
+/Return/ReturnData/IRS990EZ/CompensationHighestPaidEmplGrp/ExpenseAccountAmt

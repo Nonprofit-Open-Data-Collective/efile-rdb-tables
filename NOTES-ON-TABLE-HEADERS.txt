@@ -9,55 +9,134 @@
 
 
 ### [1] "F9-P03-T01-PROGRAMS"     
-
-
+table.headers <- c(
+  "//IRS990/Activity2",
+  "//IRS990/Activity3",
+  "//IRS990/ActivityOther",
+  "//Form990PartIII/Activity2",
+  "//Form990PartIII/Activity3",
+  "//Form990PartIII/ActivityOther",
+  "//IRS990/ProgSrvcAccomActy2Grp",
+  "//IRS990/ProgSrvcAccomActy3Grp",
+  "//IRS990/ProgSrvcAccomActyOtherGrp",
+  "//IRS990/ProgramServiceAccomplishments",
+  "//IRS990EZ/ProgSrvcAccomActy2Grp",
+  "//IRS990EZ/ProgSrvcAccomActy3Grp",
+  "//IRS990EZ/ProgSrvcAccomActyOtherGrp",
+  "//IRS990EZ/ProgramServiceAccomplishment",
+  "//IRS990EZ/ProgramSrvcAccomplishmentGrp" )
 
 ### [2] "F9-P07-T02-CONTRACTORS"        
+table.headers <-
+  c("//IRS990/ContractorCompensation",
+    "//IRS990/ContractorCompensationGrp",
+    "//IRS990/Form990PartVIISectionB/ContractorCompensation",
+    "//IRS990EZ/CompOfHghstPaidCntrctProfSer",
+    "//IRS990EZ/CompensationOfHghstPdCntrctGrp")
 
+### [3] "F9-P07-T01-COMPENSATION"       
+table.headers <- NULL
+                
+### [4] "F9-P07-T01-COMPENSATION-HCE-EZ" 
+ table.headers <- 
+  c("//IRS990EZ/CompensationHighestPaidEmplGrp",
+    "//IRS990EZ/CompensationOfHighestPaidEmpl")
+               
+### [5] "F9-P99-T01-COMPENSATION"            
+table.headers <- NULL
+           
+### [6] "F9-P08-T01-REVENUE-PROGRAMS"     
+table.headers <- NULL
+              
+### [7] "F9-P08-T02-REVENUE-MISC"      
+table.headers <- NULL
+                 
+### [8] "F9-P09-T01-EXPENSES-OTHER"    
+ table.headers <- 
+  c("//IRS990/Form990PartIX/OtherExpenses",
+    "//IRS990/OtherExpenses",
+    "//IRS990/OtherExpensesGrp")
 
+### [9] "SA-P01-T01-PUBLIC-CHARITY-STATUS"    
+ table.headers <- 
+  c("//IRS990ScheduleA/Form990ScheduleAPartI",
+    "//IRS990ScheduleA/SupportedOrgInformation",
+    "//IRS990ScheduleA/SupportedOrgInformationGrp")
+          
+### [10] "SA-P99-T01-PUBLIC-CHARITY-STATUS"       
+table.headers <- NULL
+       
+### [11] "SC-P01-T01-POLITICAL-ORGS-INFO"  
+table.headers <- NULL
+              
+### [12] "SD-P07-T01-INVESTMENTS-OTH-SECURITIES"     
+ table.headers <- 
+  c("//IRS990ScheduleD/CloselyHeldEquityInterests",
+    "//IRS990ScheduleD/CloselyHeldEquityInterestsGrp",
+    "//IRS990ScheduleD/FinancialDerivatives",
+    "//IRS990ScheduleD/FinancialDerivativesGrp",
+    "//IRS990ScheduleD/Form990ScheduleDPartVII/CloselyHeldEquityInterests",
+    "//IRS990ScheduleD/Form990ScheduleDPartVII/FinancialDerivatives",
+    "//IRS990ScheduleD/Form990ScheduleDPartVII/Other",
+    "//IRS990ScheduleD/OtherSecurities",
+    "//IRS990ScheduleD/OtherSecuritiesGrp")
+    
+### [13] "SD-P08-T01-INVESTMENTS-PROG-RLTD"   
+ table.headers <- 
+  c("//IRS990ScheduleD/Form990ScheduleDPartVIII/InvestmentsProgramRelated",
+    "//IRS990ScheduleD/InvestmentsProgramRelated",
+    "//IRS990ScheduleD/InvstProgramRelatedOrgGrp")
+           
+### [14] "SD-P09-T01-OTH-ASSETS"  
+table.headers <- NULL
+                       
+### [15] "SD-P10-T01-OTH-LIABILITIES"     
 
-
- [3] "F9-P07-T01-COMPENSATION"                       
- [4] "F9-P07-T01-COMPENSATION-HCE-EZ"                
- [5] "F9-P99-T01-COMPENSATION"                       
- [6] "F9-P08-T01-REVENUE-PROGRAMS"                   
- [7] "F9-P08-T02-REVENUE-MISC"                       
- [8] "F9-P09-T01-EXPENSES-OTHER"                     
- [9] "SA-P01-T01-PUBLIC-CHARITY-STATUS"              
-[10] "SA-P99-T01-PUBLIC-CHARITY-STATUS"              
-[11] "SC-P01-T01-POLITICAL-ORGS-INFO"                
-[12] "SD-P07-T01-INVESTMENTS-OTH-SECURITIES"         
-[13] "SD-P08-T01-INVESTMENTS-PROG-RLTD"              
-[14] "SD-P09-T01-OTH-ASSETS"                         
-[15] "SD-P10-T01-OTH-LIABILITIES"                    
-[16] "SF-P01-T01-FRGN-ACTS-BY-REGION"                
-[17] "SF-P02-T01-FRGN-ORG-GRANTS"                    
-[18] "SF-P03-T01-FRGN-INDIV-GRANTS"                  
-[19] "SG-P01-T01-FUNDRAISERS-INFO"                   
-[20] "SG-P02-T01-FUNDRAISING-EVENTS"                 
-[21] "SH-P04-T01-COMPANY-JOINT-VENTURES"             
-[22] "SH-P05-T01-HOSPITAL-FACILITY"                  
-[23] "SH-P05-T02-NON-HOSPITAL-FACILITY"              
-[24] "SI-P02-T01-GRANTS-US-ORGS-GOVTS"               
-[25] "SI-P03-T01-GRANTS-US-INDIV"                    
-[26] "SJ-P02-T01-COMPENSATION-DTK"                   
-[27] "SK-P01-T01-BOND-ISSUES"                        
-[28] "SK-P02-T01-BOND-PROCEEDS"                      
-[29] "SK-P03-T01-BOND-PRIVATE-BIZ-USE"               
-[30] "SK-P04-T01-BOND-ARBITRAGE"                     
-[31] "SK-P05-T01-PROCEDURE-CORRECTIVE-ACT"           
-[32] "SK-P99-T01-BOND-PRIVATE_BIZ_USE"               
-[33] "SL-P01-T01-EXCESS-BENEFIT-TRANSAC"             
-[34] "SL-P02-T01-LOANS-INTERESTED-PERS"              
-[35] "SL-P03-T01-GRANTS-INTERESTED-PERS"             
-[36] "SL-P04-T01-BIZ-TRANSAC-INTERESTED-PERS"        
-[37] "SM-P01-T01-NONCASH-CONTRIBUTIONS"              
-[38] "SN-P01-T01-LIQUIDATION-TERMINATION-DISSOLUTION"
-[39] "SN-P02-T01-DISPOSITION-OF-ASSETS"              
-[40] "SO-T99-SUPPLEMENTAL-INFO"                      
-[41] "SR-P01-T01-ID-DISREGARDED-ENTITIES"            
-[42] "SR-P02-T01-ID-RLTD-TAX-EXEMPED-ORGS"           
-[43] "SR-P03-T01-ID-RLTD-ORGS-TAXABLE-PARTNERSHIP"   
-[44] "SR-P04-T01-ID-RLTD-ORGS-TAXABLE-CORPORATION"   
-[45] "SR-P05-T01-TRANSACTIONS-RLTD-ORGS"             
-[46] "SR-P06-T01-UNRLTD-ORGS-TAXABLE-PARTNERSHIP" 
+               
+### [16] "SF-P01-T01-FRGN-ACTS-BY-REGION"      
+table.headers <- NULL
+          
+### [17] "SF-P02-T01-FRGN-ORG-GRANTS"      
+table.headers <- NULL
+              
+### [18] "SF-P03-T01-FRGN-INDIV-GRANTS"    
+table.headers <- NULL
+              
+### [19] "SG-P01-T01-FUNDRAISERS-INFO"    
+table.headers <- NULL
+               
+### [20] "SG-P02-T01-FUNDRAISING-EVENTS"          
+table.headers <- NULL
+       
+### [21] "SH-P04-T01-COMPANY-JOINT-VENTURES"   
+table.headers <- NULL
+          
+### [22] "SH-P05-T01-HOSPITAL-FACILITY"          
+table.headers <- NULL
+        
+### [23] "SH-P05-T02-NON-HOSPITAL-FACILITY"         
+table.headers <- NULL
+     
+### [24] "SI-P02-T01-GRANTS-US-ORGS-GOVTS"               
+### [25] "SI-P03-T01-GRANTS-US-INDIV"                    
+### [26] "SJ-P02-T01-COMPENSATION-DTK"                   
+### [27] "SK-P01-T01-BOND-ISSUES"                        
+### [28] "SK-P02-T01-BOND-PROCEEDS"                      
+### [29] "SK-P03-T01-BOND-PRIVATE-BIZ-USE"               
+### [30] "SK-P04-T01-BOND-ARBITRAGE"                     
+### [31] "SK-P05-T01-PROCEDURE-CORRECTIVE-ACT"           
+### [32] "SK-P99-T01-BOND-PRIVATE_BIZ_USE"               
+### [33] "SL-P01-T01-EXCESS-BENEFIT-TRANSAC"             
+### [34] "SL-P02-T01-LOANS-INTERESTED-PERS"              
+### [35] "SL-P03-T01-GRANTS-INTERESTED-PERS"             
+### [36] "SL-P04-T01-BIZ-TRANSAC-INTERESTED-PERS"        
+### [37] "SM-P01-T01-NONCASH-CONTRIBUTIONS"              
+### [38] "SN-P01-T01-LIQUIDATION-TERMINATION-DISSOLUTION"
+### [39] "SN-P02-T01-DISPOSITION-OF-ASSETS"              
+### [40] "SO-T99-SUPPLEMENTAL-INFO"                      
+### [41] "SR-P01-T01-ID-DISREGARDED-ENTITIES"            
+### [42] "SR-P02-T01-ID-RLTD-TAX-EXEMPED-ORGS"           
+### [43] "SR-P03-T01-ID-RLTD-ORGS-TAXABLE-PARTNERSHIP"   
+### [44] "SR-P04-T01-ID-RLTD-ORGS-TAXABLE-CORPORATION"   
+### [45] "SR-P05-T01-TRANSACTIONS-RLTD-ORGS"             
+### [46] "SR-P06-T01-UNRLTD-ORGS-TAXABLE-PARTNERSHIP" 

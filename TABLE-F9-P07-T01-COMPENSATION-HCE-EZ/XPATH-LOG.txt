@@ -1,0 +1,8 @@
+
+/Return/ReturnData/IRS990EZ/CompensationHighestPaidEmplGrp
+/Return/ReturnData/IRS990EZ/CompensationHighestPaidEmplGrp/AverageHoursPerWeekRt
+/Return/ReturnData/IRS990EZ/CompensationHighestPaidEmplGrp/CompensationAmt
+/Return/ReturnData/IRS990EZ/CompensationHighestPaidEmplGrp/EmployeeBenefitsAmt
+/Return/ReturnData/IRS990EZ/CompensationHighestPaidEmplGrp/ExpenseAccountAmt
+/Return/ReturnData/IRS990EZ/CompensationHighestPaidEmplGrp/PersonNm
+/Return/ReturnData/IRS990EZ/CompensationHighestPaidEmplGrp/TitleTxt

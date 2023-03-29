@@ -1,0 +1,3 @@
+
+/Return/ReturnData/IRS990ScheduleG/FundraiserActivityInfoGrp/OrganizationBusinessName
+/Return/ReturnData/IRS990ScheduleG/FundraiserActivityInfoGrp/USAddress
