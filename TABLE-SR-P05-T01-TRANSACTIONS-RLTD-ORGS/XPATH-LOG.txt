@@ -1,0 +1,6 @@
+
+/Return/ReturnData/IRS990ScheduleR/TransactionsRelatedOrgGrp/InvolvedAmt
+/Return/ReturnData/IRS990ScheduleR/TransactionsRelatedOrgGrp/MethodOfAmountDeterminationTxt
+/Return/ReturnData/IRS990ScheduleR/TransactionsRelatedOrgGrp/OtherOrganizationName
+/Return/ReturnData/IRS990ScheduleR/TransactionsRelatedOrgGrp/OtherOrganizationName/BusinessNameLine1Txt
+/Return/ReturnData/IRS990ScheduleR/TransactionsRelatedOrgGrp/TransactionTypeTxt

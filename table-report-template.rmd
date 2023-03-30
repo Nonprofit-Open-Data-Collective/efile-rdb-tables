@@ -19,7 +19,7 @@ output:
 # SET TABLE PARAMETERS FOR THE REPORT;
 # ALSO SEE DATA STEP BELOW
 
-table.name <- "F9-P08-T01-REVENUE-PROGRAMS"
+table.name <- "F9-P07-T01-COMPENSATION"
 
 
 ### Use two levels of the path 
@@ -32,12 +32,12 @@ table.name <- "F9-P08-T01-REVENUE-PROGRAMS"
 ###
 ### "//Form990PartVIII/ProgramServiceRevenue"
 
-# table.headers <- NULL
+table.headers <- NULL
 
-table.headers <- 
-  c("//Form990PartVIII/ProgramServiceRevenue",
-    "//IRS990/ProgramServiceRevenue",
-    "//IRS990/ProgramServiceRevenueGrp")
+# table.headers <- 
+#   c("//Form990PartVIII/ProgramServiceRevenue",
+#     "//IRS990/ProgramServiceRevenue",
+#     "//IRS990/ProgramServiceRevenueGrp")
 
 folder.name <- paste0( "TABLE-", table.name )
 sample.size <- 25

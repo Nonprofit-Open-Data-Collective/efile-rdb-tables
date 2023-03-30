@@ -8,7 +8,10 @@ The solution is creating a report that attempts to extract tables using default 
 
 See a sample build report: 
 
-[F9-P07-T01-COMPENSATION](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/table-report-template-demo.html)
+* [F9-P07-T01-COMPENSATION](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/table-report-template-demo.html)
+* [F9-P03-T01-PROGRAMS](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/TABLE-F9-P03-T01-PROGRAMS.html)
+
+
 
 ## Install the efile package **irs990efile**: 
 

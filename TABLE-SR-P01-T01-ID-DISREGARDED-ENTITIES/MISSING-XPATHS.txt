@@ -1,0 +1,4 @@
+
+/Return/ReturnData/IRS990ScheduleR/IdDisregardedEntitiesGrp/DirectControllingEntityName
+/Return/ReturnData/IRS990ScheduleR/IdDisregardedEntitiesGrp/DisregardedEntityName
+/Return/ReturnData/IRS990ScheduleR/IdDisregardedEntitiesGrp/USAddress

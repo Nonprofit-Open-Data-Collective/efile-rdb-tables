@@ -1,0 +1,6 @@
+
+/Return/ReturnData/IRS990ScheduleM/OtherNonCashContriTableGrp/ContributionCnt
+/Return/ReturnData/IRS990ScheduleM/OtherNonCashContriTableGrp/Desc
+/Return/ReturnData/IRS990ScheduleM/OtherNonCashContriTableGrp/MethodOfDeterminingRevenuesTxt
+/Return/ReturnData/IRS990ScheduleM/OtherNonCashContriTableGrp/NonCashCheckboxInd
+/Return/ReturnData/IRS990ScheduleM/OtherNonCashContriTableGrp/NoncashContributionsRptF990Amt

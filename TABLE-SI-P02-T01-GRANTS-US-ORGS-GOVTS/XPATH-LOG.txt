@@ -1,0 +1,17 @@
+
+/Return/ReturnData/IRS990ScheduleI/RecipientTable
+/Return/ReturnData/IRS990ScheduleI/RecipientTable/CashGrantAmt
+/Return/ReturnData/IRS990ScheduleI/RecipientTable/IRCSectionDesc
+/Return/ReturnData/IRS990ScheduleI/RecipientTable/NonCashAssistanceAmt
+/Return/ReturnData/IRS990ScheduleI/RecipientTable/NonCashAssistanceDesc
+/Return/ReturnData/IRS990ScheduleI/RecipientTable/PurposeOfGrantTxt
+/Return/ReturnData/IRS990ScheduleI/RecipientTable/RecipientBusinessName
+/Return/ReturnData/IRS990ScheduleI/RecipientTable/RecipientBusinessName/BusinessNameLine1Txt
+/Return/ReturnData/IRS990ScheduleI/RecipientTable/RecipientEIN
+/Return/ReturnData/IRS990ScheduleI/RecipientTable/USAddress
+/Return/ReturnData/IRS990ScheduleI/RecipientTable/USAddress/AddressLine1Txt
+/Return/ReturnData/IRS990ScheduleI/RecipientTable/USAddress/AddressLine2Txt
+/Return/ReturnData/IRS990ScheduleI/RecipientTable/USAddress/CityNm
+/Return/ReturnData/IRS990ScheduleI/RecipientTable/USAddress/StateAbbreviationCd
+/Return/ReturnData/IRS990ScheduleI/RecipientTable/USAddress/ZIPCd
+/Return/ReturnData/IRS990ScheduleI/RecipientTable/ValuationMethodUsedDesc

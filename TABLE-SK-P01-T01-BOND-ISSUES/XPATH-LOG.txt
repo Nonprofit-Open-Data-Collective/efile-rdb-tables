@@ -1,0 +1,12 @@
+/Return/ReturnData/IRS990ScheduleK/TaxExemptBondsIssuesGrp/BondIssuedDt
+/Return/ReturnData/IRS990ScheduleK/TaxExemptBondsIssuesGrp/BondIssuerEIN
+/Return/ReturnData/IRS990ScheduleK/TaxExemptBondsIssuesGrp/BondReferenceCd
+/Return/ReturnData/IRS990ScheduleK/TaxExemptBondsIssuesGrp/CUSIPNum
+/Return/ReturnData/IRS990ScheduleK/TaxExemptBondsIssuesGrp/DefeasedInd
+/Return/ReturnData/IRS990ScheduleK/TaxExemptBondsIssuesGrp/IssuePriceAmt
+/Return/ReturnData/IRS990ScheduleK/TaxExemptBondsIssuesGrp/IssuerName
+/Return/ReturnData/IRS990ScheduleK/TaxExemptBondsIssuesGrp/IssuerName/BusinessNameLine1Txt
+/Return/ReturnData/IRS990ScheduleK/TaxExemptBondsIssuesGrp/IssuerName/BusinessNameLine2Txt
+/Return/ReturnData/IRS990ScheduleK/TaxExemptBondsIssuesGrp/OnBehalfOfIssuerInd
+/Return/ReturnData/IRS990ScheduleK/TaxExemptBondsIssuesGrp/PoolFinancingInd
+/Return/ReturnData/IRS990ScheduleK/TaxExemptBondsIssuesGrp/PurposeDesc

@@ -1,0 +1,7 @@
+
+/Return/ReturnData/IRS990ScheduleI/GrantsOtherAsstToIndivInUSGrp/CashGrantAmt
+/Return/ReturnData/IRS990ScheduleI/GrantsOtherAsstToIndivInUSGrp/GrantTypeTxt
+/Return/ReturnData/IRS990ScheduleI/GrantsOtherAsstToIndivInUSGrp/NonCashAssistanceAmt
+/Return/ReturnData/IRS990ScheduleI/GrantsOtherAsstToIndivInUSGrp/NonCashAssistanceDesc
+/Return/ReturnData/IRS990ScheduleI/GrantsOtherAsstToIndivInUSGrp/RecipientCnt
+/Return/ReturnData/IRS990ScheduleI/GrantsOtherAsstToIndivInUSGrp/ValuationMethodUsedDesc

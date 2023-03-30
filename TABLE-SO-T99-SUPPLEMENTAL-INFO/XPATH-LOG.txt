@@ -1,0 +1,3 @@
+/Return/ReturnData/IRS990ScheduleO/SupplementalInformationDetail
+/Return/ReturnData/IRS990ScheduleO/SupplementalInformationDetail/ExplanationTxt
+/Return/ReturnData/IRS990ScheduleO/SupplementalInformationDetail/FormAndLineReferenceDesc

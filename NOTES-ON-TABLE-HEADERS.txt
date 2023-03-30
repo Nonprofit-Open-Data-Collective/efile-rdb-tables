@@ -1,14 +1,17 @@
 ###
-### RDB TABLE LOG
+###   RDB TABLE LOG
 ###
 
-### Record the table name and the
-### custom table header group names
-### if they are necessary. 
+###  Record the table name and the
+###  custom table header group names
+###  if they are necessary. 
 
 
 
+
+###
 ### [1] "F9-P03-T01-PROGRAMS"     
+<<<<<<< HEAD
 table.headers <- c(
   "//IRS990/Activity2",
   "//IRS990/Activity3",
@@ -56,6 +59,80 @@ table.headers <- NULL
   c("//IRS990/Form990PartIX/OtherExpenses",
     "//IRS990/OtherExpenses",
     "//IRS990/OtherExpensesGrp")
+=======
+###
+
+
+#  NO GROUP (TABLE HEADER) FOR ACTIVITY 1
+
+|/Return/ReturnData/IRS990/ActivityCd                                                    |11 |
+|/Return/ReturnData/IRS990/ActivityCode                                                  |12 |
+|/Return/ReturnData/IRS990/Desc                                                          |18 |
+|/Return/ReturnData/IRS990/Description                                                   |19 |
+|/Return/ReturnData/IRS990/Expense                                                       |20 |
+|/Return/ReturnData/IRS990/ExpenseAmt                                                    |21 |
+|/Return/ReturnData/IRS990/GrantAmt                                                      |45 |
+|/Return/ReturnData/IRS990/Grants                                                        |46 |
+
+|/Return/ReturnData/IRS990/Revenue                                                       |65 |
+|/Return/ReturnData/IRS990/RevenueAmt                                                    |66 |
+|/Return/ReturnData/IRS990/TotalOfOtherProgramServiceExp                                 |67 |
+|/Return/ReturnData/IRS990/TotalOfOtherProgramServiceGrnt                                |68 |
+|/Return/ReturnData/IRS990/TotalOfOtherProgramServiceRev                                 |69 |
+|/Return/ReturnData/IRS990/TotalOtherProgSrvcExpenseAmt                                  |70 |
+|/Return/ReturnData/IRS990/TotalOtherProgSrvcGrantAmt                                    |71 |
+|/Return/ReturnData/IRS990/TotalOtherProgSrvcRevenueAmt                                  |72 |
+
+|/Return/ReturnData/IRS990EZ/GrantAmt                                                    |73 |
+|/Return/ReturnData/IRS990EZ/Grants                                                      |74 |
+
+|/Return/ReturnData/IRS990/Form990PartIII/ActivityCode                                   |32 |
+|/Return/ReturnData/IRS990/Form990PartIII/Description                                    |38 |
+|/Return/ReturnData/IRS990/Form990PartIII/Expense                                        |39 |
+|/Return/ReturnData/IRS990/Form990PartIII/Grants                                         |40 |
+|/Return/ReturnData/IRS990/Form990PartIII/Revenue                                        |41 |
+
+|/Return/ReturnData/IRS990/Form990PartIII/TotalOfOtherProgramServiceExp                  |42 |
+|/Return/ReturnData/IRS990/Form990PartIII/TotalOfOtherProgramServiceGrnt                 |43 |
+|/Return/ReturnData/IRS990/Form990PartIII/TotalOfOtherProgramServiceRev                  |44 |
+
+|/Return/ReturnData/IRS990/ProgramServiceAccomplishments/DescriptionProgramServiceAccom  |62 |
+|/Return/ReturnData/IRS990/ProgramServiceAccomplishments/GrantsAndAllocations            |63 |
+|/Return/ReturnData/IRS990/ProgramServiceAccomplishments/ProgramServiceExpenses          |64 |
+
+
+
+# GENERIC GROUP - NO ACTIVITY NUMBER
+
+table.headers <- c(
+  "//IRS990/ProgramServiceAccomplishments",
+  "//IRS990EZ/ProgramServiceAccomplishment",
+  "//IRS990EZ/ProgramSrvcAccomplishmentGrp" )
+  
+  
+# ACTIVITY 2
+
+table.headers <- c(
+  "//IRS990/Activity2",
+  "//Form990PartIII/Activity2",
+  "//IRS990/ProgSrvcAccomActy2Grp",
+  "//IRS990EZ/ProgSrvcAccomActy2Grp" )
+
+# ACTIVITY 3
+
+table.headers <- c(
+  "//IRS990/Activity3",
+  "//Form990PartIII/Activity3",
+  "//IRS990/ProgSrvcAccomActy3Grp",
+  "//IRS990EZ/ProgSrvcAccomActy3Grp" )
+
+# OTHER
+
+table.headers <- c(
+  "//IRS990/ActivityOther",
+  "//Form990PartIII/ActivityOther",
+  "//IRS990/ProgSrvcAccomActyOtherGrp",
+  "//IRS990EZ/ProgSrvcAccomActyOtherGrp" )
 
 ### [9] "SA-P01-T01-PUBLIC-CHARITY-STATUS"    
  table.headers <- 
@@ -117,26 +194,83 @@ table.headers <- NULL
 ### [23] "SH-P05-T02-NON-HOSPITAL-FACILITY"         
 table.headers <- NULL
      
-### [24] "SI-P02-T01-GRANTS-US-ORGS-GOVTS"               
-### [25] "SI-P03-T01-GRANTS-US-INDIV"                    
-### [26] "SJ-P02-T01-COMPENSATION-DTK"                   
-### [27] "SK-P01-T01-BOND-ISSUES"                        
-### [28] "SK-P02-T01-BOND-PROCEEDS"                      
-### [29] "SK-P03-T01-BOND-PRIVATE-BIZ-USE"               
-### [30] "SK-P04-T01-BOND-ARBITRAGE"                     
-### [31] "SK-P05-T01-PROCEDURE-CORRECTIVE-ACT"           
-### [32] "SK-P99-T01-BOND-PRIVATE_BIZ_USE"               
-### [33] "SL-P01-T01-EXCESS-BENEFIT-TRANSAC"             
-### [34] "SL-P02-T01-LOANS-INTERESTED-PERS"              
-### [35] "SL-P03-T01-GRANTS-INTERESTED-PERS"             
-### [36] "SL-P04-T01-BIZ-TRANSAC-INTERESTED-PERS"        
-### [37] "SM-P01-T01-NONCASH-CONTRIBUTIONS"              
+### [24] "SI-P02-T01-GRANTS-US-ORGS-GOVTS"   
+ table.headers <- 
+  c("//IRS990ScheduleI/Form990ScheduleIPartII/RecipientTable",
+    "//IRS990ScheduleI/RecipientTable")
+            
+### [25] "SI-P03-T01-GRANTS-US-INDIV"       
+table.headers <- NULL
+             
+### [26] "SJ-P02-T01-COMPENSATION-DTK"  
+table.headers <- NULL
+                 
+### [27] "SK-P01-T01-BOND-ISSUES"                  
+table.headers <- NULL
+      
+### [28] "SK-P02-T01-BOND-PROCEEDS"  
+table.headers <- NULL
+                    
+### [29] "SK-P03-T01-BOND-PRIVATE-BIZ-USE"      
+table.headers <- NULL
+        
+### [30] "SK-P04-T01-BOND-ARBITRAGE"    
+table.headers <- NULL
+                 
+### [31] "SK-P05-T01-PROCEDURE-CORRECTIVE-ACT"  
+ table.headers <- 
+  c("//IRS990ScheduleK/Form990ScheduleKPartV",
+    "//IRS990ScheduleK/ProceduresCorrectiveActionGrp")
+         
+### [32] "SK-P99-T01-BOND-PRIVATE_BIZ_USE"       
+ table.headers <- 
+  c("//IRS990ScheduleK/Form990ScheduleKPartIII")
+        
+### [33] "SL-P01-T01-EXCESS-BENEFIT-TRANSAC" 
+
+            
+### [34] "SL-P02-T01-LOANS-INTERESTED-PERS" 
+table.headers <- NULL
+             
+### [35] "SL-P03-T01-GRANTS-INTERESTED-PERS" 
+table.headers <- NULL
+            
+### [36] "SL-P04-T01-BIZ-TRANSAC-INTERESTED-PERS"     
+table.headers <- NULL
+   
+### [37] "SM-P01-T01-NONCASH-CONTRIBUTIONS"    
+table.headers <- NULL
+          
 ### [38] "SN-P01-T01-LIQUIDATION-TERMINATION-DISSOLUTION"
-### [39] "SN-P02-T01-DISPOSITION-OF-ASSETS"              
-### [40] "SO-T99-SUPPLEMENTAL-INFO"                      
-### [41] "SR-P01-T01-ID-DISREGARDED-ENTITIES"            
-### [42] "SR-P02-T01-ID-RLTD-TAX-EXEMPED-ORGS"           
+ table.headers <- 
+  c("//IRS990ScheduleN/Form990ScheduleNPartI/LiquidationTable",
+    "//IRS990ScheduleN/LiquidationOfAssetsTableGrp",
+    "//IRS990ScheduleN/LiquidationTable")
+
+### [39] "SN-P02-T01-DISPOSITION-OF-ASSETS"       
+table.headers <- NULL
+       
+### [40] "SO-T99-SUPPLEMENTAL-INFO"    
+ table.headers <- 
+  c("//IRS990ScheduleO/GeneralExplanation",
+    "//IRS990ScheduleO/SupplementalInformationDetail")
+                  
+### [41] "SR-P01-T01-ID-DISREGARDED-ENTITIES"       
+table.headers <- NULL
+     
+### [42] "SR-P02-T01-ID-RLTD-TAX-EXEMPED-ORGS"       
+table.headers <- NULL
+    
 ### [43] "SR-P03-T01-ID-RLTD-ORGS-TAXABLE-PARTNERSHIP"   
+table.headers <- NULL
+
 ### [44] "SR-P04-T01-ID-RLTD-ORGS-TAXABLE-CORPORATION"   
-### [45] "SR-P05-T01-TRANSACTIONS-RLTD-ORGS"             
+table.headers <- NULL
+
+### [45] "SR-P05-T01-TRANSACTIONS-RLTD-ORGS"      
+table.headers <- NULL
+       
 ### [46] "SR-P06-T01-UNRLTD-ORGS-TAXABLE-PARTNERSHIP" 
+ table.headers <- 
+  c("//IRS990ScheduleR/Form990ScheduleRPartVI",
+    "//IRS990ScheduleR/UnrelatedOrgTxblPartnershipGrp")

@@ -1,0 +1,4 @@
+
+/Return/ReturnData/IRS990ScheduleI/RecipientTable
+/Return/ReturnData/IRS990ScheduleI/RecipientTable/RecipientBusinessName
+/Return/ReturnData/IRS990ScheduleI/RecipientTable/USAddress

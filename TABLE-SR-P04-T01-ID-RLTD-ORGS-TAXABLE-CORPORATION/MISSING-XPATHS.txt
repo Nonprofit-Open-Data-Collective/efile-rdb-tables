@@ -1,0 +1,3 @@
+
+/Return/ReturnData/IRS990ScheduleR/IdRelatedOrgTxblCorpTrGrp/RelatedOrganizationName
+/Return/ReturnData/IRS990ScheduleR/IdRelatedOrgTxblCorpTrGrp/USAddress

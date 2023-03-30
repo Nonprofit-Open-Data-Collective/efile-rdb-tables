@@ -1,0 +1,5 @@
+
+/Return/ReturnData/IRS990ScheduleL/GrntAsstBnftInterestedPrsnGrp/CashGrantAmt
+/Return/ReturnData/IRS990ScheduleL/GrntAsstBnftInterestedPrsnGrp/PersonNm
+/Return/ReturnData/IRS990ScheduleL/GrntAsstBnftInterestedPrsnGrp/RelationshipWithOrgTxt
+/Return/ReturnData/IRS990ScheduleL/GrntAsstBnftInterestedPrsnGrp/TypeOfAssistanceTxt

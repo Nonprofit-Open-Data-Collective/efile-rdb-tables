@@ -1,0 +1,865 @@
+---
+date: "Last compiled on `r format(Sys.time(), '%d %B, %Y')`"
+output:
+  html_document:
+    theme: readable
+    df_print: paged
+    highlight: tango
+    toc: yes
+    toc_float: no
+---
+
+
+<br>
+<hr>
+<br>
+
+
+```{r}
+# SET TABLE PARAMETERS FOR THE REPORT;
+# ALSO SEE DATA STEP BELOW
+
+table.name <- "SK-P01-T01-BOND-ISSUES"
+
+
+### Use two levels of the path 
+### to ensure the table header
+### is unique (headers can be
+### reused in schedules).
+###
+### Use a double-slash at the
+### start of the table header: 
+###
+### "//Form990PartVIII/ProgramServiceRevenue"
+
+table.headers <- NULL
+
+# table.headers <- 
+#   c("//Form990PartVIII/ProgramServiceRevenue",
+#     "//IRS990/ProgramServiceRevenue",
+#     "//IRS990/ProgramServiceRevenueGrp")
+
+folder.name <- paste0( "TABLE-", table.name )
+sample.size <- 25
+```
+
+---
+title: "TABLE NAME: `r table.name`"
+---
+
+
+
+
+
+
+# Setup
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set( echo=TRUE, message=F, warning=F, fig.width=10 )
+```
+
+
+
+## Load Packages
+
+```{r, echo=F, eval=F}
+# RUN ONCE TO INSTALL PACKAGES 
+
+devtools::install_github( 'ultinomics/xmltools' )
+devtools::install_github( 'nonprofit-open-data-collective/irs990efile' )
+
+package.list <- 
+  c( "purrr","xml2","XML",
+     "dplyr","pander",
+     "httr","data.tree",
+     "networkD3","igraph")
+
+install.packages( package.list  )
+```
+
+
+```{r}
+library( irs990efile )  # functions for parsing efile XMLs
+library( dplyr )        # data wrangling
+library( purrr )        # data wrangling 
+library( pander )       # formatting
+library( knitr )        # formatting
+library( DT )           # table printing
+library( httr )         # web requests 
+library( xmltools )     # xml utilities
+library( xml2 )         # xml utilities
+library( XML )          # xml utilities 
+library( data.tree )    # network visualization
+library( networkD3 )    # network visualization
+library( igraph )       # network visualization
+
+source( "R/rdb-functions-v2.R")
+source( "R/utils.R")
+```
+
+
+
+
+
+## Data
+
+```{r}
+#######
+#######  DATA USED IN THE REPORT:
+#######  UPDATE TO MATCH TABLE
+#######
+
+
+
+
+# IF THE TABLE IS IN THE 990/990EZ MAIN FORM
+
+#index <- 
+#  tinyindex %>% 
+#  dplyr::filter( FormType %in% c("990","990EZ") )
+
+
+
+
+# IF THE TABLE IS IN A SCHEDULE: 
+ index <- read.csv( "schedule-samples/SCHEDK.csv" )
+
+###  ALL SCHEDULES
+###
+#   "SCHEDA", "SCHEDB", "SCHEDC", 
+#   "SCHEDD", "SCHEDE", "SCHEDF", 
+#   "SCHEDG", "SCHEDH", "SCHEDI", 
+#   "SCHEDJ", "SCHEDK", "SCHEDL", 
+#   "SCHEDM", "SCHEDN", "SCHEDO", 
+#   "SCHEDR"
+
+
+
+
+head( index )
+```
+
+
+
+## The Concordance File
+
+The **concordance** is an RDB to XML Crosswalk that maps all xpaths onto a specified set of variables. It is located in the **irs990efile** package. 
+
+<br> 
+
+The full data dictionary is available on GitHub. 
+
+[**DATA DICTIONARY**](https://nonprofit-open-data-collective.github.io/irs990efile/data-dictionary/data-dictionary.html)
+
+<br>
+
+```{r, echo=F}
+column.order <- 
+  c("variable_name", "xpath", "description", "location_code_xsd", 
+   "location_code_family", "location_code", "form", "form_type", 
+   "form_part", "form_line_number", "variable_scope", "data_type_xsd", 
+   "data_type_simple", "rdb_relationship", "rdb_table", "required", 
+   "versions", "latest_version", "duplicated", "current_version", 
+   "production_rule", "validated")
+
+concordance <- 
+  concordance[ , column.order ]  %>% 
+  arrange( variable_name )
+```
+
+
+```{r}
+concordance %>% 
+  filter( rdb_table == table.name )  
+```
+
+
+
+
+
+```{r eval=F, echo=F}
+rdb.tables <- concordance$rdb_table
+unique( rdb.tables[ concordance$rdb_relationship == "MANY" ] )
+
+#  [1] "F9-P03-T01-PROGRAMS"                           
+#  [2] "F9-P07-T02-CONTRACTORS"                        
+#  [3] "F9-P07-T01-COMPENSATION"                       
+#  [4] "F9-P07-T01-COMPENSATION-HCE-EZ"                
+#  [5] "F9-P99-T01-COMPENSATION"                       
+#  [6] "F9-P08-T01-REVENUE-PROGRAMS"                   
+#  [7] "F9-P08-T02-REVENUE-MISC"                       
+#  [8] "F9-P09-T01-EXPENSES-OTHER"                     
+#  [9] "SA-P01-T01-PUBLIC-CHARITY-STATUS"              
+# [10] "SA-P99-T01-PUBLIC-CHARITY-STATUS"              
+# [11] "SC-P01-T01-POLITICAL-ORGS-INFO"                
+# [12] "SD-P07-T01-INVESTMENTS-OTH-SECURITIES"         
+# [13] "SD-P08-T01-INVESTMENTS-PROG-RLTD"              
+# [14] "SD-P09-T01-OTH-ASSETS"                         
+# [15] "SD-P10-T01-OTH-LIABILITIES"                    
+# [16] "SF-P01-T01-FRGN-ACTS-BY-REGION"                
+# [17] "SF-P02-T01-FRGN-ORG-GRANTS"                    
+# [18] "SF-P03-T01-FRGN-INDIV-GRANTS"                  
+# [19] "SG-P01-T01-FUNDRAISERS-INFO"                   
+# [20] "SG-P02-T01-FUNDRAISING-EVENTS"                 
+# [21] "SH-P04-T01-COMPANY-JOINT-VENTURES"             
+# [22] "SH-P05-T01-HOSPITAL-FACILITY"                  
+# [23] "SH-P05-T02-NON-HOSPITAL-FACILITY"              
+# [24] "SI-P02-T01-GRANTS-US-ORGS-GOVTS"               
+# [25] "SI-P03-T01-GRANTS-US-INDIV"                    
+# [26] "SJ-P02-T01-COMPENSATION-DTK"                   
+# [27] "SK-P01-T01-BOND-ISSUES"                        
+# [28] "SK-P02-T01-BOND-PROCEEDS"                      
+# [29] "SK-P03-T01-BOND-PRIVATE-BIZ-USE"               
+# [30] "SK-P04-T01-BOND-ARBITRAGE"                     
+# [31] "SK-P05-T01-PROCEDURE-CORRECTIVE-ACT"           
+# [32] "SK-P99-T01-BOND-PRIVATE_BIZ_USE"               
+# [33] "SL-P01-T01-EXCESS-BENEFIT-TRANSAC"             
+# [34] "SL-P02-T01-LOANS-INTERESTED-PERS"              
+# [35] "SL-P03-T01-GRANTS-INTERESTED-PERS"             
+# [36] "SL-P04-T01-BIZ-TRANSAC-INTERESTED-PERS"        
+# [37] "SM-P01-T01-NONCASH-CONTRIBUTIONS"              
+# [38] "SN-P01-T01-LIQUIDATION-TERMINATION-DISSOLUTION"
+# [39] "SN-P02-T01-DISPOSITION-OF-ASSETS"              
+# [40] "SO-T99-SUPPLEMENTAL-INFO"                      
+# [41] "SR-P01-T01-ID-DISREGARDED-ENTITIES"            
+# [42] "SR-P02-T01-ID-RLTD-TAX-EXEMPED-ORGS"           
+# [43] "SR-P03-T01-ID-RLTD-ORGS-TAXABLE-PARTNERSHIP"   
+# [44] "SR-P04-T01-ID-RLTD-ORGS-TAXABLE-CORPORATION"   
+# [45] "SR-P05-T01-TRANSACTIONS-RLTD-ORGS"             
+# [46] "SR-P06-T01-UNRLTD-ORGS-TAXABLE-PARTNERSHIP"  
+```
+
+
+
+
+<br>
+<br>
+<br>
+
+<hr>
+
+<br>
+<br>
+<br>
+
+
+```{r, echo=F}
+t.xpaths <- 
+  concordance %>%
+  filter( rdb_table == table.name ) %>% 
+  select( xpath ) %>% 
+  unique() %>% 
+  arrange( xpath ) %>% 
+  mutate( id=row_number() ) 
+
+t.xpaths %>% 
+  kable( align="l" )
+```
+
+
+```{r}
+xpaths <- as.character( t.xpaths$xpath )
+el <- create_edgelist_v1( xpaths )
+nd <- FromDataFrameNetwork( network=el )
+print( nd )
+```
+
+
+```{r, fig.height=20}
+SetGraphStyle( nd, rankdir = "LR")
+SetEdgeStyle( nd, arrowhead = "vee", color = "grey20", penwidth = 2 )
+SetNodeStyle( nd, 
+              style = "filled,rounded", 
+              shape = "box", 
+              fillcolor = "LightBlue", 
+              fontname = "helvetica", 
+              fontcolor="black",
+              tooltip = GetDefaultTooltip )
+
+# SetNodeStyle(acme$IT, fillcolor = "LightBlue", penwidth = "5px")
+plot( nd )
+```
+
+
+```{r}
+# old version
+find_group_names( table.name )
+
+# new version
+find_table_headers( table.name )
+
+# manual
+if( ! is.null(table.headers) )
+{table.headers}
+```
+
+
+<br>
+<br>
+<br>
+
+<hr>
+
+<br>
+<br>
+<br>
+
+
+
+# Build the Table
+
+
+```{r, results="hide"}
+# create new folder
+dir.create( folder.name )
+setwd( folder.name )
+
+# create sample
+set.seed( 1234 )
+sample.index <- sample_n( index, sample.size )
+write.csv( index, "sample-index.csv", row.names=F )
+sample.urls <- sample.index$URL
+
+# erase existing log files
+file.create("XPATH-LOG.txt") 
+file.create("FAIL-LOG.txt")
+
+
+start.build.time <- Sys.time()    # --------------------
+
+results.list <- list()
+xpath.list <- list()
+
+
+for( i in 1:length( sample.urls ) )
+{
+  
+  url <- sample.urls[i]
+  
+  results.list[[i]] <- 
+    build_rdb_table_v2( url, 
+                        table.name, 
+                        table.headers=table.headers )
+  
+  xpath.list[[i]]   <- 
+    get_table_xpaths( url, 
+                      table.name, 
+                      table.headers=table.headers )
+  
+  if( i %% 100 == 0 ){ print(i) }
+  
+}
+
+
+end.build.time <- Sys.time()      # --------------------
+
+
+df <- dplyr::bind_rows( results.list )
+
+
+fail.log <- readLines( "FAIL-LOG.txt" )
+all.xpaths <- xpath.list %>% unlist() %>% unique() %>% sort()
+cat( all.xpaths, sep="\n", file="XPATH-LOG.txt" )
+```
+
+TABLE:   **`r table.name`**  
+
+```{r, echo=F, results="hold", eval=T}
+# print( paste0(  "TABLE:   ", table.name ) )
+print( paste0( "NUMBER OF RETURNS PROCESSED:   ", length(sample.urls) ) )
+print( paste0( "TOTAL NUMBER OF TABLE ROWS:   ", nrow(df) ) )
+
+# NUMBER OF RETURNS PROCESSED:   **`r length(sample.urls)`**  
+# TOTAL NUMBER OF TABLE ROWS:   **`r nrow(df)`**  
+```
+
+TOTAL RUN TIME: 
+
+```{r, results='hold', echo=F}
+print( end.build.time - start.build.time )
+print( difftime( start.build.time, end.build.time, units="hours") )
+```
+
+
+## Write to File
+
+```{r}
+write.csv( df, paste0( folder.name, "/", table.name, ".csv" ), row.names=F )
+head(df) 
+```
+
+Are all names standardized? 
+
+```{r}
+names(df)
+```
+
+
+
+
+<br>
+<br>
+<br>
+
+<hr>
+
+<br>
+<br>
+<br>
+
+
+
+
+
+
+
+# Diagnostics 
+
+## Missing or Extra XPATHS 
+
+Check for xpaths that were used in the tables but do not exist in the Concordance file.  
+
+```{r}
+c.table <- dplyr::filter( concordance, rdb_table == table.name ) 
+xpath.concordance <- c.table$xpath
+setdiff( all.xpaths, xpath.concordance )
+```
+
+Capture to update the Concordance file. 
+
+```{r}
+these <- setdiff( all.xpaths, xpath.concordance )
+cat( these, sep="\n", file=paste0( folder.name, "/MISSING-XPATHS.txt" ) )
+```
+
+
+
+## Failes URLs 
+
+Check the status of failed URLs. 
+
+```{r}
+if( length(fail.log) > 0 )
+{ 
+  sapply( fail.log, get_message ) %>% 
+  table() %>% 
+  pander() 
+} else {
+  print("ALL URLs ARE VALID")
+}
+```
+
+
+
+
+
+
+<br>
+<br>
+<br>
+
+<hr>
+
+<br>
+<br>
+<br>
+
+
+
+
+
+
+# XML Table Structure
+
+
+```{r, eval=F, echo=F}
+
+### Get nodesets from test data: 
+
+if( is.null(table.headers) )
+{ table.headers <- find_table_headers( table.name ) }
+
+all.headers <- paste0( table.headers, collapse="|" )
+
+node.list <- list()
+
+for( i in 1:length( test.urls ) )
+{
+  url <- test.urls[i]
+  doc <- NULL
+  try( doc <- xml2::read_xml( file(url) ), silent=T )
+  if( is.null(doc) ) next
+  xml2::xml_ns_strip( doc )
+  node.list[[i]] <- xml2::xml_find_all( doc, all.headers, flatten=TRUE )
+  # node.list[[i]] <- XML::getNodeSet( doc, all.groups )
+}
+
+### Getting xpaths from nodelists: 
+
+get_unique_xpaths <- function(x)
+{
+  xpz <- 
+    x %>% 
+    xml_parent() %>% 
+    xmltools::xml_get_paths() %>%
+    unlist() %>% 
+    unique()
+  return(xpz)
+}
+
+all.xpaths <- 
+  lapply( node.list, get_unique_xpaths ) %>% 
+  unlist() %>% 
+  unique()
+```
+
+
+## Create Network Edgelists
+
+
+The **create_edgelist()** functions v1 and v2 are in R/utils.R. 
+
+V1 retains the root nodes Return and ReturnData. 
+
+V2 drops the root nodes and uses form versions "990" and "990EZ" as the root to visualize the sets of tables separately. 
+
+```{r, eval=F, echo=F}
+all.xpaths <- 
+  readLines( paste0( folder.name,"/XPATH-LOG.txt" ) ) %>% 
+  unique() %>% 
+  sort()
+```
+
+```{r}
+# KEEP ROOT NOTES Return & ReturnData
+el <- create_edgelist_v1( all.xpaths )
+```
+
+<br>
+<hr>
+<br>
+
+Edgelist format: 
+
+```{r, echo=F}
+el.demo <- 
+structure(list(V1 = c("Return", "ReturnData", "IRS990", "Form990PartVIISectionAGrp", 
+"Form990PartVIISectionAGrp", "Form990PartVIISectionAGrp", "Form990PartVIISectionAGrp", 
+"Form990PartVIISectionAGrp", "Form990PartVIISectionAGrp", "Form990PartVIISectionAGrp"
+), V2 = c("ReturnData", "IRS990", "Form990PartVIISectionAGrp", 
+"PersonNm", "TitleTxt", "AverageHoursPerWeekRt", "IndividualTrusteeOrDirectorInd", 
+"OfficerInd", "ReportableCompFromOrgAmt", "ReportableCompFromRltdOrgAmt"
+)), row.names = c(NA, 10L), class = "data.frame") 
+  
+el.demo %>% pander()
+```
+
+
+
+<br>
+<br>
+<br>
+
+<hr>
+
+<br>
+<br>
+<br>
+
+
+
+## Visualize Tree Structure
+
+
+```{r}
+# library( data.tree )
+nd <- FromDataFrameNetwork( network=el )
+print( nd )
+```
+
+
+```{r, fig.height=20}
+SetGraphStyle( nd, rankdir = "LR")
+SetEdgeStyle( nd, arrowhead = "vee", color = "grey20", penwidth = 2 )
+SetNodeStyle( nd, 
+              style = "filled,rounded", 
+              shape = "box", 
+              fillcolor = "LightBlue", 
+              fontname = "helvetica", 
+              fontcolor="black",
+              tooltip = GetDefaultTooltip )
+
+# SetNodeStyle(acme$IT, fillcolor = "LightBlue", penwidth = "5px")
+plot( nd )
+```
+
+
+
+
+```{r}
+# library( networkD3 )
+# net <- ToDataFrameNetwork( nd, "name" )
+# simpleNetwork( net, fontSize = 12 )
+simpleNetwork( el, fontSize = 12 )
+```
+
+
+```{r, fig.height=10}
+#plot with networkD3
+radnet <- ToListExplicit( nd, unname = TRUE )
+radialNetwork( radnet, fontSize = 12 )
+```
+
+
+```{r, fig.height=15, eval=F, echo=F}
+diagonalNetwork( List = radnet, 
+                 fontSize = 12, 
+                 opacity = 0.9)
+```
+
+
+
+
+
+```{r,eval=F, echo=F}
+## Compare 990 to 990EZ Trees
+
+# DROP TOP TWO NODES: Return & ReturnData
+el <- create_edgelist_v2( all.xpaths )
+
+# library( igraph )
+g <- graph_from_data_frame( d=el, directed=TRUE, vertices=NULL )
+plot( g, layout=layout_as_tree )
+```
+
+
+
+
+
+
+<br>
+<br>
+<br>
+
+<hr>
+
+<br>
+<br>
+<br>
+
+
+
+
+
+# XPATH Summary
+
+## Unique Xpaths for this RDB Table
+
+```{r}
+t.xpaths <- 
+  concordance %>%
+  filter( rdb_table == table.name ) %>% 
+  select( xpath ) %>% 
+  unique() %>% 
+  arrange( xpath ) %>% 
+  mutate( id=row_number() ) 
+
+t.xpaths %>% 
+  kable( align="l" )
+```
+
+
+```{r, echo=F, eval=F}
+## Compare xpath Levels
+
+xpaths <- as.character( t.xpaths$xpath )
+nodes <- strsplit( xpaths, "/" )
+xpath.levels <- sapply( nodes, length )
+max.lev <- max( xpath.levels )
+nodes <- lapply( nodes, function(x){ c(x, rep("",max.lev-length(x) ) ) } )
+
+# compare xpath levels
+xpath.levels <- data.frame( do.call( cbind, nodes ), stringsAsFactors=F )
+xpath.levels[ , 1:10 ] 
+```
+
+
+
+
+
+## Grouping Variables
+
+Identify all unique groups used in xpaths. 
+
+```{r}
+if( is.null(table.headers) )
+{ find_table_headers( table.name ) } else
+table.headers
+```
+
+
+
+Groups can then be used to extract the 1:M RDB tables: 
+
+```{r, paged.print=FALSE}
+if( is.null(table.headers) )
+{ table.headers <- find_table_headers( table.name ) }
+demo.url <- "https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201913079349300206_public.xml"
+doc <- xml2::read_xml( demo.url )
+xml2::xml_ns_strip( doc )
+df.demo <- get_table_v2( doc, table.name, table.headers )
+df.demo 
+```
+
+
+
+
+
+## Standardize Variable Names
+
+Mapping of xml variable names to concordance variable names: 
+
+```{r}
+get_var_map( table.name=table.name )
+```
+
+A table with proper names: 
+
+```{r paged.print=FALSE}
+v.map <- get_var_map( table.name=table.name )
+
+if( ! is.null(df.demo) )
+{re_name( df.demo, v.map ) %>% as.data.frame()}
+```
+
+
+<br>
+<br>
+<br>
+
+<hr>
+
+<br>
+<br>
+<br>
+
+
+
+
+## Print Table Structure
+
+Demo of functions - demo data only. 
+
+```{r, eval=F, echo=F}
+node.list[[1]] %>% xml_parent() %>% xml2::xml_structure()
+```
+
+```
+[[1]]
+<Form990PartVIISectionAGrp>
+  <PersonNm>
+    {text}
+  <TitleTxt>
+    {text}
+  <AverageHoursPerWeekRt>
+    {text}
+  <IndividualTrusteeOrDirectorInd>
+    {text}
+  <OfficerInd>
+    {text}
+  <ReportableCompFromOrgAmt>
+    {text}
+  <ReportableCompFromRltdOrgAmt>
+    {text}
+  <OtherCompensationAmt>
+    {text}
+```
+
+```{r, eval=F}
+node.list[[1]] %>% xml_parent() %>% xmltools::xml_view_trees()
+```
+
+
+```
+ (1) ------------
+
+ +-- Form990PartVIISectionAGrp
+  +-- PersonNm
+  +-- TitleTxt
+  +-- AverageHoursPerWeekRt
+  +-- IndividualTrusteeOrDirectorInd
+  +-- OfficerInd
+  +-- ReportableCompFromOrgAmt
+  +-- ReportableCompFromRltdOrgAmt
+  ++-- OtherCompensationAmt
+
+
+ (2) ------------
+
+ +-- Form990PartVIISectionAGrp
+  +-- PersonNm
+  +-- TitleTxt
+  +-- AverageHoursPerWeekRt
+  +-- IndividualTrusteeOrDirectorInd
+  +-- OfficerInd
+  +-- ReportableCompFromOrgAmt
+  +-- ReportableCompFromRltdOrgAmt
+  ++-- OtherCompensationAmt
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{css, echo=F}
+h1, h2{
+  margin-top:80px;
+  margin-bottom:20px;
+}
+
+
+h1{
+  color: #762e0c;
+  font-size: 38px;
+  text-transform: uppercase;
+}
+
+h2, h3{
+  color: #003169;
+  font-size: 30px;
+}
+
+
+
+table
+{ 
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:80px;
+    margin-bottom:800px;
+}
+
+img {
+    max-width: 90%;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top:30px;
+    margin-bottom:20px;
+}
+```
