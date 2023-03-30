@@ -19,7 +19,7 @@ output:
 # SET TABLE PARAMETERS FOR THE REPORT;
 # ALSO SEE DATA STEP BELOW
 
-table.name <- "SD-P10-T01-OTH-LIABILITIES"
+table.name <- "SL-P01-T01-EXCESS-BENEFIT-TRANSAC"
 
 
 ### Use two levels of the path 
@@ -32,15 +32,15 @@ table.name <- "SD-P10-T01-OTH-LIABILITIES"
 ###
 ### "//Form990PartVIII/ProgramServiceRevenue"
 
-# table.headers <- NULL
+#table.headers <- NULL
 
-table.headers <- 
-  c("//IRS990ScheduleD/Form990ScheduleDPartX/OtherLiabilities",
-    "//IRS990ScheduleD/OtherLiabilities",
-    "//IRS990ScheduleD/OtherLiabilitiesGrp")
+ table.headers <- 
+  c("//IRS990ScheduleL/DQPTable",
+    "//IRS990ScheduleL/DisqualifiedPersonExBnftTrGrp",
+    "//IRS990ScheduleL/Form990ScheduleLPartI/DQPTable")
 
 folder.name <- paste0( "TABLE-", table.name )
-sample.size <- 25
+sample.size <- 200
 ```
 
 ---
@@ -123,7 +123,7 @@ source( "R/utils.R")
 
 
 # IF THE TABLE IS IN A SCHEDULE: 
- index <- read.csv( "schedule-samples/SCHEDD.csv" )
+ index <- read.csv( "schedule-samples/SCHEDL.csv" )
 
 ###  ALL SCHEDULES
 ###
@@ -253,9 +253,6 @@ t.xpaths <-
   arrange( xpath ) %>% 
   mutate( id=row_number() ) 
 
-t.xpaths <- t.xpaths[t.xpaths$xpath != "/Return/ReturnData/IRS990ScheduleD/Form990ScheduleDPartX/FederalIncomeTaxLiability",]
-
-
 t.xpaths %>% 
   kable( align="l" )
 ```
@@ -265,7 +262,7 @@ t.xpaths %>%
 xpaths <- as.character( t.xpaths$xpath )
 el <- create_edgelist_v1( xpaths )
 nd <- FromDataFrameNetwork( network=el )
-print( as.data.frame(nd) )
+print( nd )
 ```
 
 

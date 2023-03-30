@@ -32,13 +32,13 @@ table.name <- "SK-P99-T01-BOND-PRIVATE_BIZ_USE"
 ###
 ### "//Form990PartVIII/ProgramServiceRevenue"
 
-table.headers <- NULL
+#table.headers <- NULL
 
-# table.headers <- 
-#  c("//IRS990ScheduleK/Form990ScheduleKPartIII")
+ table.headers <- 
+  c("//IRS990ScheduleK/Form990ScheduleKPartIII")
 
 folder.name <- paste0( "TABLE-", table.name )
-sample.size <- 500
+sample.size <- 1000
 ```
 
 ---

@@ -168,7 +168,7 @@ table.headers <- NULL
 table.headers <- NULL
                        
 ### [15] "SD-P10-T01-OTH-LIABILITIES"     
-
+Need to remove /Return/ReturnData/IRS990ScheduleD/Form990ScheduleDPartX/FederalIncomeTaxLiability
                
 ### [16] "SF-P01-T01-FRGN-ACTS-BY-REGION"      
 table.headers <- NULL
@@ -218,16 +218,17 @@ table.headers <- NULL
 table.headers <- NULL
                  
 ### [31] "SK-P05-T01-PROCEDURE-CORRECTIVE-ACT"  
- table.headers <- 
   c("//IRS990ScheduleK/Form990ScheduleKPartV",
     "//IRS990ScheduleK/ProceduresCorrectiveActionGrp")
          
 ### [32] "SK-P99-T01-BOND-PRIVATE_BIZ_USE"       
- table.headers <- 
-  c("//IRS990ScheduleK/Form990ScheduleKPartIII")
+Not sure why this one won't run
         
 ### [33] "SL-P01-T01-EXCESS-BENEFIT-TRANSAC" 
-
+ table.headers <- 
+  c("//IRS990ScheduleL/DQPTable",
+    "//IRS990ScheduleL/DisqualifiedPersonExBnftTrGrp",
+    "//IRS990ScheduleL/Form990ScheduleLPartI/DQPTable")
             
 ### [34] "SL-P02-T01-LOANS-INTERESTED-PERS" 
 table.headers <- NULL
