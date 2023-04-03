@@ -1,1 +1,3 @@
-""
+"OBJECT_ID","EIN","NAME","TAXYR","FORMTYPE","URL","SD_08_INVEST_PROG_RLTD_DESC","SD_08_INVEST_PROG_RLTD_BV","SD_08_INVEST_PROG_RLTD_MOV"
+"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201913179349307771","200774672","NATIONAL ASSOCIATION FOR LATINO COMMUNITY ASSET BUILDERS","2018","990","https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201913179349307771_public.xml","Equity Investment in Nalcab Network Investors, LLC","971666","C"
+"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201913179349307771","200774672","NATIONAL ASSOCIATION FOR LATINO COMMUNITY ASSET BUILDERS","2018","990","https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201913179349307771_public.xml","Equity Investment in NALCAB Catalyst Fund I, LLC","171870","C"

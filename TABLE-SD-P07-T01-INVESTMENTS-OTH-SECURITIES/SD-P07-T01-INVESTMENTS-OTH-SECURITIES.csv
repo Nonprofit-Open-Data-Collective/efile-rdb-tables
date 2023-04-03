@@ -1,1 +1,7 @@
-""
+"OBJECT_ID","EIN","NAME","TAXYR","FORMTYPE","URL","SD_07_INVEST_SEC_OTH_DESC","SD_07_INVEST_SEC_DERIVATIVE_BV","SD_07_INVEST_SEC_DERIVATIVE_MOV"
+"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201911699349300006","205946028","KNOX COUNTY PUBLIC LIBRARY","2018","990","https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201911699349300006_public.xml","VANGUARD INTERMEDIATE","23201","F"
+"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201911699349300006","205946028","KNOX COUNTY PUBLIC LIBRARY","2018","990","https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201911699349300006_public.xml","VANGUARD TOTAL STOCK","45947","F"
+"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201911489349300361","462981774","IMPROVE YOUR TOMORROW INC","2018","990","https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201911489349300361_public.xml","Financial derivatives and other financial products",NA,NA
+"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201911489349300361","462981774","IMPROVE YOUR TOMORROW INC","2018","990","https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201911489349300361_public.xml","Closely-held equity interests",NA,NA
+"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201903139349300715","050470205","OASIS INTERNATIONAL","2018","990","https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201903139349300715_public.xml","Financial derivatives and other financial products",NA,NA
+"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201903139349300715","050470205","OASIS INTERNATIONAL","2018","990","https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201903139349300715_public.xml","Closely-held equity interests",NA,NA

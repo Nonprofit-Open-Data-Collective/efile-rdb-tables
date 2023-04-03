@@ -1,1 +1,5 @@
 
+/Return/ReturnData/IRS990ScheduleD/InvstProgramRelatedOrgGrp
+/Return/ReturnData/IRS990ScheduleD/InvstProgramRelatedOrgGrp/BookValueAmt
+/Return/ReturnData/IRS990ScheduleD/InvstProgramRelatedOrgGrp/Desc
+/Return/ReturnData/IRS990ScheduleD/InvstProgramRelatedOrgGrp/MethodValuationCd

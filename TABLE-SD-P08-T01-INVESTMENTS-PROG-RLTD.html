@@ -3429,7 +3429,7 @@ pre code {
 
 <h1 class="title toc-ignore">TABLE NAME:
 SD-P08-T01-INVESTMENTS-PROG-RLTD</h1>
-<h4 class="date">Last compiled on 29 March, 2023</h4>
+<h4 class="date">Last compiled on 03 April, 2023</h4>
 
 </div>
 
@@ -3475,87 +3475,30 @@ Variables</a></li>
 <br>
 <hr>
 <p><br></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SET TABLE PARAMETERS FOR THE REPORT;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ALSO SEE DATA STEP BELOW</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>table.name <span class="ot">&lt;-</span> <span class="st">&quot;SD-P08-T01-INVESTMENTS-PROG-RLTD&quot;</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="do">### Use two levels of the path </span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="do">### to ensure the table header</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="do">### is unique (headers can be</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="do">### reused in schedules).</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="do">###</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="do">### Use a double-slash at the</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="do">### start of the table header: </span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="do">###</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="do">### &quot;//Form990PartVIII/ProgramServiceRevenue&quot;</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># table.headers &lt;- NULL</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a> table.headers <span class="ot">&lt;-</span> </span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;//IRS990ScheduleD/Form990ScheduleDPartVIII/InvestmentsProgramRelated&quot;</span>,</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;//IRS990ScheduleD/InvestmentsProgramRelated&quot;</span>,</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;//IRS990ScheduleD/InvstProgramRelatedOrgGrp&quot;</span>)</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>folder.name <span class="ot">&lt;-</span> <span class="fu">paste0</span>( <span class="st">&quot;TABLE-&quot;</span>, table.name )</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>sample.size <span class="ot">&lt;-</span> <span class="dv">25</span></span></code></pre></div>
 <div id="setup" class="section level1">
 <h1>Setup</h1>
 <div id="load-packages" class="section level2">
 <h2>Load Packages</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>( irs990efile )  <span class="co"># functions for parsing efile XMLs</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>( dplyr )        <span class="co"># data wrangling</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>( purrr )        <span class="co"># data wrangling </span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>( pander )       <span class="co"># formatting</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>( knitr )        <span class="co"># formatting</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>( DT )           <span class="co"># table printing</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>( httr )         <span class="co"># web requests </span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>( xmltools )     <span class="co"># xml utilities</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>( xml2 )         <span class="co"># xml utilities</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>( XML )          <span class="co"># xml utilities </span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>( data.tree )    <span class="co"># network visualization</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>( networkD3 )    <span class="co"># network visualization</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>( igraph )       <span class="co"># network visualization</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>( <span class="st">&quot;R/rdb-functions-v2.R&quot;</span>)</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>( <span class="st">&quot;R/utils.R&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>( irs990efile )  <span class="co"># functions for parsing efile XMLs</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>( dplyr )        <span class="co"># data wrangling</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>( purrr )        <span class="co"># data wrangling </span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>( pander )       <span class="co"># formatting</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>( knitr )        <span class="co"># formatting</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>( DT )           <span class="co"># table printing</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>( httr )         <span class="co"># web requests </span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>( xmltools )     <span class="co"># xml utilities</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>( xml2 )         <span class="co"># xml utilities</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>( XML )          <span class="co"># xml utilities </span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>( data.tree )    <span class="co"># network visualization</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>( networkD3 )    <span class="co"># network visualization</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>( igraph )       <span class="co"># network visualization</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>( <span class="st">&quot;R/rdb-functions-v2.R&quot;</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>( <span class="st">&quot;R/utils.R&quot;</span>)</span></code></pre></div>
 </div>
 <div id="data" class="section level2">
 <h2>Data</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">#######</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="do">#######  DATA USED IN THE REPORT:</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="do">#######  UPDATE TO MATCH TABLE</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="do">#######</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># IF THE TABLE IS IN THE 990/990EZ MAIN FORM</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#index &lt;- </span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">#  tinyindex %&gt;% </span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">#  dplyr::filter( FormType %in% c(&quot;990&quot;,&quot;990EZ&quot;) )</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># IF THE TABLE IS IN A SCHEDULE: </span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a> index <span class="ot">&lt;-</span> <span class="fu">read.csv</span>( <span class="st">&quot;schedule-samples/SCHEDD.csv&quot;</span> )</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="do">###  ALL SCHEDULES</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="do">###</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co">#   &quot;SCHEDA&quot;, &quot;SCHEDB&quot;, &quot;SCHEDC&quot;, </span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co">#   &quot;SCHEDD&quot;, &quot;SCHEDE&quot;, &quot;SCHEDF&quot;, </span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co">#   &quot;SCHEDG&quot;, &quot;SCHEDH&quot;, &quot;SCHEDI&quot;, </span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co">#   &quot;SCHEDJ&quot;, &quot;SCHEDK&quot;, &quot;SCHEDL&quot;, </span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co">#   &quot;SCHEDM&quot;, &quot;SCHEDN&quot;, &quot;SCHEDO&quot;, </span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="co">#   &quot;SCHEDR&quot;</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>( index )</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>( index )</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["EIN"],"name":[1],"type":["int"],"align":["right"]},{"label":["TaxPeriod"],"name":[2],"type":["int"],"align":["right"]},{"label":["DLN"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["FormType"],"name":[4],"type":["chr"],"align":["left"]},{"label":["URL"],"name":[5],"type":["chr"],"align":["left"]},{"label":["OrganizationName"],"name":[6],"type":["chr"],"align":["left"]},{"label":["SubmittedOn"],"name":[7],"type":["chr"],"align":["left"]},{"label":["ObjectId"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["LastUpdated"],"name":[9],"type":["chr"],"align":["left"]},{"label":["TaxYear"],"name":[10],"type":["int"],"align":["right"]}],"data":[{"1":"751365215","2":"201812","3":"9.349313e+13","4":"990","5":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201901339349302670_public.xml","6":"MOSCOW WATER SUPPLY CORPORATION","7":"2019-06-21","8":"2.019013e+17","9":"2019-07-23T17:24:36","10":"2018","_rn_":"1"},{"1":"421064001","2":"201812","3":"9.349313e+13","4":"990","5":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201901339349302660_public.xml","6":"ANAMOSA SENIOR CITIZENS HOUSING INC","7":"2019-06-21","8":"2.019013e+17","9":"2019-07-23T17:24:36","10":"2018","_rn_":"2"},{"1":"382411774","2":"201812","3":"9.349312e+13","4":"990","5":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201921169349300727_public.xml","6":"MIDDLE MICHIGAN DEVELOPMENT CORPORATION","7":"2019-06-21","8":"2.019212e+17","9":"2019-07-23T17:24:36","10":"2018","_rn_":"3"},{"1":"205592955","2":"201812","3":"9.349313e+13","4":"990","5":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201921309349300607_public.xml","6":"DRESS FOR SUCCESS RIVER CITIES INC","7":"2019-06-21","8":"2.019213e+17","9":"2019-07-23T17:24:36","10":"2018","_rn_":"4"},{"1":"43584321","2":"201812","3":"9.349313e+13","4":"990","5":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201901339349300240_public.xml","6":"CAPE COD SCHOLARSHIPS INC CO CAPE COD FOUNDATION INC","7":"2019-07-05","8":"2.019013e+17","9":"2019-07-23T17:24:36","10":"2018","_rn_":"5"},{"1":"586035516","2":"201812","3":"9.349314e+13","4":"990","5":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201911359349301776_public.xml","6":"GLYNN COUNTY FEDERAL EMPLOYEES CREDIT UNION","7":"2019-06-21","8":"2.019114e+17","9":"2019-07-23T17:24:36","10":"2018","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -3572,8 +3515,8 @@ all xpaths onto a specified set of variables. It is located in the
 <p><a href="https://nonprofit-open-data-collective.github.io/irs990efile/data-dictionary/data-dictionary.html"><strong>DATA
 DICTIONARY</strong></a></p>
 <p><br></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>concordance <span class="sc">%&gt;%</span> </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>( rdb_table <span class="sc">==</span> table.name )  </span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>concordance <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>( rdb_table <span class="sc">==</span> table.name )  </span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["variable_name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["xpath"],"name":[2],"type":["chr"],"align":["left"]},{"label":["description"],"name":[3],"type":["chr"],"align":["left"]},{"label":["location_code_xsd"],"name":[4],"type":["chr"],"align":["left"]},{"label":["location_code_family"],"name":[5],"type":["chr"],"align":["left"]},{"label":["location_code"],"name":[6],"type":["chr"],"align":["left"]},{"label":["form"],"name":[7],"type":["chr"],"align":["left"]},{"label":["form_type"],"name":[8],"type":["chr"],"align":["left"]},{"label":["form_part"],"name":[9],"type":["chr"],"align":["left"]},{"label":["form_line_number"],"name":[10],"type":["chr"],"align":["left"]},{"label":["variable_scope"],"name":[11],"type":["chr"],"align":["left"]},{"label":["data_type_xsd"],"name":[12],"type":["chr"],"align":["left"]},{"label":["data_type_simple"],"name":[13],"type":["chr"],"align":["left"]},{"label":["rdb_relationship"],"name":[14],"type":["chr"],"align":["left"]},{"label":["rdb_table"],"name":[15],"type":["chr"],"align":["left"]},{"label":["required"],"name":[16],"type":["lgl"],"align":["right"]},{"label":["versions"],"name":[17],"type":["chr"],"align":["left"]},{"label":["latest_version"],"name":[18],"type":["int"],"align":["right"]},{"label":["duplicated"],"name":[19],"type":["lgl"],"align":["right"]},{"label":["current_version"],"name":[20],"type":["lgl"],"align":["right"]},{"label":["production_rule"],"name":[21],"type":["chr"],"align":["left"]},{"label":["validated"],"name":[22],"type":["chr"],"align":["left"]}],"data":[{"1":"SD_08_INVEST_PROG_RLTD_BV","2":"/Return/ReturnData/IRS990ScheduleD/Form990ScheduleDPartVIII/InvestmentsProgramRelated/BookValue","3":"Investments Program Related - Book value","4":"","5":"NA","6":"SCHED-D-PART-08-COL-B","7":"SCHED-D","8":"SZ","9":"PART-08","10":"Column (B)","11":"PC","12":"","13":"numeric","14":"MANY","15":"SD-P08-T01-INVESTMENTS-PROG-RLTD","16":"NA","17":"","18":"NA","19":"NA","20":"NA","21":"","22":""},{"1":"SD_08_INVEST_PROG_RLTD_BV","2":"/Return/ReturnData/IRS990ScheduleD/InvestmentsProgramRelated/BookValue","3":"Investments Program Related - Book value","4":"[InvestmentsProgramRelated] Part VIII; [BookValue] Column (b)","5":"NA","6":"SCHED-D-PART-08-COL-B","7":"SCHED-D","8":"SZ","9":"PART-08","10":"Column (B)","11":"PC","12":"USAmountType","13":"numeric","14":"MANY","15":"SD-P08-T01-INVESTMENTS-PROG-RLTD","16":"NA","17":"2009v1.0;2009v1.1;2009v1.2;2009v1.3;2009v1.4;2009v1.7;2010v3.2;2010v3.4;2010v3.6;2010v3.7;2011v1.2;2011v1.3;2011v1.4;2011v1.5;2012v2.0;2012v2.1;2012v2.2;2012v2.3;2012v3.0","18":"2012","19":"FALSE","20":"TRUE","21":"","22":""},{"1":"SD_08_INVEST_PROG_RLTD_BV","2":"/Return/ReturnData/IRS990ScheduleD/InvstProgramRelatedOrgGrp/BookValueAmt","3":"Invst Program Related Org Grp - Book value","4":"[InvstProgramRelatedOrgGrp] Part VIII; [BookValueAmt] Column (b)","5":"NA","6":"SCHED-D-PART-08-COL-B","7":"SCHED-D","8":"SZ","9":"PART-08","10":"Column (B)","11":"PC","12":"USAmountType","13":"numeric","14":"MANY","15":"SD-P08-T01-INVESTMENTS-PROG-RLTD","16":"NA","17":"2013v3.0;2013v3.1;2013v4.0;2014v5.0;2014v6.0;2015v2.0;2015v2.1;2015v3.0;2016v3.0","18":"2016","19":"FALSE","20":"TRUE","21":"","22":""},{"1":"SD_08_INVEST_PROG_RLTD_BV_TOT","2":"/Return/ReturnData/IRS990ScheduleD/Form990ScheduleDPartVIII/TotalOfBookValue","3":"Total of book value","4":"","5":"NA","6":"SCHED-D-PART-08-COL-B-TOT","7":"SCHED-D","8":"SZ","9":"PART-08","10":"Column (B)","11":"PC","12":"","13":"numeric","14":"ONE","15":"SD-P08-T01-INVESTMENTS-PROG-RLTD","16":"NA","17":"","18":"NA","19":"NA","20":"NA","21":"","22":""},{"1":"SD_08_INVEST_PROG_RLTD_BV_TOT","2":"/Return/ReturnData/IRS990ScheduleD/TotalBookValueProgramRltdAmt","3":"Total of book value","4":"[TotalBookValueProgramRltdAmt] Part VIII Column (b)","5":"NA","6":"SCHED-D-PART-08-COL-B-TOT","7":"SCHED-D","8":"SZ","9":"PART-08","10":"Column (B)","11":"PC","12":"USAmountType","13":"numeric","14":"ONE","15":"SD-P08-T01-INVESTMENTS-PROG-RLTD","16":"NA","17":"2013v3.0;2013v3.1;2013v4.0;2014v5.0;2014v6.0;2015v2.0;2015v2.1;2015v3.0;2016v3.0","18":"2016","19":"FALSE","20":"TRUE","21":"","22":""},{"1":"SD_08_INVEST_PROG_RLTD_BV_TOT","2":"/Return/ReturnData/IRS990ScheduleD/TotalOfBookValueProgramRelated","3":"Total of book value","4":"[TotalOfBookValueProgramRelated] Part VIII Column (b)","5":"NA","6":"SCHED-D-PART-08-COL-B-TOT","7":"SCHED-D","8":"SZ","9":"PART-08","10":"Column (B)","11":"PC","12":"USAmountType","13":"numeric","14":"ONE","15":"SD-P08-T01-INVESTMENTS-PROG-RLTD","16":"NA","17":"2009v1.0;2009v1.1;2009v1.2;2009v1.3;2009v1.4;2009v1.7;2010v3.2;2010v3.4;2010v3.6;2010v3.7;2011v1.2;2011v1.3;2011v1.4;2011v1.5;2012v2.0;2012v2.1;2012v2.2;2012v2.3;2012v3.0","18":"2012","19":"FALSE","20":"TRUE","21":"","22":""},{"1":"SD_08_INVEST_PROG_RLTD_DESC","2":"/Return/ReturnData/IRS990ScheduleD/Form990ScheduleDPartVIII/InvestmentsProgramRelated/Description","3":"Investments Program Related - Description","4":"","5":"NA","6":"SCHED-D-PART-08-COL-A","7":"SCHED-D","8":"SZ","9":"PART-08","10":"Column (A)","11":"PC","12":"","13":"text","14":"MANY","15":"SD-P08-T01-INVESTMENTS-PROG-RLTD","16":"NA","17":"","18":"NA","19":"NA","20":"NA","21":"","22":""},{"1":"SD_08_INVEST_PROG_RLTD_DESC","2":"/Return/ReturnData/IRS990ScheduleD/InvestmentsProgramRelated/Description","3":"Investments Program Related - Description","4":"[InvestmentsProgramRelated] Part VIII; [Description] Column (a)","5":"NA","6":"SCHED-D-PART-08-COL-A","7":"SCHED-D","8":"SZ","9":"PART-08","10":"Column (A)","11":"PC","12":"LineExplanationType","13":"text","14":"MANY","15":"SD-P08-T01-INVESTMENTS-PROG-RLTD","16":"NA","17":"2009v1.0;2009v1.1;2009v1.2;2009v1.3;2009v1.4;2009v1.7;2010v3.2;2010v3.4;2010v3.6;2010v3.7;2011v1.2;2011v1.3;2011v1.4;2011v1.5;2012v2.0;2012v2.1;2012v2.2;2012v2.3;2012v3.0","18":"2012","19":"FALSE","20":"TRUE","21":"","22":""},{"1":"SD_08_INVEST_PROG_RLTD_DESC","2":"/Return/ReturnData/IRS990ScheduleD/InvstProgramRelatedOrgGrp/Desc","3":"Invst Program Related Org Grp - Description","4":"[InvstProgramRelatedOrgGrp] Part VIII; [Desc] Column (a)","5":"NA","6":"SCHED-D-PART-08-COL-A","7":"SCHED-D","8":"SZ","9":"PART-08","10":"Column (A)","11":"PC","12":"LineExplanationType","13":"text","14":"MANY","15":"SD-P08-T01-INVESTMENTS-PROG-RLTD","16":"NA","17":"2013v3.0;2013v3.1;2013v4.0;2014v5.0;2014v6.0;2015v2.0;2015v2.1;2015v3.0;2016v3.0","18":"2016","19":"FALSE","20":"TRUE","21":"","22":""},{"1":"SD_08_INVEST_PROG_RLTD_MOV","2":"/Return/ReturnData/IRS990ScheduleD/Form990ScheduleDPartVIII/InvestmentsProgramRelated/MethodOfValuation","3":"Method of valuation","4":"","5":"NA","6":"SCHED-D-PART-08-COL-C","7":"SCHED-D","8":"SZ","9":"PART-08","10":"Column (C)","11":"PC","12":"","13":"numeric","14":"MANY","15":"SD-P08-T01-INVESTMENTS-PROG-RLTD","16":"NA","17":"","18":"NA","19":"NA","20":"NA","21":"","22":""},{"1":"SD_08_INVEST_PROG_RLTD_MOV","2":"/Return/ReturnData/IRS990ScheduleD/InvestmentsProgramRelated/MethodOfValuation","3":"Method of valuation","4":"[InvestmentsProgramRelated] Part VIII; [MethodOfValuation] Column (c)","5":"NA","6":"SCHED-D-PART-08-COL-C","7":"SCHED-D","8":"SZ","9":"PART-08","10":"Column (C)","11":"PC","12":"StringType","13":"numeric","14":"MANY","15":"SD-P08-T01-INVESTMENTS-PROG-RLTD","16":"NA","17":"2009v1.0;2009v1.1;2009v1.2;2009v1.3;2009v1.4;2009v1.7;2010v3.2;2010v3.4;2010v3.6;2010v3.7;2011v1.2;2011v1.3;2011v1.4;2011v1.5;2012v2.0;2012v2.1;2012v2.2;2012v2.3;2012v3.0","18":"2012","19":"FALSE","20":"TRUE","21":"","22":""},{"1":"SD_08_INVEST_PROG_RLTD_MOV","2":"/Return/ReturnData/IRS990ScheduleD/InvstProgramRelatedOrgGrp/MethodValuationCd","3":"Method of valuation","4":"[InvstProgramRelatedOrgGrp] Part VIII; [MethodValuationCd] Column (c)","5":"NA","6":"SCHED-D-PART-08-COL-C","7":"SCHED-D","8":"SZ","9":"PART-08","10":"Column (C)","11":"PC","12":"StringType","13":"numeric","14":"MANY","15":"SD-P08-T01-INVESTMENTS-PROG-RLTD","16":"NA","17":"2013v3.0;2013v3.1;2013v4.0;2014v5.0;2014v6.0;2015v2.0;2015v2.1;2015v3.0;2016v3.0","18":"2016","19":"FALSE","20":"TRUE","21":"","22":""}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -3644,10 +3587,10 @@ DICTIONARY</strong></a></p>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>xpaths <span class="ot">&lt;-</span> <span class="fu">as.character</span>( t.xpaths<span class="sc">$</span>xpath )</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>el <span class="ot">&lt;-</span> <span class="fu">create_edgelist_v1</span>( xpaths )</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>nd <span class="ot">&lt;-</span> <span class="fu">FromDataFrameNetwork</span>( <span class="at">network=</span>el )</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>( nd )</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>xpaths <span class="ot">&lt;-</span> <span class="fu">as.character</span>( t.xpaths<span class="sc">$</span>xpath )</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>el <span class="ot">&lt;-</span> <span class="fu">create_edgelist_v1</span>( xpaths )</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>nd <span class="ot">&lt;-</span> <span class="fu">FromDataFrameNetwork</span>( <span class="at">network=</span>el )</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>( nd )</span></code></pre></div>
 <pre><code>##                                     levelName
 ## 1  Return                                    
 ## 2   °--ReturnData                            
@@ -3668,41 +3611,33 @@ DICTIONARY</strong></a></p>
 ## 17          ¦   °--MethodValuationCd         
 ## 18          ¦--TotalBookValueProgramRltdAmt  
 ## 19          °--TotalOfBookValueProgramRelated</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">SetGraphStyle</span>( nd, <span class="at">rankdir =</span> <span class="st">&quot;LR&quot;</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">SetEdgeStyle</span>( nd, <span class="at">arrowhead =</span> <span class="st">&quot;vee&quot;</span>, <span class="at">color =</span> <span class="st">&quot;grey20&quot;</span>, <span class="at">penwidth =</span> <span class="dv">2</span> )</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">SetNodeStyle</span>( nd, </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">style =</span> <span class="st">&quot;filled,rounded&quot;</span>, </span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">shape =</span> <span class="st">&quot;box&quot;</span>, </span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">fillcolor =</span> <span class="st">&quot;LightBlue&quot;</span>, </span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">fontname =</span> <span class="st">&quot;helvetica&quot;</span>, </span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">fontcolor=</span><span class="st">&quot;black&quot;</span>,</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">tooltip =</span> GetDefaultTooltip )</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># SetNodeStyle(acme$IT, fillcolor = &quot;LightBlue&quot;, penwidth = &quot;5px&quot;)</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>( nd )</span></code></pre></div>
-<div id="htmlwidget-92d46b6c0dc84eb1710b" style="width:960px;height:1920px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-92d46b6c0dc84eb1710b">{"x":{"diagram":"digraph {\n\ngraph [rankdir = \"LR\"]\n\n\n\n  \"1\" [label = \"Return\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: Return\", fillcolor = \"LightBlue\"] \n  \"2\" [label = \"ReturnData\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: ReturnData\", fillcolor = \"LightBlue\"] \n  \"3\" [label = \"IRS990ScheduleD\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: IRS990ScheduleD\", fillcolor = \"LightBlue\"] \n  \"4\" [label = \"Form990ScheduleDPartVIII\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: Form990ScheduleDPartVIII\", fillcolor = \"LightBlue\"] \n  \"5\" [label = \"InvestmentsProgramRelated\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: InvestmentsProgramRelated\", fillcolor = \"LightBlue\"] \n  \"6\" [label = \"BookValue\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: BookValue\", fillcolor = \"LightBlue\"] \n  \"7\" [label = \"Description\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: Description\", fillcolor = \"LightBlue\"] \n  \"8\" [label = \"MethodOfValuation\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: MethodOfValuation\", fillcolor = \"LightBlue\"] \n  \"9\" [label = \"TotalOfBookValue\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: TotalOfBookValue\", fillcolor = \"LightBlue\"] \n  \"10\" [label = \"InvestmentsProgramRelated\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: InvestmentsProgramRelated\", fillcolor = \"LightBlue\"] \n  \"11\" [label = \"BookValue\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: BookValue\", fillcolor = \"LightBlue\"] \n  \"12\" [label = \"Description\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: Description\", fillcolor = \"LightBlue\"] \n  \"13\" [label = \"MethodOfValuation\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: MethodOfValuation\", fillcolor = \"LightBlue\"] \n  \"14\" [label = \"InvstProgramRelatedOrgGrp\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: InvstProgramRelatedOrgGrp\", fillcolor = \"LightBlue\"] \n  \"15\" [label = \"BookValueAmt\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: BookValueAmt\", fillcolor = \"LightBlue\"] \n  \"16\" [label = \"Desc\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: Desc\", fillcolor = \"LightBlue\"] \n  \"17\" [label = \"MethodValuationCd\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: MethodValuationCd\", fillcolor = \"LightBlue\"] \n  \"18\" [label = \"TotalBookValueProgramRltdAmt\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: TotalBookValueProgramRltdAmt\", fillcolor = \"LightBlue\"] \n  \"19\" [label = \"TotalOfBookValueProgramRelated\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: TotalOfBookValueProgramRelated\", fillcolor = \"LightBlue\"] \n\"1\"->\"2\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"2\"->\"3\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"3\"->\"4\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"3\"->\"10\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"3\"->\"14\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"3\"->\"18\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"3\"->\"19\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"4\"->\"5\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"4\"->\"9\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"10\"->\"11\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"10\"->\"12\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"10\"->\"13\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"14\"->\"15\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"14\"->\"16\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"14\"->\"17\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"5\"->\"6\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"5\"->\"7\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"5\"->\"8\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># old version</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find_group_names</span>( table.name )</span></code></pre></div>
-<pre><code>## [1] &quot;//Form990ScheduleDPartVIII&quot;       &quot;//InvestmentsProgramRelated&quot;     
-## [3] &quot;//InvstProgramRelatedOrgGrp&quot;      &quot;//TotalBookValueProgramRltdAmt&quot;  
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">SetGraphStyle</span>( nd, <span class="at">rankdir =</span> <span class="st">&quot;LR&quot;</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">SetEdgeStyle</span>( nd, <span class="at">arrowhead =</span> <span class="st">&quot;vee&quot;</span>, <span class="at">color =</span> <span class="st">&quot;grey20&quot;</span>, <span class="at">penwidth =</span> <span class="dv">2</span> )</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">SetNodeStyle</span>( nd, </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">style =</span> <span class="st">&quot;filled,rounded&quot;</span>, </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">shape =</span> <span class="st">&quot;box&quot;</span>, </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">fillcolor =</span> <span class="st">&quot;LightBlue&quot;</span>, </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">fontname =</span> <span class="st">&quot;helvetica&quot;</span>, </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">fontcolor=</span><span class="st">&quot;black&quot;</span>,</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">tooltip =</span> GetDefaultTooltip )</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># SetNodeStyle(acme$IT, fillcolor = &quot;LightBlue&quot;, penwidth = &quot;5px&quot;)</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>( nd )</span></code></pre></div>
+<div id="htmlwidget-c1af06231e6ce88e5a51" style="width:960px;height:1920px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c1af06231e6ce88e5a51">{"x":{"diagram":"digraph {\n\ngraph [rankdir = \"LR\"]\n\n\n\n  \"1\" [label = \"Return\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: Return\", fillcolor = \"LightBlue\"] \n  \"2\" [label = \"ReturnData\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: ReturnData\", fillcolor = \"LightBlue\"] \n  \"3\" [label = \"IRS990ScheduleD\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: IRS990ScheduleD\", fillcolor = \"LightBlue\"] \n  \"4\" [label = \"Form990ScheduleDPartVIII\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: Form990ScheduleDPartVIII\", fillcolor = \"LightBlue\"] \n  \"5\" [label = \"InvestmentsProgramRelated\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: InvestmentsProgramRelated\", fillcolor = \"LightBlue\"] \n  \"6\" [label = \"BookValue\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: BookValue\", fillcolor = \"LightBlue\"] \n  \"7\" [label = \"Description\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: Description\", fillcolor = \"LightBlue\"] \n  \"8\" [label = \"MethodOfValuation\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: MethodOfValuation\", fillcolor = \"LightBlue\"] \n  \"9\" [label = \"TotalOfBookValue\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: TotalOfBookValue\", fillcolor = \"LightBlue\"] \n  \"10\" [label = \"InvestmentsProgramRelated\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: InvestmentsProgramRelated\", fillcolor = \"LightBlue\"] \n  \"11\" [label = \"BookValue\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: BookValue\", fillcolor = \"LightBlue\"] \n  \"12\" [label = \"Description\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: Description\", fillcolor = \"LightBlue\"] \n  \"13\" [label = \"MethodOfValuation\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: MethodOfValuation\", fillcolor = \"LightBlue\"] \n  \"14\" [label = \"InvstProgramRelatedOrgGrp\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: InvstProgramRelatedOrgGrp\", fillcolor = \"LightBlue\"] \n  \"15\" [label = \"BookValueAmt\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: BookValueAmt\", fillcolor = \"LightBlue\"] \n  \"16\" [label = \"Desc\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: Desc\", fillcolor = \"LightBlue\"] \n  \"17\" [label = \"MethodValuationCd\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: MethodValuationCd\", fillcolor = \"LightBlue\"] \n  \"18\" [label = \"TotalBookValueProgramRltdAmt\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: TotalBookValueProgramRltdAmt\", fillcolor = \"LightBlue\"] \n  \"19\" [label = \"TotalOfBookValueProgramRelated\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: TotalOfBookValueProgramRelated\", fillcolor = \"LightBlue\"] \n\"1\"->\"2\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"2\"->\"3\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"3\"->\"4\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"3\"->\"10\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"3\"->\"14\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"3\"->\"18\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"3\"->\"19\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"4\"->\"5\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"4\"->\"9\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"10\"->\"11\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"10\"->\"12\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"10\"->\"13\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"14\"->\"15\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"14\"->\"16\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"14\"->\"17\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"5\"->\"6\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"5\"->\"7\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"5\"->\"8\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># old version</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find_group_names</span>( table.name )</span></code></pre></div>
+<pre><code>## [1] &quot;//Form990ScheduleDPartVIII&quot;       &quot;//InvestmentsProgramRelated&quot;      &quot;//InvstProgramRelatedOrgGrp&quot;      &quot;//TotalBookValueProgramRltdAmt&quot;  
 ## [5] &quot;//TotalOfBookValueProgramRelated&quot;</code></pre>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># new version</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find_table_headers</span>( table.name )</span></code></pre></div>
-<pre><code>## [1] &quot;//Form990ScheduleDPartVIII/InvestmentsProgramRelated&quot;
-## [2] &quot;//Form990ScheduleDPartVIII/TotalOfBookValue&quot;         
-## [3] &quot;//InvestmentsProgramRelated/IRS990&quot;                  
-## [4] &quot;//InvestmentsProgramRelated/IRS990ScheduleD&quot;         
-## [5] &quot;//InvstProgramRelatedOrgGrp/Desc&quot;                    
-## [6] &quot;//InvstProgramRelatedOrgGrp/BookValueAmt&quot;            
-## [7] &quot;//InvstProgramRelatedOrgGrp/MethodValuationCd&quot;       
-## [8] &quot;//TotalBookValueProgramRltdAmt/&quot;                     
-## [9] &quot;//TotalOfBookValueProgramRelated/&quot;</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># manual</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>( <span class="sc">!</span> <span class="fu">is.null</span>(table.headers) )</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>{table.headers}</span></code></pre></div>
-<pre><code>## [1] &quot;//IRS990ScheduleD/Form990ScheduleDPartVIII/InvestmentsProgramRelated&quot;
-## [2] &quot;//IRS990ScheduleD/InvestmentsProgramRelated&quot;                         
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># new version</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find_table_headers</span>( table.name )</span></code></pre></div>
+<pre><code>## [1] &quot;//Form990ScheduleDPartVIII/InvestmentsProgramRelated&quot; &quot;//Form990ScheduleDPartVIII/TotalOfBookValue&quot;          &quot;//InvestmentsProgramRelated/IRS990&quot;                  
+## [4] &quot;//InvestmentsProgramRelated/IRS990ScheduleD&quot;          &quot;//InvstProgramRelatedOrgGrp/Desc&quot;                     &quot;//InvstProgramRelatedOrgGrp/BookValueAmt&quot;            
+## [7] &quot;//InvstProgramRelatedOrgGrp/MethodValuationCd&quot;        &quot;//TotalBookValueProgramRltdAmt/&quot;                      &quot;//TotalOfBookValueProgramRelated/&quot;</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># manual</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>( <span class="sc">!</span> <span class="fu">is.null</span>(table.headers) )</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>{table.headers}</span></code></pre></div>
+<pre><code>## [1] &quot;//IRS990ScheduleD/Form990ScheduleDPartVIII/InvestmentsProgramRelated&quot; &quot;//IRS990ScheduleD/InvestmentsProgramRelated&quot;                         
 ## [3] &quot;//IRS990ScheduleD/InvstProgramRelatedOrgGrp&quot;</code></pre>
 <p><br> <br> <br></p>
 <hr>
@@ -3711,78 +3646,75 @@ DICTIONARY</strong></a></p>
 </div>
 <div id="build-the-table" class="section level1">
 <h1>Build the Table</h1>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create new folder</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>( folder.name )</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>( folder.name )</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># create sample</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>( <span class="dv">1234</span> )</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>sample.index <span class="ot">&lt;-</span> <span class="fu">sample_n</span>( index, sample.size )</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>( index, <span class="st">&quot;sample-index.csv&quot;</span>, <span class="at">row.names=</span>F )</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>sample.urls <span class="ot">&lt;-</span> sample.index<span class="sc">$</span>URL</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co"># erase existing log files</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="fu">file.create</span>(<span class="st">&quot;XPATH-LOG.txt&quot;</span>) </span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="fu">file.create</span>(<span class="st">&quot;FAIL-LOG.txt&quot;</span>)</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>start.build.time <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()    <span class="co"># --------------------</span></span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>results.list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>xpath.list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>( i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>( sample.urls ) )</span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>  url <span class="ot">&lt;-</span> sample.urls[i]</span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>  results.list[[i]] <span class="ot">&lt;-</span> </span>
-<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">build_rdb_table_v2</span>( url, </span>
-<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>                        table.name, </span>
-<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>                        <span class="at">table.headers=</span>table.headers )</span>
-<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>  xpath.list[[i]]   <span class="ot">&lt;-</span> </span>
-<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">get_table_xpaths</span>( url, </span>
-<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>                      table.name, </span>
-<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>                      <span class="at">table.headers=</span>table.headers )</span>
-<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>( i <span class="sc">%%</span> <span class="dv">100</span> <span class="sc">==</span> <span class="dv">0</span> ){ <span class="fu">print</span>(i) }</span>
-<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>end.build.time <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()      <span class="co"># --------------------</span></span>
-<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>( results.list )</span>
-<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a>fail.log <span class="ot">&lt;-</span> <span class="fu">readLines</span>( <span class="st">&quot;FAIL-LOG.txt&quot;</span> )</span>
-<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a>all.xpaths <span class="ot">&lt;-</span> xpath.list <span class="sc">%&gt;%</span> <span class="fu">unlist</span>() <span class="sc">%&gt;%</span> <span class="fu">unique</span>() <span class="sc">%&gt;%</span> <span class="fu">sort</span>()</span>
-<span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>( all.xpaths, <span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">file=</span><span class="st">&quot;XPATH-LOG.txt&quot;</span> )</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create new folder</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>( folder.name )</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>( folder.name )</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># create sample</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>( <span class="dv">1234</span> )</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>sample.index <span class="ot">&lt;-</span> <span class="fu">sample_n</span>( index, sample.size )</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>( index, <span class="st">&quot;sample-index.csv&quot;</span>, <span class="at">row.names=</span>F )</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>sample.urls <span class="ot">&lt;-</span> sample.index<span class="sc">$</span>URL</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co"># erase existing log files</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="fu">file.create</span>(<span class="st">&quot;XPATH-LOG.txt&quot;</span>) </span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="fu">file.create</span>(<span class="st">&quot;FAIL-LOG.txt&quot;</span>)</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>start.build.time <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()    <span class="co"># --------------------</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>results.list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>xpath.list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>( i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>( sample.urls ) )</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>  url <span class="ot">&lt;-</span> sample.urls[i]</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>  results.list[[i]] <span class="ot">&lt;-</span> </span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">build_rdb_table_v2</span>( url, </span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>                        table.name, </span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>                        <span class="at">table.headers=</span>table.headers )</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>  xpath.list[[i]]   <span class="ot">&lt;-</span> </span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">get_table_xpaths</span>( url, </span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>                      table.name, </span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>                      <span class="at">table.headers=</span>table.headers )</span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>( i <span class="sc">%%</span> <span class="dv">100</span> <span class="sc">==</span> <span class="dv">0</span> ){ <span class="fu">print</span>(i) }</span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>end.build.time <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()      <span class="co"># --------------------</span></span>
+<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>( results.list )</span>
+<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a>fail.log <span class="ot">&lt;-</span> <span class="fu">readLines</span>( <span class="st">&quot;FAIL-LOG.txt&quot;</span> )</span>
+<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a>all.xpaths <span class="ot">&lt;-</span> xpath.list <span class="sc">%&gt;%</span> <span class="fu">unlist</span>() <span class="sc">%&gt;%</span> <span class="fu">unique</span>() <span class="sc">%&gt;%</span> <span class="fu">sort</span>()</span>
+<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>( all.xpaths, <span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">file=</span><span class="st">&quot;XPATH-LOG.txt&quot;</span> )</span></code></pre></div>
 <p>TABLE: <strong>SD-P08-T01-INVESTMENTS-PROG-RLTD</strong></p>
 <pre><code>## [1] &quot;NUMBER OF RETURNS PROCESSED:   25&quot;
 ## [1] &quot;TOTAL NUMBER OF TABLE ROWS:   2&quot;</code></pre>
 <p>TOTAL RUN TIME:</p>
-<pre><code>## Time difference of 15.80573 secs
-## Time difference of -0.004390479 hours</code></pre>
+<pre><code>## Time difference of 16.65668 secs
+## Time difference of -0.004626857 hours</code></pre>
 <div id="write-to-file" class="section level2">
 <h2>Write to File</h2>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>( df, <span class="fu">paste0</span>( folder.name, <span class="st">&quot;/&quot;</span>, table.name, <span class="st">&quot;.csv&quot;</span> ), <span class="at">row.names=</span>F )</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df) </span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>( df, <span class="fu">paste0</span>( folder.name, <span class="st">&quot;/&quot;</span>, table.name, <span class="st">&quot;.csv&quot;</span> ), <span class="at">row.names=</span>F )</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df) </span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["OBJECT_ID"],"name":[1],"type":["chr"],"align":["left"]},{"label":["EIN"],"name":[2],"type":["chr"],"align":["left"]},{"label":["NAME"],"name":[3],"type":["chr"],"align":["left"]},{"label":["TAXYR"],"name":[4],"type":["chr"],"align":["left"]},{"label":["FORMTYPE"],"name":[5],"type":["chr"],"align":["left"]},{"label":["URL"],"name":[6],"type":["chr"],"align":["left"]},{"label":["SD_08_INVEST_PROG_RLTD_DESC"],"name":[7],"type":["chr"],"align":["left"]},{"label":["SD_08_INVEST_PROG_RLTD_BV"],"name":[8],"type":["chr"],"align":["left"]},{"label":["SD_08_INVEST_PROG_RLTD_MOV"],"name":[9],"type":["chr"],"align":["left"]}],"data":[{"1":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201913179349307771","2":"200774672","3":"NATIONAL ASSOCIATION FOR LATINO COMMUNITY ASSET BUILDERS","4":"2018","5":"990","6":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201913179349307771_public.xml","7":"Equity Investment in Nalcab Network Investors, LLC","8":"971666","9":"C","_rn_":"1"},{"1":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201913179349307771","2":"200774672","3":"NATIONAL ASSOCIATION FOR LATINO COMMUNITY ASSET BUILDERS","4":"2018","5":"990","6":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201913179349307771_public.xml","7":"Equity Investment in NALCAB Catalyst Fund I, LLC","8":"171870","9":"C","_rn_":"2"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Are all names standardized?</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
-<pre><code>## [1] &quot;OBJECT_ID&quot;                   &quot;EIN&quot;                        
-## [3] &quot;NAME&quot;                        &quot;TAXYR&quot;                      
-## [5] &quot;FORMTYPE&quot;                    &quot;URL&quot;                        
-## [7] &quot;SD_08_INVEST_PROG_RLTD_DESC&quot; &quot;SD_08_INVEST_PROG_RLTD_BV&quot;  
-## [9] &quot;SD_08_INVEST_PROG_RLTD_MOV&quot;</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
+<pre><code>## [1] &quot;OBJECT_ID&quot;                   &quot;EIN&quot;                         &quot;NAME&quot;                        &quot;TAXYR&quot;                       &quot;FORMTYPE&quot;                   
+## [6] &quot;URL&quot;                         &quot;SD_08_INVEST_PROG_RLTD_DESC&quot; &quot;SD_08_INVEST_PROG_RLTD_BV&quot;   &quot;SD_08_INVEST_PROG_RLTD_MOV&quot;</code></pre>
 <p><br> <br> <br></p>
 <hr>
 <p><br> <br> <br></p>
@@ -3794,26 +3726,25 @@ DICTIONARY</strong></a></p>
 <h2>Missing or Extra XPATHS</h2>
 <p>Check for xpaths that were used in the tables but do not exist in the
 Concordance file.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>c.table <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">filter</span>( concordance, rdb_table <span class="sc">==</span> table.name ) </span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>xpath.concordance <span class="ot">&lt;-</span> c.table<span class="sc">$</span>xpath</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>( all.xpaths, xpath.concordance )</span></code></pre></div>
-<pre><code>## [1] &quot;&quot;                                                            
-## [2] &quot;/Return/ReturnData/IRS990ScheduleD/InvstProgramRelatedOrgGrp&quot;</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>c.table <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">filter</span>( concordance, rdb_table <span class="sc">==</span> table.name ) </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>xpath.concordance <span class="ot">&lt;-</span> c.table<span class="sc">$</span>xpath</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>( all.xpaths, xpath.concordance )</span></code></pre></div>
+<pre><code>## [1] &quot;&quot;                                                             &quot;/Return/ReturnData/IRS990ScheduleD/InvstProgramRelatedOrgGrp&quot;</code></pre>
 <p>Capture to update the Concordance file.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>these <span class="ot">&lt;-</span> <span class="fu">setdiff</span>( all.xpaths, xpath.concordance )</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>( these, <span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">file=</span><span class="fu">paste0</span>( folder.name, <span class="st">&quot;/MISSING-XPATHS.txt&quot;</span> ) )</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>these <span class="ot">&lt;-</span> <span class="fu">setdiff</span>( all.xpaths, xpath.concordance )</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>( these, <span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">file=</span><span class="fu">paste0</span>( folder.name, <span class="st">&quot;/MISSING-XPATHS.txt&quot;</span> ) )</span></code></pre></div>
 </div>
 <div id="failes-urls" class="section level2">
 <h2>Failes URLs</h2>
 <p>Check the status of failed URLs.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>( <span class="fu">length</span>(fail.log) <span class="sc">&gt;</span> <span class="dv">0</span> )</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>{ </span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sapply</span>( fail.log, get_message ) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">table</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pander</span>() </span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;ALL URLs ARE VALID&quot;</span>)</span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>( <span class="fu">length</span>(fail.log) <span class="sc">&gt;</span> <span class="dv">0</span> )</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>{ </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sapply</span>( fail.log, get_message ) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">table</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pander</span>() </span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;ALL URLs ARE VALID&quot;</span>)</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;ALL URLs ARE VALID&quot;</code></pre>
 <p><br> <br> <br></p>
 <hr>
@@ -3829,8 +3760,8 @@ R/utils.R.</p>
 <p>V1 retains the root nodes Return and ReturnData.</p>
 <p>V2 drops the root nodes and uses form versions “990” and “990EZ” as
 the root to visualize the sets of tables separately.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># KEEP ROOT NOTES Return &amp; ReturnData</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>el <span class="ot">&lt;-</span> <span class="fu">create_edgelist_v1</span>( all.xpaths )</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># KEEP ROOT NOTES Return &amp; ReturnData</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>el <span class="ot">&lt;-</span> <span class="fu">create_edgelist_v1</span>( all.xpaths )</span></code></pre></div>
 <br>
 <hr>
 <p><br></p>
@@ -3895,9 +3826,9 @@ the root to visualize the sets of tables separately.</p>
 </div>
 <div id="visualize-tree-structure" class="section level2">
 <h2>Visualize Tree Structure</h2>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library( data.tree )</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>nd <span class="ot">&lt;-</span> <span class="fu">FromDataFrameNetwork</span>( <span class="at">network=</span>el )</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>( nd )</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library( data.tree )</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>nd <span class="ot">&lt;-</span> <span class="fu">FromDataFrameNetwork</span>( <span class="at">network=</span>el )</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>( nd )</span></code></pre></div>
 <pre><code>##                               levelName
 ## 1 Return                               
 ## 2  °--ReturnData                       
@@ -3906,31 +3837,31 @@ the root to visualize the sets of tables separately.</p>
 ## 5              ¦--BookValueAmt         
 ## 6              ¦--Desc                 
 ## 7              °--MethodValuationCd</code></pre>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">SetGraphStyle</span>( nd, <span class="at">rankdir =</span> <span class="st">&quot;LR&quot;</span>)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">SetEdgeStyle</span>( nd, <span class="at">arrowhead =</span> <span class="st">&quot;vee&quot;</span>, <span class="at">color =</span> <span class="st">&quot;grey20&quot;</span>, <span class="at">penwidth =</span> <span class="dv">2</span> )</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">SetNodeStyle</span>( nd, </span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">style =</span> <span class="st">&quot;filled,rounded&quot;</span>, </span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">shape =</span> <span class="st">&quot;box&quot;</span>, </span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">fillcolor =</span> <span class="st">&quot;LightBlue&quot;</span>, </span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">fontname =</span> <span class="st">&quot;helvetica&quot;</span>, </span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">fontcolor=</span><span class="st">&quot;black&quot;</span>,</span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">tooltip =</span> GetDefaultTooltip )</span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="co"># SetNodeStyle(acme$IT, fillcolor = &quot;LightBlue&quot;, penwidth = &quot;5px&quot;)</span></span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>( nd )</span></code></pre></div>
-<div id="htmlwidget-6d468448c92b75cca7f7" style="width:960px;height:1920px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6d468448c92b75cca7f7">{"x":{"diagram":"digraph {\n\ngraph [rankdir = \"LR\"]\n\n\n\n  \"1\" [label = \"Return\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: Return\", fillcolor = \"LightBlue\"] \n  \"2\" [label = \"ReturnData\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: ReturnData\", fillcolor = \"LightBlue\"] \n  \"3\" [label = \"IRS990ScheduleD\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: IRS990ScheduleD\", fillcolor = \"LightBlue\"] \n  \"4\" [label = \"InvstProgramRelatedOrgGrp\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: InvstProgramRelatedOrgGrp\", fillcolor = \"LightBlue\"] \n  \"5\" [label = \"BookValueAmt\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: BookValueAmt\", fillcolor = \"LightBlue\"] \n  \"6\" [label = \"Desc\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: Desc\", fillcolor = \"LightBlue\"] \n  \"7\" [label = \"MethodValuationCd\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: MethodValuationCd\", fillcolor = \"LightBlue\"] \n\"1\"->\"2\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"2\"->\"3\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"3\"->\"4\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"4\"->\"5\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"4\"->\"6\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"4\"->\"7\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library( networkD3 )</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co"># net &lt;- ToDataFrameNetwork( nd, &quot;name&quot; )</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># simpleNetwork( net, fontSize = 12 )</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">simpleNetwork</span>( el, <span class="at">fontSize =</span> <span class="dv">12</span> )</span></code></pre></div>
-<div id="htmlwidget-98bdaae9c12fcd043c38" style="width:960px;height:480px;" class="forceNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-98bdaae9c12fcd043c38">{"x":{"links":{"source":[5,6,3,2,2,2],"target":[6,3,2,0,1,4],"value":[1,1,1,1,1,1],"colour":["#666","#666","#666","#666","#666","#666"]},"nodes":{"name":["BookValueAmt","Desc","InvstProgramRelatedOrgGrp","IRS990ScheduleD","MethodValuationCd","Return","ReturnData"],"group":[1,1,1,1,1,1,1],"nodesize":[8,8,8,8,8,8,8]},"options":{"NodeID":"name","Group":"group","colourScale":"d3.scaleOrdinal(['#3182bd'])","fontSize":12,"fontFamily":"serif","clickTextSize":30,"linkDistance":50,"linkWidth":"'1.5px'.toString()","charge":-30,"opacity":0.6,"zoom":false,"legend":false,"arrows":false,"nodesize":true,"radiusCalculation":"d.nodesize","bounded":false,"opacityNoHover":1,"clickAction":null}},"evals":[],"jsHooks":[]}</script>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot with networkD3</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>radnet <span class="ot">&lt;-</span> <span class="fu">ToListExplicit</span>( nd, <span class="at">unname =</span> <span class="cn">TRUE</span> )</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">radialNetwork</span>( radnet, <span class="at">fontSize =</span> <span class="dv">12</span> )</span></code></pre></div>
-<div id="htmlwidget-f04b2bb95ec96a99591d" style="width:960px;height:960px;" class="radialNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f04b2bb95ec96a99591d">{"x":{"root":{"name":"Return","children":[{"name":"ReturnData","children":[{"name":"IRS990ScheduleD","children":[{"name":"InvstProgramRelatedOrgGrp","children":[{"name":"BookValueAmt"},{"name":"Desc"},{"name":"MethodValuationCd"}]}]}]}]},"options":{"height":null,"width":null,"fontSize":12,"fontFamily":"serif","linkColour":"#ccc","nodeColour":"#fff","nodeStroke":"steelblue","textColour":"#111","margin":{"top":null,"right":null,"bottom":null,"left":null},"opacity":0.9}},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">SetGraphStyle</span>( nd, <span class="at">rankdir =</span> <span class="st">&quot;LR&quot;</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">SetEdgeStyle</span>( nd, <span class="at">arrowhead =</span> <span class="st">&quot;vee&quot;</span>, <span class="at">color =</span> <span class="st">&quot;grey20&quot;</span>, <span class="at">penwidth =</span> <span class="dv">2</span> )</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">SetNodeStyle</span>( nd, </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">style =</span> <span class="st">&quot;filled,rounded&quot;</span>, </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">shape =</span> <span class="st">&quot;box&quot;</span>, </span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">fillcolor =</span> <span class="st">&quot;LightBlue&quot;</span>, </span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">fontname =</span> <span class="st">&quot;helvetica&quot;</span>, </span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">fontcolor=</span><span class="st">&quot;black&quot;</span>,</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">tooltip =</span> GetDefaultTooltip )</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="co"># SetNodeStyle(acme$IT, fillcolor = &quot;LightBlue&quot;, penwidth = &quot;5px&quot;)</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>( nd )</span></code></pre></div>
+<div id="htmlwidget-c54e55412e487d448721" style="width:960px;height:1920px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c54e55412e487d448721">{"x":{"diagram":"digraph {\n\ngraph [rankdir = \"LR\"]\n\n\n\n  \"1\" [label = \"Return\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: Return\", fillcolor = \"LightBlue\"] \n  \"2\" [label = \"ReturnData\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: ReturnData\", fillcolor = \"LightBlue\"] \n  \"3\" [label = \"IRS990ScheduleD\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: IRS990ScheduleD\", fillcolor = \"LightBlue\"] \n  \"4\" [label = \"InvstProgramRelatedOrgGrp\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: InvstProgramRelatedOrgGrp\", fillcolor = \"LightBlue\"] \n  \"5\" [label = \"BookValueAmt\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: BookValueAmt\", fillcolor = \"LightBlue\"] \n  \"6\" [label = \"Desc\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: Desc\", fillcolor = \"LightBlue\"] \n  \"7\" [label = \"MethodValuationCd\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: MethodValuationCd\", fillcolor = \"LightBlue\"] \n\"1\"->\"2\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"2\"->\"3\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"3\"->\"4\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"4\"->\"5\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"4\"->\"6\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"4\"->\"7\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library( networkD3 )</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># net &lt;- ToDataFrameNetwork( nd, &quot;name&quot; )</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co"># simpleNetwork( net, fontSize = 12 )</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">simpleNetwork</span>( el, <span class="at">fontSize =</span> <span class="dv">12</span> )</span></code></pre></div>
+<div id="htmlwidget-bcfdc0935ad5a237c4f5" style="width:960px;height:480px;" class="forceNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-bcfdc0935ad5a237c4f5">{"x":{"links":{"source":[5,6,3,2,2,2],"target":[6,3,2,0,1,4],"value":[1,1,1,1,1,1],"colour":["#666","#666","#666","#666","#666","#666"]},"nodes":{"name":["BookValueAmt","Desc","InvstProgramRelatedOrgGrp","IRS990ScheduleD","MethodValuationCd","Return","ReturnData"],"group":[1,1,1,1,1,1,1],"nodesize":[8,8,8,8,8,8,8]},"options":{"NodeID":"name","Group":"group","colourScale":"d3.scaleOrdinal(['#3182bd'])","fontSize":12,"fontFamily":"serif","clickTextSize":30,"linkDistance":50,"linkWidth":"'1.5px'.toString()","charge":-30,"opacity":0.6,"zoom":false,"legend":false,"arrows":false,"nodesize":true,"radiusCalculation":"d.nodesize","bounded":false,"opacityNoHover":1,"clickAction":null}},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot with networkD3</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>radnet <span class="ot">&lt;-</span> <span class="fu">ToListExplicit</span>( nd, <span class="at">unname =</span> <span class="cn">TRUE</span> )</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">radialNetwork</span>( radnet, <span class="at">fontSize =</span> <span class="dv">12</span> )</span></code></pre></div>
+<div id="htmlwidget-c0b281bab6c2a546480c" style="width:960px;height:960px;" class="radialNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c0b281bab6c2a546480c">{"x":{"root":{"name":"Return","children":[{"name":"ReturnData","children":[{"name":"IRS990ScheduleD","children":[{"name":"InvstProgramRelatedOrgGrp","children":[{"name":"BookValueAmt"},{"name":"Desc"},{"name":"MethodValuationCd"}]}]}]}]},"options":{"height":null,"width":null,"fontSize":12,"fontFamily":"serif","linkColour":"#ccc","nodeColour":"#fff","nodeStroke":"steelblue","textColour":"#111","margin":{"top":null,"right":null,"bottom":null,"left":null},"opacity":0.9}},"evals":[],"jsHooks":[]}</script>
 <p><br> <br> <br></p>
 <hr>
 <p><br> <br> <br></p>
@@ -3940,16 +3871,16 @@ the root to visualize the sets of tables separately.</p>
 <h1>XPATH Summary</h1>
 <div id="unique-xpaths-for-this-rdb-table" class="section level2">
 <h2>Unique Xpaths for this RDB Table</h2>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>t.xpaths <span class="ot">&lt;-</span> </span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  concordance <span class="sc">%&gt;%</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>( rdb_table <span class="sc">==</span> table.name ) <span class="sc">%&gt;%</span> </span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>( xpath ) <span class="sc">%&gt;%</span> </span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>( xpath ) <span class="sc">%&gt;%</span> </span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( <span class="at">id=</span><span class="fu">row_number</span>() ) </span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>t.xpaths <span class="sc">%&gt;%</span> </span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>( <span class="at">align=</span><span class="st">&quot;l&quot;</span> )</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>t.xpaths <span class="ot">&lt;-</span> </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  concordance <span class="sc">%&gt;%</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>( rdb_table <span class="sc">==</span> table.name ) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>( xpath ) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>( xpath ) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( <span class="at">id=</span><span class="fu">row_number</span>() ) </span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>t.xpaths <span class="sc">%&gt;%</span> </span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>( <span class="at">align=</span><span class="st">&quot;l&quot;</span> )</span></code></pre></div>
 <table>
 <colgroup>
 <col width="97%" />
@@ -4016,36 +3947,35 @@ the root to visualize the sets of tables separately.</p>
 <div id="grouping-variables" class="section level2">
 <h2>Grouping Variables</h2>
 <p>Identify all unique groups used in xpaths.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>( <span class="fu">is.null</span>(table.headers) )</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>{ <span class="fu">find_table_headers</span>( table.name ) } <span class="cf">else</span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>table.headers</span></code></pre></div>
-<pre><code>## [1] &quot;//IRS990ScheduleD/Form990ScheduleDPartVIII/InvestmentsProgramRelated&quot;
-## [2] &quot;//IRS990ScheduleD/InvestmentsProgramRelated&quot;                         
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>( <span class="fu">is.null</span>(table.headers) )</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>{ <span class="fu">find_table_headers</span>( table.name ) } <span class="cf">else</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>table.headers</span></code></pre></div>
+<pre><code>## [1] &quot;//IRS990ScheduleD/Form990ScheduleDPartVIII/InvestmentsProgramRelated&quot; &quot;//IRS990ScheduleD/InvestmentsProgramRelated&quot;                         
 ## [3] &quot;//IRS990ScheduleD/InvstProgramRelatedOrgGrp&quot;</code></pre>
 <p>Groups can then be used to extract the 1:M RDB tables:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>( <span class="fu">is.null</span>(table.headers) )</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>{ table.headers <span class="ot">&lt;-</span> <span class="fu">find_table_headers</span>( table.name ) }</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>demo.url <span class="ot">&lt;-</span> <span class="st">&quot;https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201913079349300206_public.xml&quot;</span></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> xml2<span class="sc">::</span><span class="fu">read_xml</span>( demo.url )</span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>xml2<span class="sc">::</span><span class="fu">xml_ns_strip</span>( doc )</span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>df.demo <span class="ot">&lt;-</span> <span class="fu">get_table_v2</span>( doc, table.name, table.headers )</span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>df.demo </span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>( <span class="fu">is.null</span>(table.headers) )</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>{ table.headers <span class="ot">&lt;-</span> <span class="fu">find_table_headers</span>( table.name ) }</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>demo.url <span class="ot">&lt;-</span> <span class="st">&quot;https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201913079349300206_public.xml&quot;</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> xml2<span class="sc">::</span><span class="fu">read_xml</span>( demo.url )</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>xml2<span class="sc">::</span><span class="fu">xml_ns_strip</span>( doc )</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>df.demo <span class="ot">&lt;-</span> <span class="fu">get_table_v2</span>( doc, table.name, table.headers )</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>df.demo </span></code></pre></div>
 <pre><code>## NULL</code></pre>
 </div>
 <div id="standardize-variable-names" class="section level2">
 <h2>Standardize Variable Names</h2>
 <p>Mapping of xml variable names to concordance variable names:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_var_map</span>( <span class="at">table.name=</span>table.name )</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_var_map</span>( <span class="at">table.name=</span>table.name )</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["VARIABLE"],"name":[1],"type":["chr"],"align":["left"]},{"label":["XSD_VARNAME"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"SD_08_INVEST_PROG_RLTD_DESC","2":"Description","_rn_":"1"},{"1":"SD_08_INVEST_PROG_RLTD_DESC","2":"Desc","_rn_":"3"},{"1":"SD_08_INVEST_PROG_RLTD_BV","2":"BookValue","_rn_":"4"},{"1":"SD_08_INVEST_PROG_RLTD_BV","2":"BookValueAmt","_rn_":"6"},{"1":"SD_08_INVEST_PROG_RLTD_BV_TOT","2":"TotalOfBookValue","_rn_":"7"},{"1":"SD_08_INVEST_PROG_RLTD_BV_TOT","2":"TotalBookValueProgramRltdAmt","_rn_":"8"},{"1":"SD_08_INVEST_PROG_RLTD_BV_TOT","2":"TotalOfBookValueProgramRelated","_rn_":"9"},{"1":"SD_08_INVEST_PROG_RLTD_MOV","2":"MethodOfValuation","_rn_":"10"},{"1":"SD_08_INVEST_PROG_RLTD_MOV","2":"MethodValuationCd","_rn_":"12"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>A table with proper names:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>v.map <span class="ot">&lt;-</span> <span class="fu">get_var_map</span>( <span class="at">table.name=</span>table.name )</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>( <span class="sc">!</span> <span class="fu">is.null</span>(df.demo) )</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>{<span class="fu">re_name</span>( df.demo, v.map ) <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>()}</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>v.map <span class="ot">&lt;-</span> <span class="fu">get_var_map</span>( <span class="at">table.name=</span>table.name )</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>( <span class="sc">!</span> <span class="fu">is.null</span>(df.demo) )</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>{<span class="fu">re_name</span>( df.demo, v.map ) <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>()}</span></code></pre></div>
 <p><br> <br> <br></p>
 <hr>
 <p><br> <br> <br></p>
@@ -4071,7 +4001,7 @@ the root to visualize the sets of tables separately.</p>
     {text}
   &lt;OtherCompensationAmt&gt;
     {text}</code></pre>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>node.list[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span> <span class="fu">xml_parent</span>() <span class="sc">%&gt;%</span> xmltools<span class="sc">::</span><span class="fu">xml_view_trees</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>node.list[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span> <span class="fu">xml_parent</span>() <span class="sc">%&gt;%</span> xmltools<span class="sc">::</span><span class="fu">xml_view_trees</span>()</span></code></pre></div>
 <pre><code> (1) ------------
 
  +-- Form990PartVIISectionAGrp

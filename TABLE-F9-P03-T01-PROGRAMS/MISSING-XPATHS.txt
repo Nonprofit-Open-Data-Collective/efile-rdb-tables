@@ -1,1 +1,8 @@
 
+/Return/ReturnData/IRS990/Activity2
+/Return/ReturnData/IRS990/Activity3
+/Return/ReturnData/IRS990/ProgSrvcAccomActy2Grp
+/Return/ReturnData/IRS990/ProgSrvcAccomActy3Grp
+/Return/ReturnData/IRS990/ProgSrvcAccomActyOtherGrp
+/Return/ReturnData/IRS990EZ/ProgramServiceAccomplishment
+/Return/ReturnData/IRS990EZ/ProgramSrvcAccomplishmentGrp

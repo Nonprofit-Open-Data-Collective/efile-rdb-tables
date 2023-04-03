@@ -1,1 +1,2 @@
-""
+"OBJECT_ID","EIN","NAME","TAXYR","FORMTYPE","URL","SA_01_PCSTAT_ORG_EIN","SA_01_PCSTAT_ORG_TYPE","SA_01_PCSTAT_ORG_DOC_LISTED_X","SA_01_PCSTAT_ORG_AMT_SUPPORT","SA_01_PCSTAT_ORG_AMT_OTH","SA_01_PCSTAT_ORG_NAME_L1"
+"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201921159349300147","266070307","The Telios Charitable Trust","2018","990","https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201921159349300147_public.xml","841123082","7","false","0","0","New Horizons Foundation Inc"

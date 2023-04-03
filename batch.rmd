@@ -1,0 +1,602 @@
+getwd()  # make sure your files are here OR use setwd( "file/path" ) to change 
+dir()    # double-check that files are in the current working directory 
+
+sample.size <- 1000
+
+## F9-P03-T01-PROGRAMS
+table.name <- "F9-P03-T01-PROGRAMS"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- c(
+  "//IRS990/Activity2",
+  "//IRS990/Activity3",
+  "//IRS990/ActivityOther",
+  "//Form990PartIII/Activity2",
+  "//Form990PartIII/Activity3",
+  "//Form990PartIII/ActivityOther",
+  "//IRS990/ProgSrvcAccomActy2Grp",
+  "//IRS990/ProgSrvcAccomActy3Grp",
+  "//IRS990/ProgSrvcAccomActyOtherGrp",
+  "//IRS990/ProgramServiceAccomplishments",
+  "//IRS990EZ/ProgSrvcAccomActy2Grp",
+  "//IRS990EZ/ProgSrvcAccomActy3Grp",
+  "//IRS990EZ/ProgSrvcAccomActyOtherGrp",
+  "//IRS990EZ/ProgramServiceAccomplishment",
+  "//IRS990EZ/ProgramSrvcAccomplishmentGrp" )
+index <- 
+  tinyindex %>% 
+  dplyr::filter( FormType %in% c("990","990EZ") )
+  
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-F9-P03-T01-PROGRAMS",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## F9-P07-T02-CONTRACTORS
+table.name <- "F9-P07-T02-CONTRACTORS"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <-
+  c("//IRS990/ContractorCompensation",
+    "//IRS990/ContractorCompensationGrp",
+    "//IRS990/Form990PartVIISectionB/ContractorCompensation",
+    "//IRS990EZ/CompOfHghstPaidCntrctProfSer",
+    "//IRS990EZ/CompensationOfHghstPdCntrctGrp")
+index <- 
+  tinyindex %>% 
+  dplyr::filter( FormType %in% c("990","990EZ") )
+  
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-F9-P07-T02-CONTRACTORS",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index  ) )
+)
+
+## F9-P07-T01-COMPENSATION
+table.name <- "F9-P07-T01-COMPENSATION"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- NULL
+index <- 
+  tinyindex %>% 
+  dplyr::filter( FormType %in% c("990","990EZ") )
+  
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-F9-P07-T01-COMPENSATION",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index  ) )
+)
+
+## F9-P07-T01-COMPENSATION-HCE-EZ
+table.name <- "F9-P07-T01-COMPENSATION-HCE-EZ"
+folder.name <- paste0( "TABLE-", table.name )
+ table.headers <- 
+  c("//IRS990EZ/CompensationHighestPaidEmplGrp",
+    "//IRS990EZ/CompensationOfHighestPaidEmpl")
+index <- 
+  tinyindex %>% 
+  dplyr::filter( FormType %in% c("990","990EZ") )
+  
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-F9-P07-T01-COMPENSATION-HCE-EZ",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index  ) )
+)
+
+## F9-P99-T01-COMPENSATION
+table.name <- "F9-P99-T01-COMPENSATION"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- NULL
+index <- 
+  tinyindex %>% 
+  dplyr::filter( FormType %in% c("990","990EZ") )
+  
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-F9-P99-T01-COMPENSATION",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index  ) )
+)
+
+## F9-P08-T01-REVENUE-PROGRAMS
+table.name <- "F9-P08-T01-REVENUE-PROGRAMS"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- NULL
+index <- 
+  tinyindex %>% 
+  dplyr::filter( FormType %in% c("990","990EZ") )
+  
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-F9-P08-T01-REVENUE-PROGRAMS",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index  ) )
+)
+
+## F9-P08-T02-REVENUE-MISC
+table.name <- "F9-P08-T02-REVENUE-MISC"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- NULL
+index <- 
+  tinyindex %>% 
+  dplyr::filter( FormType %in% c("990","990EZ") )
+  
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-F9-P08-T02-REVENUE-MISC",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index  ) )
+)
+
+## F9-P09-T01-EXPENSES-OTHER
+table.name <- "F9-P09-T01-EXPENSES-OTHER"
+folder.name <- paste0( "TABLE-", table.name )
+ table.headers <- 
+  c("//IRS990/Form990PartIX/OtherExpenses",
+    "//IRS990/OtherExpenses",
+    "//IRS990/OtherExpensesGrp")
+index <- 
+  tinyindex %>% 
+  dplyr::filter( FormType %in% c("990","990EZ") )
+  
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-F9-P09-T01-EXPENSES-OTHER",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index  ) )
+)
+
+## SA-P01-T01-PUBLIC-CHARITY-STATUS
+table.name <- "SA-P01-T01-PUBLIC-CHARITY-STATUS"
+folder.name <- paste0( "TABLE-", table.name )
+ table.headers <- 
+  c("//IRS990ScheduleA/Form990ScheduleAPartI",
+    "//IRS990ScheduleA/SupportedOrgInformation",
+    "//IRS990ScheduleA/SupportedOrgInformationGrp")
+index <- read.csv( "schedule-samples/SCHEDA.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SA-P01-T01-PUBLIC-CHARITY-STATUS",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SA-P99-T01-PUBLIC-CHARITY-STATUS
+table.name <- "SA-P99-T01-PUBLIC-CHARITY-STATUS"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- NULL
+index <- read.csv( "schedule-samples/SCHEDA.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SA-P99-T01-PUBLIC-CHARITY-STATUS",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SC-P01-T01-POLITICAL-ORGS-INFO
+table.name <- "SC-P01-T01-POLITICAL-ORGS-INFO"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- NULL
+index <- read.csv( "schedule-samples/SCHEDC.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SC-P01-T01-POLITICAL-ORGS-INFO",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SD-P07-T01-INVESTMENTS-OTH-SECURITIES
+table.name <- "SD-P07-T01-INVESTMENTS-OTH-SECURITIES"
+folder.name <- paste0( "TABLE-", table.name )
+ table.headers <- 
+  c("//IRS990ScheduleD/CloselyHeldEquityInterests",
+    "//IRS990ScheduleD/CloselyHeldEquityInterestsGrp",
+    "//IRS990ScheduleD/FinancialDerivatives",
+    "//IRS990ScheduleD/FinancialDerivativesGrp",
+    "//IRS990ScheduleD/Form990ScheduleDPartVII/CloselyHeldEquityInterests",
+    "//IRS990ScheduleD/Form990ScheduleDPartVII/FinancialDerivatives",
+    "//IRS990ScheduleD/Form990ScheduleDPartVII/Other",
+    "//IRS990ScheduleD/OtherSecurities",
+    "//IRS990ScheduleD/OtherSecuritiesGrp")
+index <- read.csv( "schedule-samples/SCHEDD.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SD-P07-T01-INVESTMENTS-OTH-SECURITIES",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SD-P08-T01-INVESTMENTS-PROG-RLTD
+table.name <- "SD-P08-T01-INVESTMENTS-PROG-RLTD"
+folder.name <- paste0( "TABLE-", table.name )
+ table.headers <- 
+  c("//IRS990ScheduleD/Form990ScheduleDPartVIII/InvestmentsProgramRelated",
+    "//IRS990ScheduleD/InvestmentsProgramRelated",
+    "//IRS990ScheduleD/InvstProgramRelatedOrgGrp")
+index <- read.csv( "schedule-samples/SCHEDD.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SD-P08-T01-INVESTMENTS-PROG-RLTD",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SD-P09-T01-OTH-ASSETS
+table.name <- "SD-P09-T01-OTH-ASSETS"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- NULL
+index <- read.csv( "schedule-samples/SCHEDD.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SD-P09-T01-OTH-ASSETS",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SF-P01-T01-FRGN-ACTS-BY-REGION
+table.name <- "SF-P01-T01-FRGN-ACTS-BY-REGION"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- NULL
+index <- read.csv( "schedule-samples/SCHEDF.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SF-P01-T01-FRGN-ACTS-BY-REGION",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SF-P02-T01-FRGN-ORG-GRANTS
+table.name <- "SF-P02-T01-FRGN-ORG-GRANTS"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- NULL
+index <- read.csv( "schedule-samples/SCHEDF.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SF-P02-T01-FRGN-ORG-GRANTS",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SF-P03-T01-FRGN-INDIV-GRANTS
+table.name <- "SF-P03-T01-FRGN-INDIV-GRANTS"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- NULL
+index <- read.csv( "schedule-samples/SCHEDF.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SF-P03-T01-FRGN-INDIV-GRANTS",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SG-P01-T01-FUNDRAISERS-INFO
+table.name <- "SG-P01-T01-FUNDRAISERS-INFO"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- NULL
+index <- read.csv( "schedule-samples/SCHEDG.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SG-P01-T01-FUNDRAISERS-INFO",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SG-P02-T01-FUNDRAISING-EVENTS
+table.name <- "SG-P02-T01-FUNDRAISING-EVENTS"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- NULL
+index <- read.csv( "schedule-samples/SCHEDG.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SG-P02-T01-FUNDRAISING-EVENTS",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SH-P04-T01-COMPANY-JOINT-VENTURES
+table.name <- "SH-P04-T01-COMPANY-JOINT-VENTURES"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- NULL
+index <- read.csv( "schedule-samples/SCHEDH.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SH-P04-T01-COMPANY-JOINT-VENTURES",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SH-P05-T01-HOSPITAL-FACILITY
+table.name <- "SH-P05-T01-HOSPITAL-FACILITY"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- NULL
+index <- read.csv( "schedule-samples/SCHEDH.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SH-P05-T01-HOSPITAL-FACILITY",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SH-P05-T02-NON-HOSPITAL-FACILITY
+table.name <- "SH-P05-T02-NON-HOSPITAL-FACILITY"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- NULL
+index <- read.csv( "schedule-samples/SCHEDH.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SH-P05-T02-NON-HOSPITAL-FACILITY",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SI-P02-T01-GRANTS-US-ORGS-GOVTS
+table.name <- "SI-P02-T01-GRANTS-US-ORGS-GOVTS"
+folder.name <- paste0( "TABLE-", table.name )
+ table.headers <- 
+  c("//IRS990ScheduleI/Form990ScheduleIPartII/RecipientTable",
+    "//IRS990ScheduleI/RecipientTable")
+index <- read.csv( "schedule-samples/SCHEDI.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SI-P02-T01-GRANTS-US-ORGS-GOVTS",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SI-P03-T01-GRANTS-US-INDIV
+table.name <- "SI-P03-T01-GRANTS-US-INDIV"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- NULL
+index <- read.csv( "schedule-samples/SCHEDI.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SI-P03-T01-GRANTS-US-INDIV",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SJ-P02-T01-COMPENSATION-DTK
+table.name <- "SJ-P02-T01-COMPENSATION-DTK"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- NULL
+index <- read.csv( "schedule-samples/SCHEDJ.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SJ-P02-T01-COMPENSATION-DTK",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SK-P01-T01-BOND-ISSUES
+table.name <- "SK-P01-T01-BOND-ISSUES"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- NULL
+index <- read.csv( "schedule-samples/SCHEDK.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SK-P01-T01-BOND-ISSUES",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SK-P02-T01-BOND-PROCEEDS
+table.name <- "SK-P02-T01-BOND-PROCEEDS"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- NULL
+index <- read.csv( "schedule-samples/SCHEDK.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SK-P02-T01-BOND-PROCEEDS",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SK-P03-T01-BOND-PRIVATE-BIZ-USE
+table.name <- "SK-P03-T01-BOND-PRIVATE-BIZ-USE"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- NULL
+index <- read.csv( "schedule-samples/SCHEDK.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SK-P03-T01-BOND-PRIVATE-BIZ-USE",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SK-P04-T01-BOND-ARBITRAGE
+table.name <- "SK-P04-T01-BOND-ARBITRAGE"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- NULL
+index <- read.csv( "schedule-samples/SCHEDK.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SK-P04-T01-BOND-ARBITRAGE",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SK-P05-T01-PROCEDURE-CORRECTIVE-ACT
+table.name <- "SK-P05-T01-PROCEDURE-CORRECTIVE-ACT"
+folder.name <- paste0( "TABLE-", table.name )
+ table.headers <- 
+  c("//IRS990ScheduleK/Form990ScheduleKPartV",
+    "//IRS990ScheduleK/ProceduresCorrectiveActionGrp")
+index <- read.csv( "schedule-samples/SCHEDK.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SK-P05-T01-PROCEDURE-CORRECTIVE-ACT",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SL-P01-T01-EXCESS-BENEFIT-TRANSAC
+table.name <- "SL-P01-T01-EXCESS-BENEFIT-TRANSAC"
+folder.name <- paste0( "TABLE-", table.name )
+ table.headers <- 
+  c("//IRS990ScheduleL/DQPTable",
+    "//IRS990ScheduleL/DisqualifiedPersonExBnftTrGrp",
+    "//IRS990ScheduleL/Form990ScheduleLPartI/DQPTable")
+index <- read.csv( "schedule-samples/SCHEDL.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SL-P01-T01-EXCESS-BENEFIT-TRANSAC",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SL-P02-T01-LOANS-INTERESTED-PERS
+table.name <- "SL-P02-T01-LOANS-INTERESTED-PERS"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- NULL
+index <- read.csv( "schedule-samples/SCHEDL.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SL-P02-T01-LOANS-INTERESTED-PERS",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SL-P03-T01-GRANTS-INTERESTED-PERS
+table.name <- "SL-P03-T01-GRANTS-INTERESTED-PERS"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- NULL
+index <- read.csv( "schedule-samples/SCHEDL.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SL-P03-T01-GRANTS-INTERESTED-PERS",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SL-P04-T01-BIZ-TRANSAC-INTERESTED-PERS
+table.name <- "SL-P04-T01-BIZ-TRANSAC-INTERESTED-PERS"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- NULL
+index <- read.csv( "schedule-samples/SCHEDL.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SL-P04-T01-BIZ-TRANSAC-INTERESTED-PERS",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SM-P01-T01-NONCASH-CONTRIBUTIONS
+table.name <- "SM-P01-T01-NONCASH-CONTRIBUTIONS"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- NULL
+index <- read.csv( "schedule-samples/SCHEDM.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SM-P01-T01-NONCASH-CONTRIBUTIONS",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SN-P01-T01-LIQUIDATION-TERMINATION-DISSOLUTION
+table.name <- "SN-P01-T01-LIQUIDATION-TERMINATION-DISSOLUTION"
+folder.name <- paste0( "TABLE-", table.name )
+ table.headers <- 
+  c("//IRS990ScheduleN/Form990ScheduleNPartI/LiquidationTable",
+    "//IRS990ScheduleN/LiquidationOfAssetsTableGrp",
+    "//IRS990ScheduleN/LiquidationTable")
+index <- read.csv( "schedule-samples/SCHEDN.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SN-P01-T01-LIQUIDATION-TERMINATION-DISSOLUTION",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SN-P02-T01-DISPOSITION-OF-ASSETS
+table.name <- "SN-P02-T01-DISPOSITION-OF-ASSETS"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- NULL
+index <- read.csv( "schedule-samples/SCHEDN.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SN-P02-T01-DISPOSITION-OF-ASSETS",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SO-T99-SUPPLEMENTAL-INFO
+table.name <- "SO-T99-SUPPLEMENTAL-INFO"
+folder.name <- paste0( "TABLE-", table.name )
+ table.headers <- 
+  c("//IRS990ScheduleO/GeneralExplanation",
+    "//IRS990ScheduleO/SupplementalInformationDetail")
+index <- read.csv( "schedule-samples/SCHEDO.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SO-T99-SUPPLEMENTAL-INFO",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SR-P01-T01-ID-DISREGARDED-ENTITIES
+table.name <- "SR-P01-T01-ID-DISREGARDED-ENTITIES"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- NULL
+index <- read.csv( "schedule-samples/SCHEDR.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SR-P01-T01-ID-DISREGARDED-ENTITIES",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SR-P02-T01-ID-RLTD-TAX-EXEMPED-ORGS
+table.name <- "SR-P02-T01-ID-RLTD-TAX-EXEMPED-ORGS"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- NULL
+index <- read.csv( "schedule-samples/SCHEDR.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SR-P02-T01-ID-RLTD-TAX-EXEMPED-ORGS",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SR-P03-T01-ID-RLTD-ORGS-TAXABLE-PARTNERSHIP
+table.name <- "SR-P03-T01-ID-RLTD-ORGS-TAXABLE-PARTNERSHIP"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- NULL
+index <- read.csv( "schedule-samples/SCHEDR.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SR-P03-T01-ID-RLTD-ORGS-TAXABLE-PARTNERSHIP",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SR-P04-T01-ID-RLTD-ORGS-TAXABLE-CORPORATION
+table.name <- "SR-P04-T01-ID-RLTD-ORGS-TAXABLE-CORPORATION"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- NULL
+index <- read.csv( "schedule-samples/SCHEDR.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SR-P04-T01-ID-RLTD-ORGS-TAXABLE-CORPORATION",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SR-P05-T01-TRANSACTIONS-RLTD-ORGS
+table.name <- "SR-P05-T01-TRANSACTIONS-RLTD-ORGS"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- NULL
+index <- read.csv( "schedule-samples/SCHEDR.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SR-P05-T01-TRANSACTIONS-RLTD-ORGS",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)
+
+## SR-P06-T01-UNRLTD-ORGS-TAXABLE-PARTNERSHIP
+table.name <- "SR-P06-T01-UNRLTD-ORGS-TAXABLE-PARTNERSHIP"
+folder.name <- paste0( "TABLE-", table.name )
+ table.headers <- 
+  c("//IRS990ScheduleR/Form990ScheduleRPartVI",
+    "//IRS990ScheduleR/UnrelatedOrgTxblPartnershipGrp")
+index <- read.csv( "schedule-samples/SCHEDR.csv" )
+
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-SR-P06-T01-UNRLTD-ORGS-TAXABLE-PARTNERSHIP",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index ) )
+)

@@ -1,1 +1,5 @@
 
+/Return/ReturnData/IRS990ScheduleD/OtherSecuritiesGrp
+/Return/ReturnData/IRS990ScheduleD/OtherSecuritiesGrp/BookValueAmt
+/Return/ReturnData/IRS990ScheduleD/OtherSecuritiesGrp/Desc
+/Return/ReturnData/IRS990ScheduleD/OtherSecuritiesGrp/MethodValuationCd

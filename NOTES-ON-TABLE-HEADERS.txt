@@ -218,6 +218,7 @@ table.headers <- NULL
 table.headers <- NULL
                  
 ### [31] "SK-P05-T01-PROCEDURE-CORRECTIVE-ACT"  
+ table.headers <- 
   c("//IRS990ScheduleK/Form990ScheduleKPartV",
     "//IRS990ScheduleK/ProceduresCorrectiveActionGrp")
          
