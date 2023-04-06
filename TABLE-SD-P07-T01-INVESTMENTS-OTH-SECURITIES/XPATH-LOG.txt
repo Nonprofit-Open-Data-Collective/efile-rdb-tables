@@ -1,4 +1,10 @@
 
+/Return/ReturnData/IRS990ScheduleD/CloselyHeldEquityInterestsGrp
+/Return/ReturnData/IRS990ScheduleD/CloselyHeldEquityInterestsGrp/BookValueAmt
+/Return/ReturnData/IRS990ScheduleD/CloselyHeldEquityInterestsGrp/MethodValuationCd
+/Return/ReturnData/IRS990ScheduleD/FinancialDerivativesGrp
+/Return/ReturnData/IRS990ScheduleD/FinancialDerivativesGrp/BookValueAmt
+/Return/ReturnData/IRS990ScheduleD/FinancialDerivativesGrp/MethodValuationCd
 /Return/ReturnData/IRS990ScheduleD/OtherSecuritiesGrp
 /Return/ReturnData/IRS990ScheduleD/OtherSecuritiesGrp/BookValueAmt
 /Return/ReturnData/IRS990ScheduleD/OtherSecuritiesGrp/Desc

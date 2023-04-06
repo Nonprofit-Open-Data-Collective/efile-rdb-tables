@@ -1,3 +1,4 @@
 
 /Return/ReturnData/IRS990ScheduleN/DispositionOfAssetsDetail/BusinessName
+/Return/ReturnData/IRS990ScheduleN/DispositionOfAssetsDetail/ForeignAddress
 /Return/ReturnData/IRS990ScheduleN/DispositionOfAssetsDetail/USAddress

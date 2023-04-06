@@ -1,5 +1,7 @@
 
 /Return/ReturnData/IRS990/OtherRevenueMiscGrp/BusinessCd
 /Return/ReturnData/IRS990/OtherRevenueMiscGrp/Desc
+/Return/ReturnData/IRS990/OtherRevenueMiscGrp/ExclusionAmt
 /Return/ReturnData/IRS990/OtherRevenueMiscGrp/RelatedOrExemptFuncIncomeAmt
 /Return/ReturnData/IRS990/OtherRevenueMiscGrp/TotalRevenueColumnAmt
+/Return/ReturnData/IRS990/OtherRevenueMiscGrp/UnrelatedBusinessRevenueAmt

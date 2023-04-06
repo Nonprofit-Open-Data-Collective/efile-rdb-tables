@@ -1,8 +1,10 @@
 /Return/ReturnData/IRS990ScheduleH/HospitalFacilitiesGrp/BusinessName
 /Return/ReturnData/IRS990ScheduleH/HospitalFacilitiesGrp/BusinessName/BusinessNameLine1Txt
+/Return/ReturnData/IRS990ScheduleH/HospitalFacilitiesGrp/BusinessName/BusinessNameLine2Txt
 /Return/ReturnData/IRS990ScheduleH/HospitalFacilitiesGrp/ChildrensHospitalInd
 /Return/ReturnData/IRS990ScheduleH/HospitalFacilitiesGrp/CriticalAccessHospitalInd
 /Return/ReturnData/IRS990ScheduleH/HospitalFacilitiesGrp/EmergencyRoom24HrsInd
+/Return/ReturnData/IRS990ScheduleH/HospitalFacilitiesGrp/EmergencyRoomOtherInd
 /Return/ReturnData/IRS990ScheduleH/HospitalFacilitiesGrp/FacilityNum
 /Return/ReturnData/IRS990ScheduleH/HospitalFacilitiesGrp/FacilityReportingGroupCd
 /Return/ReturnData/IRS990ScheduleH/HospitalFacilitiesGrp/GeneralMedicalAndSurgicalInd
@@ -10,9 +12,13 @@
 /Return/ReturnData/IRS990ScheduleH/HospitalFacilitiesGrp/OtherDesc
 /Return/ReturnData/IRS990ScheduleH/HospitalFacilitiesGrp/ResearchFacilityInd
 /Return/ReturnData/IRS990ScheduleH/HospitalFacilitiesGrp/StateLicenseNum
+/Return/ReturnData/IRS990ScheduleH/HospitalFacilitiesGrp/SubordinateHospitalEIN
+/Return/ReturnData/IRS990ScheduleH/HospitalFacilitiesGrp/SubordinateHospitalName
+/Return/ReturnData/IRS990ScheduleH/HospitalFacilitiesGrp/SubordinateHospitalName/BusinessNameLine1Txt
 /Return/ReturnData/IRS990ScheduleH/HospitalFacilitiesGrp/TeachingHospitalInd
 /Return/ReturnData/IRS990ScheduleH/HospitalFacilitiesGrp/USAddress
 /Return/ReturnData/IRS990ScheduleH/HospitalFacilitiesGrp/USAddress/AddressLine1Txt
+/Return/ReturnData/IRS990ScheduleH/HospitalFacilitiesGrp/USAddress/AddressLine2Txt
 /Return/ReturnData/IRS990ScheduleH/HospitalFacilitiesGrp/USAddress/CityNm
 /Return/ReturnData/IRS990ScheduleH/HospitalFacilitiesGrp/USAddress/StateAbbreviationCd
 /Return/ReturnData/IRS990ScheduleH/HospitalFacilitiesGrp/USAddress/ZIPCd

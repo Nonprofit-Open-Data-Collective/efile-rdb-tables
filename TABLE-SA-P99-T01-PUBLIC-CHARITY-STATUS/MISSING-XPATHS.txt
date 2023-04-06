@@ -6,3 +6,4 @@
 /Return/ReturnData/IRS990ScheduleA/SupportedOrgInformationGrp/SupportAmt
 /Return/ReturnData/IRS990ScheduleA/SupportedOrgInformationGrp/SupportedOrganizationName
 /Return/ReturnData/IRS990ScheduleA/SupportedOrgInformationGrp/SupportedOrganizationName/BusinessNameLine1Txt
+/Return/ReturnData/IRS990ScheduleA/SupportedOrgInformationGrp/SupportedOrganizationName/BusinessNameLine2Txt

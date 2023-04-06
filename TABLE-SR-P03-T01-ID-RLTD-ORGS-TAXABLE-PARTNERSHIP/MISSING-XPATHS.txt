@@ -1,3 +1,5 @@
 
+/Return/ReturnData/IRS990ScheduleR/IdRelatedOrgTxblPartnershipGrp/DirectControllingEntityName
+/Return/ReturnData/IRS990ScheduleR/IdRelatedOrgTxblPartnershipGrp/ForeignAddress
 /Return/ReturnData/IRS990ScheduleR/IdRelatedOrgTxblPartnershipGrp/RelatedOrganizationName
 /Return/ReturnData/IRS990ScheduleR/IdRelatedOrgTxblPartnershipGrp/USAddress

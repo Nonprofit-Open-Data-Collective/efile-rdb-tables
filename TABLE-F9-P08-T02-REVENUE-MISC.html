@@ -3428,7 +3428,7 @@ pre code {
 
 
 <h1 class="title toc-ignore">TABLE NAME: F9-P08-T02-REVENUE-MISC</h1>
-<h4 class="date">Last compiled on 03 April, 2023</h4>
+<h4 class="date">Last compiled on 04 April, 2023</h4>
 
 </div>
 
@@ -3497,39 +3497,7 @@ Variables</a></li>
 </div>
 <div id="data" class="section level2">
 <h2>Data</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">#######</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="do">#######  DATA USED IN THE REPORT:</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="do">#######  UPDATE TO MATCH TABLE</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="do">#######</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># IF THE TABLE IS IN THE 990/990EZ MAIN FORM</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>index <span class="ot">&lt;-</span> </span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  tinyindex <span class="sc">%&gt;%</span> </span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>( FormType <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;990&quot;</span>,<span class="st">&quot;990EZ&quot;</span>) )</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># IF THE TABLE IS IN A SCHEDULE: </span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co"># index &lt;- read_csv( &quot;schedule-samples/SCHEDA.csv&quot; )</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="do">###  ALL SCHEDULES</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="do">###</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co">#   &quot;SCHEDA&quot;, &quot;SCHEDB&quot;, &quot;SCHEDC&quot;, </span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co">#   &quot;SCHEDD&quot;, &quot;SCHEDE&quot;, &quot;SCHEDF&quot;, </span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="co">#   &quot;SCHEDG&quot;, &quot;SCHEDH&quot;, &quot;SCHEDI&quot;, </span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co">#   &quot;SCHEDJ&quot;, &quot;SCHEDK&quot;, &quot;SCHEDL&quot;, </span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="co">#   &quot;SCHEDM&quot;, &quot;SCHEDN&quot;, &quot;SCHEDO&quot;, </span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="co">#   &quot;SCHEDR&quot;</span></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>( index )</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>( index )</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["EIN"],"name":[1],"type":["chr"],"align":["left"]},{"label":["TaxPeriod"],"name":[2],"type":["chr"],"align":["left"]},{"label":["DLN"],"name":[3],"type":["chr"],"align":["left"]},{"label":["FormType"],"name":[4],"type":["chr"],"align":["left"]},{"label":["URL"],"name":[5],"type":["chr"],"align":["left"]},{"label":["OrganizationName"],"name":[6],"type":["chr"],"align":["left"]},{"label":["SubmittedOn"],"name":[7],"type":["chr"],"align":["left"]},{"label":["ObjectId"],"name":[8],"type":["chr"],"align":["left"]},{"label":["LastUpdated"],"name":[9],"type":["chr"],"align":["left"]},{"label":["TaxYear"],"name":[10],"type":["dbl"],"align":["right"]}],"data":[{"1":"521959601","2":"201812","3":"93493232006139","4":"990","5":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201932329349300613_public.xml","6":"MASTOCYTOSIS SOCIETY INC","7":"2019-10-29","8":"201932329349300613","9":"2019-12-12T13:40:41","10":"2018","_rn_":"1"},{"1":"364165018","2":"201906","3":"93493136007380","4":"990","5":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/202031369349300738_public.xml","6":"MCKINLEY III INC","7":"2020-10-06","8":"202031369349300738","9":"2020-10-21T16:54:13","10":"2018","_rn_":"2"},{"1":"351157606","2":"201406","3":"93493028007035","4":"990","5":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201530289349300703_public.xml","6":"REAL SERVICES INC","7":"2015-02-06","8":"201530289349300703","9":"2016-03-21T17:23:53","10":"2013","_rn_":"3"},{"1":"842359546","2":"201912","3":"93492217006030","4":"990EZ","5":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/202032179349200603_public.xml","6":"GREATER KANSAS CITY FRIENDS OF FISHER HOUSE","7":"2020-12-10","8":"202032179349200603","9":"2021-01-29T00:12:26","10":"2019","_rn_":"4"},{"1":"510563980","2":"201412","3":"93492167002235","4":"990EZ","5":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201531679349200223_public.xml","6":"THUMBNAIL THEATER","7":"2015-07-14","8":"201531679349200223","9":"2016-04-29T13:40:20","10":"2014","_rn_":"5"},{"1":"341209968","2":"201812","3":"93493319042249","4":"990","5":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201943199349304224_public.xml","6":"HURON BAND PARENTS INC","7":"2020-02-08","8":"201943199349304224","9":"2020-04-07T15:44:01","10":"2018","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -3684,27 +3652,56 @@ DICTIONARY</strong></a></p>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># SetNodeStyle(acme$IT, fillcolor = &quot;LightBlue&quot;, penwidth = &quot;5px&quot;)</span></span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>( nd )</span></code></pre></div>
-<div id="htmlwidget-15491fe1cd9aefdb4406" style="width:960px;height:1920px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-15491fe1cd9aefdb4406">{"x":{"diagram":"digraph {\n\ngraph [rankdir = \"LR\"]\n\n\n\n  \"1\" [label = \"Return\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: Return\", fillcolor = \"LightBlue\"] \n  \"2\" [label = \"ReturnData\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: ReturnData\", fillcolor = \"LightBlue\"] \n  \"3\" [label = \"IRS990\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: IRS990\", fillcolor = \"LightBlue\"] \n  \"4\" [label = \"Form990PartVIII\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: Form990PartVIII\", fillcolor = \"LightBlue\"] \n  \"5\" [label = \"OtherRevenueMisc\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: OtherRevenueMisc\", fillcolor = \"LightBlue\"] \n  \"6\" [label = \"BusinessCode\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: BusinessCode\", fillcolor = \"LightBlue\"] \n  \"7\" [label = \"Description\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: Description\", fillcolor = \"LightBlue\"] \n  \"8\" [label = \"ExclusionAmount\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: ExclusionAmount\", fillcolor = \"LightBlue\"] \n  \"9\" [label = \"RelatedOrExemptFunctionIncome\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: RelatedOrExemptFunctionIncome\", fillcolor = \"LightBlue\"] \n  \"10\" [label = \"TotalRevenueColumn\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: TotalRevenueColumn\", fillcolor = \"LightBlue\"] \n  \"11\" [label = \"UnrelatedBusinessRevenue\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: UnrelatedBusinessRevenue\", fillcolor = \"LightBlue\"] \n  \"12\" [label = \"OtherRevenueMisc\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: OtherRevenueMisc\", fillcolor = \"LightBlue\"] \n  \"13\" [label = \"BusinessCode\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: BusinessCode\", fillcolor = \"LightBlue\"] \n  \"14\" [label = \"Description\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: Description\", fillcolor = \"LightBlue\"] \n  \"15\" [label = \"ExclusionAmount\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: ExclusionAmount\", fillcolor = \"LightBlue\"] \n  \"16\" [label = \"RelatedOrExemptFunctionIncome\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: RelatedOrExemptFunctionIncome\", fillcolor = \"LightBlue\"] \n  \"17\" [label = \"TotalRevenueColumn\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: TotalRevenueColumn\", fillcolor = \"LightBlue\"] \n  \"18\" [label = \"UnrelatedBusinessRevenue\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: UnrelatedBusinessRevenue\", fillcolor = \"LightBlue\"] \n  \"19\" [label = \"OtherRevenueMiscGrp\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: OtherRevenueMiscGrp\", fillcolor = \"LightBlue\"] \n  \"20\" [label = \"BusinessCd\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: BusinessCd\", fillcolor = \"LightBlue\"] \n  \"21\" [label = \"Desc\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: Desc\", fillcolor = \"LightBlue\"] \n  \"22\" [label = \"ExclusionAmt\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: ExclusionAmt\", fillcolor = \"LightBlue\"] \n  \"23\" [label = \"RelatedOrExemptFuncIncomeAmt\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: RelatedOrExemptFuncIncomeAmt\", fillcolor = \"LightBlue\"] \n  \"24\" [label = \"TotalRevenueColumnAmt\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: TotalRevenueColumnAmt\", fillcolor = \"LightBlue\"] \n  \"25\" [label = \"UnrelatedBusinessRevenueAmt\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: UnrelatedBusinessRevenueAmt\", fillcolor = \"LightBlue\"] \n\"1\"->\"2\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"2\"->\"3\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"3\"->\"4\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"3\"->\"12\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"3\"->\"19\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"4\"->\"5\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"12\"->\"13\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"12\"->\"14\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"12\"->\"15\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"12\"->\"16\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"12\"->\"17\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"12\"->\"18\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"19\"->\"20\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"19\"->\"21\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"19\"->\"22\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"19\"->\"23\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"19\"->\"24\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"19\"->\"25\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"5\"->\"6\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"5\"->\"7\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"5\"->\"8\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"5\"->\"9\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"5\"->\"10\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"5\"->\"11\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-ed3940ab0b7925f6313f" style="width:960px;height:1920px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ed3940ab0b7925f6313f">{"x":{"diagram":"digraph {\n\ngraph [rankdir = \"LR\"]\n\n\n\n  \"1\" [label = \"Return\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: Return\", fillcolor = \"LightBlue\"] \n  \"2\" [label = \"ReturnData\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: ReturnData\", fillcolor = \"LightBlue\"] \n  \"3\" [label = \"IRS990\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: IRS990\", fillcolor = \"LightBlue\"] \n  \"4\" [label = \"Form990PartVIII\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: Form990PartVIII\", fillcolor = \"LightBlue\"] \n  \"5\" [label = \"OtherRevenueMisc\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: OtherRevenueMisc\", fillcolor = \"LightBlue\"] \n  \"6\" [label = \"BusinessCode\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: BusinessCode\", fillcolor = \"LightBlue\"] \n  \"7\" [label = \"Description\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: Description\", fillcolor = \"LightBlue\"] \n  \"8\" [label = \"ExclusionAmount\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: ExclusionAmount\", fillcolor = \"LightBlue\"] \n  \"9\" [label = \"RelatedOrExemptFunctionIncome\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: RelatedOrExemptFunctionIncome\", fillcolor = \"LightBlue\"] \n  \"10\" [label = \"TotalRevenueColumn\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: TotalRevenueColumn\", fillcolor = \"LightBlue\"] \n  \"11\" [label = \"UnrelatedBusinessRevenue\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: UnrelatedBusinessRevenue\", fillcolor = \"LightBlue\"] \n  \"12\" [label = \"OtherRevenueMisc\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: OtherRevenueMisc\", fillcolor = \"LightBlue\"] \n  \"13\" [label = \"BusinessCode\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: BusinessCode\", fillcolor = \"LightBlue\"] \n  \"14\" [label = \"Description\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: Description\", fillcolor = \"LightBlue\"] \n  \"15\" [label = \"ExclusionAmount\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: ExclusionAmount\", fillcolor = \"LightBlue\"] \n  \"16\" [label = \"RelatedOrExemptFunctionIncome\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: RelatedOrExemptFunctionIncome\", fillcolor = \"LightBlue\"] \n  \"17\" [label = \"TotalRevenueColumn\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: TotalRevenueColumn\", fillcolor = \"LightBlue\"] \n  \"18\" [label = \"UnrelatedBusinessRevenue\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: UnrelatedBusinessRevenue\", fillcolor = \"LightBlue\"] \n  \"19\" [label = \"OtherRevenueMiscGrp\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: OtherRevenueMiscGrp\", fillcolor = \"LightBlue\"] \n  \"20\" [label = \"BusinessCd\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: BusinessCd\", fillcolor = \"LightBlue\"] \n  \"21\" [label = \"Desc\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: Desc\", fillcolor = \"LightBlue\"] \n  \"22\" [label = \"ExclusionAmt\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: ExclusionAmt\", fillcolor = \"LightBlue\"] \n  \"23\" [label = \"RelatedOrExemptFuncIncomeAmt\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: RelatedOrExemptFuncIncomeAmt\", fillcolor = \"LightBlue\"] \n  \"24\" [label = \"TotalRevenueColumnAmt\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: TotalRevenueColumnAmt\", fillcolor = \"LightBlue\"] \n  \"25\" [label = \"UnrelatedBusinessRevenueAmt\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: UnrelatedBusinessRevenueAmt\", fillcolor = \"LightBlue\"] \n\"1\"->\"2\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"2\"->\"3\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"3\"->\"4\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"3\"->\"12\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"3\"->\"19\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"4\"->\"5\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"12\"->\"13\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"12\"->\"14\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"12\"->\"15\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"12\"->\"16\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"12\"->\"17\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"12\"->\"18\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"19\"->\"20\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"19\"->\"21\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"19\"->\"22\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"19\"->\"23\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"19\"->\"24\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"19\"->\"25\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"5\"->\"6\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"5\"->\"7\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"5\"->\"8\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"5\"->\"9\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"5\"->\"10\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"5\"->\"11\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># old version</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find_group_names</span>( table.name )</span></code></pre></div>
-<pre><code>## [1] &quot;//Form990PartVIII&quot;     &quot;//OtherRevenueMisc&quot;    &quot;//OtherRevenueMiscGrp&quot;</code></pre>
+<pre><code>## [1] &quot;//Form990PartVIII&quot;     &quot;//OtherRevenueMisc&quot;   
+## [3] &quot;//OtherRevenueMiscGrp&quot;</code></pre>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># new version</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find_table_headers</span>( table.name )</span></code></pre></div>
-<pre><code>##  [1] &quot;//Form990PartVIII/FederatedCampaigns&quot;               &quot;//Form990PartVIII/FundraisingEvents&quot;                &quot;//Form990PartVIII/RelatedOrganizations&quot;            
-##  [4] &quot;//Form990PartVIII/GovernmentGrants&quot;                 &quot;//Form990PartVIII/AllOtherContributions&quot;            &quot;//Form990PartVIII/NoncashContributions&quot;            
-##  [7] &quot;//Form990PartVIII/TotalContributions&quot;               &quot;//Form990PartVIII/ProgramServiceRevenue&quot;            &quot;//Form990PartVIII/TotalOthProgramServiceRevenue&quot;   
-## [10] &quot;//Form990PartVIII/TotalProgramServiceRevenue&quot;       &quot;//Form990PartVIII/InvestmentIncome&quot;                 &quot;//Form990PartVIII/IncomeFromInvestBondProceeds&quot;    
-## [13] &quot;//Form990PartVIII/RoyaltiesRevenue&quot;                 &quot;//Form990PartVIII/GrossRents&quot;                       &quot;//Form990PartVIII/LessRentalExpenses&quot;              
-## [16] &quot;//Form990PartVIII/RentalIncomeOrLoss&quot;               &quot;//Form990PartVIII/NetRentalIncomeOrLoss&quot;            &quot;//Form990PartVIII/GrossAmountSalesAssets&quot;          
-## [19] &quot;//Form990PartVIII/LessCostOthBasisSalesExpenses&quot;    &quot;//Form990PartVIII/GainOrLoss&quot;                       &quot;//Form990PartVIII/NetGainOrLossInvestments&quot;        
-## [22] &quot;//Form990PartVIII/CntrbtnsRprtdFundraisingEvents&quot;   &quot;//Form990PartVIII/GrossIncomeFundraisingEvents&quot;     &quot;//Form990PartVIII/FundraisingDirectExpenses&quot;       
-## [25] &quot;//Form990PartVIII/NetIncomeFromFundraisingEvents&quot;   &quot;//Form990PartVIII/GrossIncomeGaming&quot;                &quot;//Form990PartVIII/GamingDirectExpenses&quot;            
-## [28] &quot;//Form990PartVIII/NetIncomeFromGaming&quot;              &quot;//Form990PartVIII/GrossSalesOfInventory&quot;            &quot;//Form990PartVIII/CostOfGoodsSold&quot;                 
-## [31] &quot;//Form990PartVIII/NetIncomeOrLoss&quot;                  &quot;//Form990PartVIII/OtherRevenueMisc&quot;                 &quot;//Form990PartVIII/MiscellaneousRevenue&quot;            
-## [34] &quot;//Form990PartVIII/TotalOtherRevenue&quot;                &quot;//Form990PartVIII/TotalRevenue&quot;                     &quot;//OtherRevenueMisc/Form990PartVIII&quot;                
-## [37] &quot;//OtherRevenueMisc/OtherRevenueMisc&quot;                &quot;//OtherRevenueMiscGrp/Desc&quot;                         &quot;//OtherRevenueMiscGrp/TotalRevenueColumnAmt&quot;       
-## [40] &quot;//OtherRevenueMiscGrp/RelatedOrExemptFuncIncomeAmt&quot; &quot;//OtherRevenueMiscGrp/BusinessCd&quot;                   &quot;//OtherRevenueMiscGrp/UnrelatedBusinessRevenueAmt&quot; 
+<pre><code>##  [1] &quot;//Form990PartVIII/FederatedCampaigns&quot;              
+##  [2] &quot;//Form990PartVIII/FundraisingEvents&quot;               
+##  [3] &quot;//Form990PartVIII/RelatedOrganizations&quot;            
+##  [4] &quot;//Form990PartVIII/GovernmentGrants&quot;                
+##  [5] &quot;//Form990PartVIII/AllOtherContributions&quot;           
+##  [6] &quot;//Form990PartVIII/NoncashContributions&quot;            
+##  [7] &quot;//Form990PartVIII/TotalContributions&quot;              
+##  [8] &quot;//Form990PartVIII/ProgramServiceRevenue&quot;           
+##  [9] &quot;//Form990PartVIII/TotalOthProgramServiceRevenue&quot;   
+## [10] &quot;//Form990PartVIII/TotalProgramServiceRevenue&quot;      
+## [11] &quot;//Form990PartVIII/InvestmentIncome&quot;                
+## [12] &quot;//Form990PartVIII/IncomeFromInvestBondProceeds&quot;    
+## [13] &quot;//Form990PartVIII/RoyaltiesRevenue&quot;                
+## [14] &quot;//Form990PartVIII/GrossRents&quot;                      
+## [15] &quot;//Form990PartVIII/LessRentalExpenses&quot;              
+## [16] &quot;//Form990PartVIII/RentalIncomeOrLoss&quot;              
+## [17] &quot;//Form990PartVIII/NetRentalIncomeOrLoss&quot;           
+## [18] &quot;//Form990PartVIII/GrossAmountSalesAssets&quot;          
+## [19] &quot;//Form990PartVIII/LessCostOthBasisSalesExpenses&quot;   
+## [20] &quot;//Form990PartVIII/GainOrLoss&quot;                      
+## [21] &quot;//Form990PartVIII/NetGainOrLossInvestments&quot;        
+## [22] &quot;//Form990PartVIII/CntrbtnsRprtdFundraisingEvents&quot;  
+## [23] &quot;//Form990PartVIII/GrossIncomeFundraisingEvents&quot;    
+## [24] &quot;//Form990PartVIII/FundraisingDirectExpenses&quot;       
+## [25] &quot;//Form990PartVIII/NetIncomeFromFundraisingEvents&quot;  
+## [26] &quot;//Form990PartVIII/GrossIncomeGaming&quot;               
+## [27] &quot;//Form990PartVIII/GamingDirectExpenses&quot;            
+## [28] &quot;//Form990PartVIII/NetIncomeFromGaming&quot;             
+## [29] &quot;//Form990PartVIII/GrossSalesOfInventory&quot;           
+## [30] &quot;//Form990PartVIII/CostOfGoodsSold&quot;                 
+## [31] &quot;//Form990PartVIII/NetIncomeOrLoss&quot;                 
+## [32] &quot;//Form990PartVIII/OtherRevenueMisc&quot;                
+## [33] &quot;//Form990PartVIII/MiscellaneousRevenue&quot;            
+## [34] &quot;//Form990PartVIII/TotalOtherRevenue&quot;               
+## [35] &quot;//Form990PartVIII/TotalRevenue&quot;                    
+## [36] &quot;//OtherRevenueMisc/Form990PartVIII&quot;                
+## [37] &quot;//OtherRevenueMisc/OtherRevenueMisc&quot;               
+## [38] &quot;//OtherRevenueMiscGrp/Desc&quot;                        
+## [39] &quot;//OtherRevenueMiscGrp/TotalRevenueColumnAmt&quot;       
+## [40] &quot;//OtherRevenueMiscGrp/RelatedOrExemptFuncIncomeAmt&quot;
+## [41] &quot;//OtherRevenueMiscGrp/BusinessCd&quot;                  
+## [42] &quot;//OtherRevenueMiscGrp/UnrelatedBusinessRevenueAmt&quot; 
 ## [43] &quot;//OtherRevenueMiscGrp/ExclusionAmt&quot;</code></pre>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># manual</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>( <span class="sc">!</span> <span class="fu">is.null</span>(table.headers) )</span>
@@ -3767,24 +3764,28 @@ DICTIONARY</strong></a></p>
 <span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a>all.xpaths <span class="ot">&lt;-</span> xpath.list <span class="sc">%&gt;%</span> <span class="fu">unlist</span>() <span class="sc">%&gt;%</span> <span class="fu">unique</span>() <span class="sc">%&gt;%</span> <span class="fu">sort</span>()</span>
 <span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>( all.xpaths, <span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>, <span class="at">file=</span><span class="st">&quot;XPATH-LOG.txt&quot;</span> )</span></code></pre></div>
 <p>TABLE: <strong>F9-P08-T02-REVENUE-MISC</strong></p>
-<pre><code>## [1] &quot;NUMBER OF RETURNS PROCESSED:   25&quot;
-## [1] &quot;TOTAL NUMBER OF TABLE ROWS:   6&quot;</code></pre>
+<pre><code>## [1] &quot;NUMBER OF RETURNS PROCESSED:   1000&quot;
+## [1] &quot;TOTAL NUMBER OF TABLE ROWS:   278&quot;</code></pre>
 <p>TOTAL RUN TIME:</p>
-<pre><code>## Time difference of 18.44585 secs
-## Time difference of -0.005123848 hours</code></pre>
+<pre><code>## Time difference of 17.05756 mins
+## Time difference of -0.2842926 hours</code></pre>
 <div id="write-to-file" class="section level2">
 <h2>Write to File</h2>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>( df, <span class="fu">paste0</span>( folder.name, <span class="st">&quot;/&quot;</span>, table.name, <span class="st">&quot;.csv&quot;</span> ), <span class="at">row.names=</span>F )</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df) </span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["OBJECT_ID"],"name":[1],"type":["chr"],"align":["left"]},{"label":["EIN"],"name":[2],"type":["chr"],"align":["left"]},{"label":["NAME"],"name":[3],"type":["chr"],"align":["left"]},{"label":["TAXYR"],"name":[4],"type":["chr"],"align":["left"]},{"label":["FORMTYPE"],"name":[5],"type":["chr"],"align":["left"]},{"label":["URL"],"name":[6],"type":["chr"],"align":["left"]},{"label":["F9_08_REV_MISC_DESC"],"name":[7],"type":["chr"],"align":["left"]},{"label":["F9_08_REV_MISC_BIZCODE"],"name":[8],"type":["chr"],"align":["left"]},{"label":["F9_08_REV_MISC_TOT"],"name":[9],"type":["chr"],"align":["left"]},{"label":["F9_08_REV_MISC_RLTD"],"name":[10],"type":["chr"],"align":["left"]}],"data":[{"1":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201910929349300506","2":"411273335","3":"GRACEVILLE RURAL RENTAL HOUSINGINC","4":"2018","5":"990","6":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201910929349300506_public.xml","7":"OTHER INCOME","8":"532000","9":"1462","10":"1462","_rn_":"1"},{"1":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201603199349307775","2":"450432114","3":"MINOT PUBLIC SCHOOL FOUNDATION","4":"2015","5":"990","6":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201603199349307775_public.xml","7":"MISCELLANEOUS INCOME","8":"900099","9":"4268","10":"4268","_rn_":"2"},{"1":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201532999349300313","2":"226082849","3":"COMMUNICATION WORKERS OF AMERICA","4":"2014","5":"990","6":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201532999349300313_public.xml","7":"HEALTH & WELFARE DUES","8":"NA","9":"402762","10":"402762","_rn_":"3"},{"1":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201532999349300313","2":"226082849","3":"COMMUNICATION WORKERS OF AMERICA","4":"2014","5":"990","6":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201532999349300313_public.xml","7":"PARKING INCOME","8":"NA","9":"18818","10":"18818","_rn_":"4"},{"1":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201532999349300313","2":"226082849","3":"COMMUNICATION WORKERS OF AMERICA","4":"2014","5":"990","6":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201532999349300313_public.xml","7":"SCHOLARSHIP FUNCTIONS","8":"NA","9":"17730","10":"17730","_rn_":"5"},{"1":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201502049349301115","2":"351760451","3":"Indiana Youth Group Inc","4":"2014","5":"990","6":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201502049349301115_public.xml","7":"Miscellaneous","8":"624100","9":"3084","10":"3084","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["OBJECT_ID"],"name":[1],"type":["chr"],"align":["left"]},{"label":["EIN"],"name":[2],"type":["chr"],"align":["left"]},{"label":["NAME"],"name":[3],"type":["chr"],"align":["left"]},{"label":["TAXYR"],"name":[4],"type":["chr"],"align":["left"]},{"label":["FORMTYPE"],"name":[5],"type":["chr"],"align":["left"]},{"label":["URL"],"name":[6],"type":["chr"],"align":["left"]},{"label":["F9_08_REV_MISC_DESC"],"name":[7],"type":["chr"],"align":["left"]},{"label":["F9_08_REV_MISC_BIZCODE"],"name":[8],"type":["chr"],"align":["left"]},{"label":["F9_08_REV_MISC_TOT"],"name":[9],"type":["chr"],"align":["left"]},{"label":["F9_08_REV_MISC_RLTD"],"name":[10],"type":["chr"],"align":["left"]},{"label":["F9_08_REV_MISC_EXCL"],"name":[11],"type":["chr"],"align":["left"]},{"label":["F9_08_REV_MISC_UBIZ"],"name":[12],"type":["chr"],"align":["left"]}],"data":[{"1":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201910929349300506","2":"411273335","3":"GRACEVILLE RURAL RENTAL HOUSINGINC","4":"2018","5":"990","6":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201910929349300506_public.xml","7":"OTHER INCOME","8":"532000","9":"1462","10":"1462","11":"NA","12":"NA","_rn_":"1"},{"1":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201603199349307775","2":"450432114","3":"MINOT PUBLIC SCHOOL FOUNDATION","4":"2015","5":"990","6":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201603199349307775_public.xml","7":"MISCELLANEOUS INCOME","8":"900099","9":"4268","10":"4268","11":"NA","12":"NA","_rn_":"2"},{"1":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201532999349300313","2":"226082849","3":"COMMUNICATION WORKERS OF AMERICA","4":"2014","5":"990","6":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201532999349300313_public.xml","7":"HEALTH & WELFARE DUES","8":"NA","9":"402762","10":"402762","11":"NA","12":"NA","_rn_":"3"},{"1":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201532999349300313","2":"226082849","3":"COMMUNICATION WORKERS OF AMERICA","4":"2014","5":"990","6":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201532999349300313_public.xml","7":"PARKING INCOME","8":"NA","9":"18818","10":"18818","11":"NA","12":"NA","_rn_":"4"},{"1":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201532999349300313","2":"226082849","3":"COMMUNICATION WORKERS OF AMERICA","4":"2014","5":"990","6":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201532999349300313_public.xml","7":"SCHOLARSHIP FUNCTIONS","8":"NA","9":"17730","10":"17730","11":"NA","12":"NA","_rn_":"5"},{"1":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201502049349301115","2":"351760451","3":"Indiana Youth Group Inc","4":"2014","5":"990","6":"https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201502049349301115_public.xml","7":"Miscellaneous","8":"624100","9":"3084","10":"3084","11":"NA","12":"NA","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>Are all names standardized?</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
-<pre><code>##  [1] &quot;OBJECT_ID&quot;              &quot;EIN&quot;                    &quot;NAME&quot;                   &quot;TAXYR&quot;                  &quot;FORMTYPE&quot;               &quot;URL&quot;                   
-##  [7] &quot;F9_08_REV_MISC_DESC&quot;    &quot;F9_08_REV_MISC_BIZCODE&quot; &quot;F9_08_REV_MISC_TOT&quot;     &quot;F9_08_REV_MISC_RLTD&quot;</code></pre>
+<pre><code>##  [1] &quot;OBJECT_ID&quot;              &quot;EIN&quot;                   
+##  [3] &quot;NAME&quot;                   &quot;TAXYR&quot;                 
+##  [5] &quot;FORMTYPE&quot;               &quot;URL&quot;                   
+##  [7] &quot;F9_08_REV_MISC_DESC&quot;    &quot;F9_08_REV_MISC_BIZCODE&quot;
+##  [9] &quot;F9_08_REV_MISC_TOT&quot;     &quot;F9_08_REV_MISC_RLTD&quot;   
+## [11] &quot;F9_08_REV_MISC_EXCL&quot;    &quot;F9_08_REV_MISC_UBIZ&quot;</code></pre>
 <p><br> <br> <br></p>
 <hr>
 <p><br> <br> <br></p>
@@ -3815,7 +3816,21 @@ Concordance file.</p>
 <span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
 <span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;ALL URLs ARE VALID&quot;</span>)</span>
 <span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<pre><code>## [1] &quot;ALL URLs ARE VALID&quot;</code></pre>
+<table style="width:44%;">
+<colgroup>
+<col width="44%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Client error: (404) Not Found</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
 <p><br> <br> <br></p>
 <hr>
 <p><br> <br> <br></p>
@@ -3830,8 +3845,8 @@ R/utils.R.</p>
 <p>V1 retains the root nodes Return and ReturnData.</p>
 <p>V2 drops the root nodes and uses form versions “990” and “990EZ” as
 the root to visualize the sets of tables separately.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># KEEP ROOT NOTES Return &amp; ReturnData</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>el <span class="ot">&lt;-</span> <span class="fu">create_edgelist_v1</span>( all.xpaths )</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># KEEP ROOT NOTES Return &amp; ReturnData</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>el <span class="ot">&lt;-</span> <span class="fu">create_edgelist_v1</span>( all.xpaths )</span></code></pre></div>
 <br>
 <hr>
 <p><br></p>
@@ -3896,43 +3911,45 @@ the root to visualize the sets of tables separately.</p>
 </div>
 <div id="visualize-tree-structure" class="section level2">
 <h2>Visualize Tree Structure</h2>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library( data.tree )</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>nd <span class="ot">&lt;-</span> <span class="fu">FromDataFrameNetwork</span>( <span class="at">network=</span>el )</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>( nd )</span></code></pre></div>
-<pre><code>##                                      levelName
-## 1 Return                                      
-## 2  °--ReturnData                              
-## 3      °--IRS990                              
-## 4          °--OtherRevenueMiscGrp             
-## 5              ¦--BusinessCd                  
-## 6              ¦--Desc                        
-## 7              ¦--RelatedOrExemptFuncIncomeAmt
-## 8              °--TotalRevenueColumnAmt</code></pre>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">SetGraphStyle</span>( nd, <span class="at">rankdir =</span> <span class="st">&quot;LR&quot;</span>)</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">SetEdgeStyle</span>( nd, <span class="at">arrowhead =</span> <span class="st">&quot;vee&quot;</span>, <span class="at">color =</span> <span class="st">&quot;grey20&quot;</span>, <span class="at">penwidth =</span> <span class="dv">2</span> )</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">SetNodeStyle</span>( nd, </span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">style =</span> <span class="st">&quot;filled,rounded&quot;</span>, </span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">shape =</span> <span class="st">&quot;box&quot;</span>, </span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">fillcolor =</span> <span class="st">&quot;LightBlue&quot;</span>, </span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">fontname =</span> <span class="st">&quot;helvetica&quot;</span>, </span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">fontcolor=</span><span class="st">&quot;black&quot;</span>,</span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">tooltip =</span> GetDefaultTooltip )</span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="co"># SetNodeStyle(acme$IT, fillcolor = &quot;LightBlue&quot;, penwidth = &quot;5px&quot;)</span></span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>( nd )</span></code></pre></div>
-<div id="htmlwidget-40435ec78d541baa6aa8" style="width:960px;height:1920px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-40435ec78d541baa6aa8">{"x":{"diagram":"digraph {\n\ngraph [rankdir = \"LR\"]\n\n\n\n  \"1\" [label = \"Return\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: Return\", fillcolor = \"LightBlue\"] \n  \"2\" [label = \"ReturnData\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: ReturnData\", fillcolor = \"LightBlue\"] \n  \"3\" [label = \"IRS990\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: IRS990\", fillcolor = \"LightBlue\"] \n  \"4\" [label = \"OtherRevenueMiscGrp\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: OtherRevenueMiscGrp\", fillcolor = \"LightBlue\"] \n  \"5\" [label = \"BusinessCd\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: BusinessCd\", fillcolor = \"LightBlue\"] \n  \"6\" [label = \"Desc\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: Desc\", fillcolor = \"LightBlue\"] \n  \"7\" [label = \"RelatedOrExemptFuncIncomeAmt\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: RelatedOrExemptFuncIncomeAmt\", fillcolor = \"LightBlue\"] \n  \"8\" [label = \"TotalRevenueColumnAmt\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: TotalRevenueColumnAmt\", fillcolor = \"LightBlue\"] \n\"1\"->\"2\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"2\"->\"3\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"3\"->\"4\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"4\"->\"5\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"4\"->\"6\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"4\"->\"7\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"4\"->\"8\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library( networkD3 )</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># net &lt;- ToDataFrameNetwork( nd, &quot;name&quot; )</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># simpleNetwork( net, fontSize = 12 )</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">simpleNetwork</span>( el, <span class="at">fontSize =</span> <span class="dv">12</span> )</span></code></pre></div>
-<div id="htmlwidget-3c65b55e397d7d81e239" style="width:960px;height:480px;" class="forceNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3c65b55e397d7d81e239">{"x":{"links":{"source":[5,6,2,3,3,3,3],"target":[6,2,3,0,1,4,7],"value":[1,1,1,1,1,1,1],"colour":["#666","#666","#666","#666","#666","#666","#666"]},"nodes":{"name":["BusinessCd","Desc","IRS990","OtherRevenueMiscGrp","RelatedOrExemptFuncIncomeAmt","Return","ReturnData","TotalRevenueColumnAmt"],"group":[1,1,1,1,1,1,1,1],"nodesize":[8,8,8,8,8,8,8,8]},"options":{"NodeID":"name","Group":"group","colourScale":"d3.scaleOrdinal(['#3182bd'])","fontSize":12,"fontFamily":"serif","clickTextSize":30,"linkDistance":50,"linkWidth":"'1.5px'.toString()","charge":-30,"opacity":0.6,"zoom":false,"legend":false,"arrows":false,"nodesize":true,"radiusCalculation":"d.nodesize","bounded":false,"opacityNoHover":1,"clickAction":null}},"evals":[],"jsHooks":[]}</script>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot with networkD3</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>radnet <span class="ot">&lt;-</span> <span class="fu">ToListExplicit</span>( nd, <span class="at">unname =</span> <span class="cn">TRUE</span> )</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">radialNetwork</span>( radnet, <span class="at">fontSize =</span> <span class="dv">12</span> )</span></code></pre></div>
-<div id="htmlwidget-ea2b9d327821368e0e1c" style="width:960px;height:960px;" class="radialNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ea2b9d327821368e0e1c">{"x":{"root":{"name":"Return","children":[{"name":"ReturnData","children":[{"name":"IRS990","children":[{"name":"OtherRevenueMiscGrp","children":[{"name":"BusinessCd"},{"name":"Desc"},{"name":"RelatedOrExemptFuncIncomeAmt"},{"name":"TotalRevenueColumnAmt"}]}]}]}]},"options":{"height":null,"width":null,"fontSize":12,"fontFamily":"serif","linkColour":"#ccc","nodeColour":"#fff","nodeStroke":"steelblue","textColour":"#111","margin":{"top":null,"right":null,"bottom":null,"left":null},"opacity":0.9}},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library( data.tree )</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>nd <span class="ot">&lt;-</span> <span class="fu">FromDataFrameNetwork</span>( <span class="at">network=</span>el )</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>( nd )</span></code></pre></div>
+<pre><code>##                                       levelName
+## 1  Return                                      
+## 2   °--ReturnData                              
+## 3       °--IRS990                              
+## 4           °--OtherRevenueMiscGrp             
+## 5               ¦--BusinessCd                  
+## 6               ¦--Desc                        
+## 7               ¦--ExclusionAmt                
+## 8               ¦--RelatedOrExemptFuncIncomeAmt
+## 9               ¦--TotalRevenueColumnAmt       
+## 10              °--UnrelatedBusinessRevenueAmt</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">SetGraphStyle</span>( nd, <span class="at">rankdir =</span> <span class="st">&quot;LR&quot;</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">SetEdgeStyle</span>( nd, <span class="at">arrowhead =</span> <span class="st">&quot;vee&quot;</span>, <span class="at">color =</span> <span class="st">&quot;grey20&quot;</span>, <span class="at">penwidth =</span> <span class="dv">2</span> )</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">SetNodeStyle</span>( nd, </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">style =</span> <span class="st">&quot;filled,rounded&quot;</span>, </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">shape =</span> <span class="st">&quot;box&quot;</span>, </span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">fillcolor =</span> <span class="st">&quot;LightBlue&quot;</span>, </span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">fontname =</span> <span class="st">&quot;helvetica&quot;</span>, </span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">fontcolor=</span><span class="st">&quot;black&quot;</span>,</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">tooltip =</span> GetDefaultTooltip )</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="co"># SetNodeStyle(acme$IT, fillcolor = &quot;LightBlue&quot;, penwidth = &quot;5px&quot;)</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>( nd )</span></code></pre></div>
+<div id="htmlwidget-9f58ce8d26cae5c651e4" style="width:960px;height:1920px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9f58ce8d26cae5c651e4">{"x":{"diagram":"digraph {\n\ngraph [rankdir = \"LR\"]\n\n\n\n  \"1\" [label = \"Return\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: Return\", fillcolor = \"LightBlue\"] \n  \"2\" [label = \"ReturnData\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: ReturnData\", fillcolor = \"LightBlue\"] \n  \"3\" [label = \"IRS990\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: IRS990\", fillcolor = \"LightBlue\"] \n  \"4\" [label = \"OtherRevenueMiscGrp\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: OtherRevenueMiscGrp\", fillcolor = \"LightBlue\"] \n  \"5\" [label = \"BusinessCd\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: BusinessCd\", fillcolor = \"LightBlue\"] \n  \"6\" [label = \"Desc\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: Desc\", fillcolor = \"LightBlue\"] \n  \"7\" [label = \"ExclusionAmt\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: ExclusionAmt\", fillcolor = \"LightBlue\"] \n  \"8\" [label = \"RelatedOrExemptFuncIncomeAmt\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: RelatedOrExemptFuncIncomeAmt\", fillcolor = \"LightBlue\"] \n  \"9\" [label = \"TotalRevenueColumnAmt\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: TotalRevenueColumnAmt\", fillcolor = \"LightBlue\"] \n  \"10\" [label = \"UnrelatedBusinessRevenueAmt\", style = \"filled,rounded\", shape = \"box\", fontname = \"helvetica\", fontcolor = \"black\", tooltip = \"- name: UnrelatedBusinessRevenueAmt\", fillcolor = \"LightBlue\"] \n\"1\"->\"2\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"2\"->\"3\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"3\"->\"4\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"4\"->\"5\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"4\"->\"6\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"4\"->\"7\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"4\"->\"8\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"4\"->\"9\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n\"4\"->\"10\" [arrowhead = \"vee\", color = \"grey20\", penwidth = \"2\"] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library( networkD3 )</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># net &lt;- ToDataFrameNetwork( nd, &quot;name&quot; )</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># simpleNetwork( net, fontSize = 12 )</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">simpleNetwork</span>( el, <span class="at">fontSize =</span> <span class="dv">12</span> )</span></code></pre></div>
+<div id="htmlwidget-0d96cf333091904915b8" style="width:960px;height:480px;" class="forceNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0d96cf333091904915b8">{"x":{"links":{"source":[6,7,3,4,4,4,4,4,4],"target":[7,3,4,0,1,2,5,8,9],"value":[1,1,1,1,1,1,1,1,1],"colour":["#666","#666","#666","#666","#666","#666","#666","#666","#666"]},"nodes":{"name":["BusinessCd","Desc","ExclusionAmt","IRS990","OtherRevenueMiscGrp","RelatedOrExemptFuncIncomeAmt","Return","ReturnData","TotalRevenueColumnAmt","UnrelatedBusinessRevenueAmt"],"group":[1,1,1,1,1,1,1,1,1,1],"nodesize":[8,8,8,8,8,8,8,8,8,8]},"options":{"NodeID":"name","Group":"group","colourScale":"d3.scaleOrdinal(['#3182bd'])","fontSize":12,"fontFamily":"serif","clickTextSize":30,"linkDistance":50,"linkWidth":"'1.5px'.toString()","charge":-30,"opacity":0.6,"zoom":false,"legend":false,"arrows":false,"nodesize":true,"radiusCalculation":"d.nodesize","bounded":false,"opacityNoHover":1,"clickAction":null}},"evals":[],"jsHooks":[]}</script>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot with networkD3</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>radnet <span class="ot">&lt;-</span> <span class="fu">ToListExplicit</span>( nd, <span class="at">unname =</span> <span class="cn">TRUE</span> )</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">radialNetwork</span>( radnet, <span class="at">fontSize =</span> <span class="dv">12</span> )</span></code></pre></div>
+<div id="htmlwidget-110171b5a4fecbbfb0bd" style="width:960px;height:960px;" class="radialNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-110171b5a4fecbbfb0bd">{"x":{"root":{"name":"Return","children":[{"name":"ReturnData","children":[{"name":"IRS990","children":[{"name":"OtherRevenueMiscGrp","children":[{"name":"BusinessCd"},{"name":"Desc"},{"name":"ExclusionAmt"},{"name":"RelatedOrExemptFuncIncomeAmt"},{"name":"TotalRevenueColumnAmt"},{"name":"UnrelatedBusinessRevenueAmt"}]}]}]}]},"options":{"height":null,"width":null,"fontSize":12,"fontFamily":"serif","linkColour":"#ccc","nodeColour":"#fff","nodeStroke":"steelblue","textColour":"#111","margin":{"top":null,"right":null,"bottom":null,"left":null},"opacity":0.9}},"evals":[],"jsHooks":[]}</script>
 <p><br> <br> <br></p>
 <hr>
 <p><br> <br> <br></p>
@@ -3942,16 +3959,16 @@ the root to visualize the sets of tables separately.</p>
 <h1>XPATH Summary</h1>
 <div id="unique-xpaths-for-this-rdb-table" class="section level2">
 <h2>Unique Xpaths for this RDB Table</h2>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>t.xpaths <span class="ot">&lt;-</span> </span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  concordance <span class="sc">%&gt;%</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>( rdb_table <span class="sc">==</span> table.name ) <span class="sc">%&gt;%</span> </span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>( xpath ) <span class="sc">%&gt;%</span> </span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>( xpath ) <span class="sc">%&gt;%</span> </span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( <span class="at">id=</span><span class="fu">row_number</span>() ) </span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>t.xpaths <span class="sc">%&gt;%</span> </span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>( <span class="at">align=</span><span class="st">&quot;l&quot;</span> )</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>t.xpaths <span class="ot">&lt;-</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  concordance <span class="sc">%&gt;%</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>( rdb_table <span class="sc">==</span> table.name ) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>( xpath ) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>( xpath ) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( <span class="at">id=</span><span class="fu">row_number</span>() ) </span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>t.xpaths <span class="sc">%&gt;%</span> </span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>( <span class="at">align=</span><span class="st">&quot;l&quot;</span> )</span></code></pre></div>
 <table>
 <colgroup>
 <col width="96%" />
@@ -4042,48 +4059,76 @@ the root to visualize the sets of tables separately.</p>
 <div id="grouping-variables" class="section level2">
 <h2>Grouping Variables</h2>
 <p>Identify all unique groups used in xpaths.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>( <span class="fu">is.null</span>(table.headers) )</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>{ <span class="fu">find_table_headers</span>( table.name ) } <span class="cf">else</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>table.headers</span></code></pre></div>
-<pre><code>##  [1] &quot;//Form990PartVIII/FederatedCampaigns&quot;               &quot;//Form990PartVIII/FundraisingEvents&quot;                &quot;//Form990PartVIII/RelatedOrganizations&quot;            
-##  [4] &quot;//Form990PartVIII/GovernmentGrants&quot;                 &quot;//Form990PartVIII/AllOtherContributions&quot;            &quot;//Form990PartVIII/NoncashContributions&quot;            
-##  [7] &quot;//Form990PartVIII/TotalContributions&quot;               &quot;//Form990PartVIII/ProgramServiceRevenue&quot;            &quot;//Form990PartVIII/TotalOthProgramServiceRevenue&quot;   
-## [10] &quot;//Form990PartVIII/TotalProgramServiceRevenue&quot;       &quot;//Form990PartVIII/InvestmentIncome&quot;                 &quot;//Form990PartVIII/IncomeFromInvestBondProceeds&quot;    
-## [13] &quot;//Form990PartVIII/RoyaltiesRevenue&quot;                 &quot;//Form990PartVIII/GrossRents&quot;                       &quot;//Form990PartVIII/LessRentalExpenses&quot;              
-## [16] &quot;//Form990PartVIII/RentalIncomeOrLoss&quot;               &quot;//Form990PartVIII/NetRentalIncomeOrLoss&quot;            &quot;//Form990PartVIII/GrossAmountSalesAssets&quot;          
-## [19] &quot;//Form990PartVIII/LessCostOthBasisSalesExpenses&quot;    &quot;//Form990PartVIII/GainOrLoss&quot;                       &quot;//Form990PartVIII/NetGainOrLossInvestments&quot;        
-## [22] &quot;//Form990PartVIII/CntrbtnsRprtdFundraisingEvents&quot;   &quot;//Form990PartVIII/GrossIncomeFundraisingEvents&quot;     &quot;//Form990PartVIII/FundraisingDirectExpenses&quot;       
-## [25] &quot;//Form990PartVIII/NetIncomeFromFundraisingEvents&quot;   &quot;//Form990PartVIII/GrossIncomeGaming&quot;                &quot;//Form990PartVIII/GamingDirectExpenses&quot;            
-## [28] &quot;//Form990PartVIII/NetIncomeFromGaming&quot;              &quot;//Form990PartVIII/GrossSalesOfInventory&quot;            &quot;//Form990PartVIII/CostOfGoodsSold&quot;                 
-## [31] &quot;//Form990PartVIII/NetIncomeOrLoss&quot;                  &quot;//Form990PartVIII/OtherRevenueMisc&quot;                 &quot;//Form990PartVIII/MiscellaneousRevenue&quot;            
-## [34] &quot;//Form990PartVIII/TotalOtherRevenue&quot;                &quot;//Form990PartVIII/TotalRevenue&quot;                     &quot;//OtherRevenueMisc/Form990PartVIII&quot;                
-## [37] &quot;//OtherRevenueMisc/OtherRevenueMisc&quot;                &quot;//OtherRevenueMiscGrp/Desc&quot;                         &quot;//OtherRevenueMiscGrp/TotalRevenueColumnAmt&quot;       
-## [40] &quot;//OtherRevenueMiscGrp/RelatedOrExemptFuncIncomeAmt&quot; &quot;//OtherRevenueMiscGrp/BusinessCd&quot;                   &quot;//OtherRevenueMiscGrp/UnrelatedBusinessRevenueAmt&quot; 
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>( <span class="fu">is.null</span>(table.headers) )</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>{ <span class="fu">find_table_headers</span>( table.name ) } <span class="cf">else</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>table.headers</span></code></pre></div>
+<pre><code>##  [1] &quot;//Form990PartVIII/FederatedCampaigns&quot;              
+##  [2] &quot;//Form990PartVIII/FundraisingEvents&quot;               
+##  [3] &quot;//Form990PartVIII/RelatedOrganizations&quot;            
+##  [4] &quot;//Form990PartVIII/GovernmentGrants&quot;                
+##  [5] &quot;//Form990PartVIII/AllOtherContributions&quot;           
+##  [6] &quot;//Form990PartVIII/NoncashContributions&quot;            
+##  [7] &quot;//Form990PartVIII/TotalContributions&quot;              
+##  [8] &quot;//Form990PartVIII/ProgramServiceRevenue&quot;           
+##  [9] &quot;//Form990PartVIII/TotalOthProgramServiceRevenue&quot;   
+## [10] &quot;//Form990PartVIII/TotalProgramServiceRevenue&quot;      
+## [11] &quot;//Form990PartVIII/InvestmentIncome&quot;                
+## [12] &quot;//Form990PartVIII/IncomeFromInvestBondProceeds&quot;    
+## [13] &quot;//Form990PartVIII/RoyaltiesRevenue&quot;                
+## [14] &quot;//Form990PartVIII/GrossRents&quot;                      
+## [15] &quot;//Form990PartVIII/LessRentalExpenses&quot;              
+## [16] &quot;//Form990PartVIII/RentalIncomeOrLoss&quot;              
+## [17] &quot;//Form990PartVIII/NetRentalIncomeOrLoss&quot;           
+## [18] &quot;//Form990PartVIII/GrossAmountSalesAssets&quot;          
+## [19] &quot;//Form990PartVIII/LessCostOthBasisSalesExpenses&quot;   
+## [20] &quot;//Form990PartVIII/GainOrLoss&quot;                      
+## [21] &quot;//Form990PartVIII/NetGainOrLossInvestments&quot;        
+## [22] &quot;//Form990PartVIII/CntrbtnsRprtdFundraisingEvents&quot;  
+## [23] &quot;//Form990PartVIII/GrossIncomeFundraisingEvents&quot;    
+## [24] &quot;//Form990PartVIII/FundraisingDirectExpenses&quot;       
+## [25] &quot;//Form990PartVIII/NetIncomeFromFundraisingEvents&quot;  
+## [26] &quot;//Form990PartVIII/GrossIncomeGaming&quot;               
+## [27] &quot;//Form990PartVIII/GamingDirectExpenses&quot;            
+## [28] &quot;//Form990PartVIII/NetIncomeFromGaming&quot;             
+## [29] &quot;//Form990PartVIII/GrossSalesOfInventory&quot;           
+## [30] &quot;//Form990PartVIII/CostOfGoodsSold&quot;                 
+## [31] &quot;//Form990PartVIII/NetIncomeOrLoss&quot;                 
+## [32] &quot;//Form990PartVIII/OtherRevenueMisc&quot;                
+## [33] &quot;//Form990PartVIII/MiscellaneousRevenue&quot;            
+## [34] &quot;//Form990PartVIII/TotalOtherRevenue&quot;               
+## [35] &quot;//Form990PartVIII/TotalRevenue&quot;                    
+## [36] &quot;//OtherRevenueMisc/Form990PartVIII&quot;                
+## [37] &quot;//OtherRevenueMisc/OtherRevenueMisc&quot;               
+## [38] &quot;//OtherRevenueMiscGrp/Desc&quot;                        
+## [39] &quot;//OtherRevenueMiscGrp/TotalRevenueColumnAmt&quot;       
+## [40] &quot;//OtherRevenueMiscGrp/RelatedOrExemptFuncIncomeAmt&quot;
+## [41] &quot;//OtherRevenueMiscGrp/BusinessCd&quot;                  
+## [42] &quot;//OtherRevenueMiscGrp/UnrelatedBusinessRevenueAmt&quot; 
 ## [43] &quot;//OtherRevenueMiscGrp/ExclusionAmt&quot;</code></pre>
 <p>Groups can then be used to extract the 1:M RDB tables:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>( <span class="fu">is.null</span>(table.headers) )</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>{ table.headers <span class="ot">&lt;-</span> <span class="fu">find_table_headers</span>( table.name ) }</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>demo.url <span class="ot">&lt;-</span> <span class="st">&quot;https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201913079349300206_public.xml&quot;</span></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> xml2<span class="sc">::</span><span class="fu">read_xml</span>( demo.url )</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>xml2<span class="sc">::</span><span class="fu">xml_ns_strip</span>( doc )</span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>df.demo <span class="ot">&lt;-</span> <span class="fu">get_table_v2</span>( doc, table.name, table.headers )</span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>df.demo </span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>( <span class="fu">is.null</span>(table.headers) )</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>{ table.headers <span class="ot">&lt;-</span> <span class="fu">find_table_headers</span>( table.name ) }</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>demo.url <span class="ot">&lt;-</span> <span class="st">&quot;https://nccs-efile.s3.us-east-1.amazonaws.com/xml/201913079349300206_public.xml&quot;</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> xml2<span class="sc">::</span><span class="fu">read_xml</span>( demo.url )</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>xml2<span class="sc">::</span><span class="fu">xml_ns_strip</span>( doc )</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>df.demo <span class="ot">&lt;-</span> <span class="fu">get_table_v2</span>( doc, table.name, table.headers )</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>df.demo </span></code></pre></div>
 <pre><code>## NULL</code></pre>
 </div>
 <div id="standardize-variable-names" class="section level2">
 <h2>Standardize Variable Names</h2>
 <p>Mapping of xml variable names to concordance variable names:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_var_map</span>( <span class="at">table.name=</span>table.name )</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_var_map</span>( <span class="at">table.name=</span>table.name )</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["VARIABLE"],"name":[1],"type":["chr"],"align":["left"]},{"label":["XSD_VARNAME"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"F9_08_REV_MISC_DESC","2":"Description","_rn_":"1"},{"1":"F9_08_REV_MISC_DESC","2":"Desc","_rn_":"3"},{"1":"F9_08_REV_MISC_TOT","2":"TotalRevenueColumn","_rn_":"4"},{"1":"F9_08_REV_MISC_TOT","2":"TotalRevenueColumnAmt","_rn_":"6"},{"1":"F9_08_REV_MISC_RLTD","2":"RelatedOrExemptFunctionIncome","_rn_":"7"},{"1":"F9_08_REV_MISC_RLTD","2":"RelatedOrExemptFuncIncomeAmt","_rn_":"9"},{"1":"F9_08_REV_MISC_BIZCODE","2":"BusinessCode","_rn_":"10"},{"1":"F9_08_REV_MISC_BIZCODE","2":"BusinessCd","_rn_":"12"},{"1":"F9_08_REV_MISC_UBIZ","2":"UnrelatedBusinessRevenue","_rn_":"13"},{"1":"F9_08_REV_MISC_UBIZ","2":"UnrelatedBusinessRevenueAmt","_rn_":"15"},{"1":"F9_08_REV_MISC_EXCL","2":"ExclusionAmount","_rn_":"16"},{"1":"F9_08_REV_MISC_EXCL","2":"ExclusionAmt","_rn_":"18"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 <p>A table with proper names:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>v.map <span class="ot">&lt;-</span> <span class="fu">get_var_map</span>( <span class="at">table.name=</span>table.name )</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>( <span class="sc">!</span> <span class="fu">is.null</span>(df.demo) )</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>{<span class="fu">re_name</span>( df.demo, v.map ) <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>()}</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>v.map <span class="ot">&lt;-</span> <span class="fu">get_var_map</span>( <span class="at">table.name=</span>table.name )</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>( <span class="sc">!</span> <span class="fu">is.null</span>(df.demo) )</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>{<span class="fu">re_name</span>( df.demo, v.map ) <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>()}</span></code></pre></div>
 <p><br> <br> <br></p>
 <hr>
 <p><br> <br> <br></p>
@@ -4109,7 +4154,7 @@ the root to visualize the sets of tables separately.</p>
     {text}
   &lt;OtherCompensationAmt&gt;
     {text}</code></pre>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>node.list[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span> <span class="fu">xml_parent</span>() <span class="sc">%&gt;%</span> xmltools<span class="sc">::</span><span class="fu">xml_view_trees</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>node.list[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span> <span class="fu">xml_parent</span>() <span class="sc">%&gt;%</span> xmltools<span class="sc">::</span><span class="fu">xml_view_trees</span>()</span></code></pre></div>
 <pre><code> (1) ------------
 
  +-- Form990PartVIISectionAGrp

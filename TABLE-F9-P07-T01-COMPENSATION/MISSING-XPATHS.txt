@@ -1,5 +1,9 @@
+/Return/ReturnData/IRS990/Form990PartVIISectionAGrp/BusinessName
+/Return/ReturnData/IRS990EZ/OfficerDirectorTrusteeEmplGrp/BusinessName
 /Return/ReturnData/IRS990EZ/OfficerDirectorTrusteeKeyEmpl/AddressUS
 /Return/ReturnData/IRS990EZ/OfficerDirectorTrusteeKeyEmpl/AddressUS/AddressLine1
+/Return/ReturnData/IRS990EZ/OfficerDirectorTrusteeKeyEmpl/AddressUS/AddressLine2
 /Return/ReturnData/IRS990EZ/OfficerDirectorTrusteeKeyEmpl/AddressUS/City
 /Return/ReturnData/IRS990EZ/OfficerDirectorTrusteeKeyEmpl/AddressUS/State
 /Return/ReturnData/IRS990EZ/OfficerDirectorTrusteeKeyEmpl/AddressUS/ZIPCode
+/Return/ReturnData/IRS990EZ/OfficerDirectorTrusteeKeyEmpl/BusinessName

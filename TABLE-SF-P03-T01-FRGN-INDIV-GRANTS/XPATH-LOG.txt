@@ -1,6 +1,9 @@
 
 /Return/ReturnData/IRS990ScheduleF/ForeignIndividualsGrantsGrp/CashGrantAmt
+/Return/ReturnData/IRS990ScheduleF/ForeignIndividualsGrantsGrp/DescriptionOfNonCashAsstTxt
 /Return/ReturnData/IRS990ScheduleF/ForeignIndividualsGrantsGrp/MannerOfCashDisbursementTxt
+/Return/ReturnData/IRS990ScheduleF/ForeignIndividualsGrantsGrp/NonCashAssistanceAmt
 /Return/ReturnData/IRS990ScheduleF/ForeignIndividualsGrantsGrp/RecipientCnt
 /Return/ReturnData/IRS990ScheduleF/ForeignIndividualsGrantsGrp/RegionTxt
 /Return/ReturnData/IRS990ScheduleF/ForeignIndividualsGrantsGrp/TypeOfAssistanceTxt
+/Return/ReturnData/IRS990ScheduleF/ForeignIndividualsGrantsGrp/ValuationMethodUsedDesc

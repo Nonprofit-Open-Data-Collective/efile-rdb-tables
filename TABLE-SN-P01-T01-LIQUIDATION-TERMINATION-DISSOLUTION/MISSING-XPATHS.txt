@@ -2,4 +2,5 @@
 /Return/ReturnData/IRS990ScheduleN/LiquidationOfAssetsTableGrp
 /Return/ReturnData/IRS990ScheduleN/LiquidationOfAssetsTableGrp/LiquidationOfAssetsDetail
 /Return/ReturnData/IRS990ScheduleN/LiquidationOfAssetsTableGrp/LiquidationOfAssetsDetail/BusinessName
+/Return/ReturnData/IRS990ScheduleN/LiquidationOfAssetsTableGrp/LiquidationOfAssetsDetail/ForeignAddress
 /Return/ReturnData/IRS990ScheduleN/LiquidationOfAssetsTableGrp/LiquidationOfAssetsDetail/USAddress

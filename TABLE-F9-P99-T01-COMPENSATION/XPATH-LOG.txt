@@ -1,10 +1,13 @@
 
 /Return/ReturnData/IRS990EZ/OfficerDirectorTrusteeKeyEmpl/AddressUS
 /Return/ReturnData/IRS990EZ/OfficerDirectorTrusteeKeyEmpl/AddressUS/AddressLine1
+/Return/ReturnData/IRS990EZ/OfficerDirectorTrusteeKeyEmpl/AddressUS/AddressLine2
 /Return/ReturnData/IRS990EZ/OfficerDirectorTrusteeKeyEmpl/AddressUS/City
 /Return/ReturnData/IRS990EZ/OfficerDirectorTrusteeKeyEmpl/AddressUS/State
 /Return/ReturnData/IRS990EZ/OfficerDirectorTrusteeKeyEmpl/AddressUS/ZIPCode
 /Return/ReturnData/IRS990EZ/OfficerDirectorTrusteeKeyEmpl/AvgHoursPerWkDevotedToPosition
+/Return/ReturnData/IRS990EZ/OfficerDirectorTrusteeKeyEmpl/BusinessName
+/Return/ReturnData/IRS990EZ/OfficerDirectorTrusteeKeyEmpl/BusinessName/BusinessNameLine1
 /Return/ReturnData/IRS990EZ/OfficerDirectorTrusteeKeyEmpl/Compensation
 /Return/ReturnData/IRS990EZ/OfficerDirectorTrusteeKeyEmpl/ContriToEmplBenefitPlansEtc
 /Return/ReturnData/IRS990EZ/OfficerDirectorTrusteeKeyEmpl/PersonName

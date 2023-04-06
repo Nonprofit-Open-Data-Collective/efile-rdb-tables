@@ -1,2 +1,4 @@
 
+/Return/ReturnData/IRS990ScheduleD/CloselyHeldEquityInterestsGrp
+/Return/ReturnData/IRS990ScheduleD/FinancialDerivativesGrp
 /Return/ReturnData/IRS990ScheduleD/OtherSecuritiesGrp

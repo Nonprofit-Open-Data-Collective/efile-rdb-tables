@@ -1,3 +1,6 @@
 
 /Return/ReturnData/IRS990ScheduleL/DisqualifiedPersonExBnftTrGrp
+/Return/ReturnData/IRS990ScheduleL/DisqualifiedPersonExBnftTrGrp/PersonNm
+/Return/ReturnData/IRS990ScheduleL/DisqualifiedPersonExBnftTrGrp/RlnDisqualifiedPersonOrgTxt
 /Return/ReturnData/IRS990ScheduleL/DisqualifiedPersonExBnftTrGrp/TransactionCorrectedInd
+/Return/ReturnData/IRS990ScheduleL/DisqualifiedPersonExBnftTrGrp/TransactionDesc

@@ -6,6 +6,7 @@
 /Return/ReturnData/IRS990ScheduleC/Section527PoliticalOrgGrp/PaidInternalFundsAmt
 /Return/ReturnData/IRS990ScheduleC/Section527PoliticalOrgGrp/USAddress
 /Return/ReturnData/IRS990ScheduleC/Section527PoliticalOrgGrp/USAddress/AddressLine1Txt
+/Return/ReturnData/IRS990ScheduleC/Section527PoliticalOrgGrp/USAddress/AddressLine2Txt
 /Return/ReturnData/IRS990ScheduleC/Section527PoliticalOrgGrp/USAddress/CityNm
 /Return/ReturnData/IRS990ScheduleC/Section527PoliticalOrgGrp/USAddress/StateAbbreviationCd
 /Return/ReturnData/IRS990ScheduleC/Section527PoliticalOrgGrp/USAddress/ZIPCd
