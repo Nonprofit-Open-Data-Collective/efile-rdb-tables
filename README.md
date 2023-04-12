@@ -21,6 +21,118 @@ devtools::install_github( 'ultinomics/xmltools' )
 devtools::install_github( 'nonprofit-open-data-collective/irs990efile' )
 ```
 
+To re-run all of the reports above downoad this repo and use the file called [**batch.rmd**](https://github.com/Nonprofit-Open-Data-Collective/efile-rdb-tables/blob/main/batch.rmd).
+
+It runs the report for every table with the RMD template called [table-report-template-batch.rmd](https://github.com/Nonprofit-Open-Data-Collective/efile-rdb-tables/blob/main/table-report-template-batch.rmd). 
+
+```r
+# EXAMPLE WITH ONE TABLE 
+
+sample.size <- 1000
+
+## F9-P08-T01-REVENUE-PROGRAMS
+table.name <- "F9-P08-T01-REVENUE-PROGRAMS"
+folder.name <- paste0( "TABLE-", table.name )
+table.headers <- NULL
+index <- 
+  tinyindex %>% 
+  dplyr::filter( FormType %in% c("990","990EZ") )
+  
+try(  
+  rmarkdown::render( input='table-report-template-batch.rmd', 
+                     output_file = "TABLE-F9-P08-T01-REVENUE-PROGRAMS",
+                     params = list( table.name = table.name, folder.name = folder.name, table.headers = table.headers, index = index  ) )
+)
+
+If table.headers is NULL the program tries to guess the correct headers. If that fails they have been added manually. 
+
+Since most nonprofits do not file most schedules there are custom samples of 990 filers for reports created about schedule tables. 
+
+https://github.com/Nonprofit-Open-Data-Collective/efile-rdb-tables/tree/main/schedule-samples
+
+---------------
+
+
+## Table Structure
+
+Reports start with a 1:M table that is present on the 990 form using tables names that are listed in the condordance files. The report gather all xpaths associated with the table across all XML versions. The goal is to convert the hierarchical XML version of the data into a flat, rectangular CSV file. The report includes tree diagrams of the table structure that can help diagnose parsing problems. 
+
+![](img/sched-a-public-charity-status.png)
+
+
+---------------
+
+
+
+## All Reports
+
+* [TABLE-F9-P03-T01-PROGRAMS.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-F9-P07-T01-COMPENSATION-HCE-EZ.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-F9-P07-T01-COMPENSATION.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-F9-P07-T02-CONTRACTORS.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-F9-P08-T01-REVENUE-PROGRAMS.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-F9-P08-T02-REVENUE-MISC.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-F9-P09-T01-EXPENSES-OTHER.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-F9-P99-T01-COMPENSATION.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SA-P01-T01-PUBLIC-CHARITY-STATUS.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SA-P99-T01-PUBLIC-CHARITY-STATUS.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SC-P01-T01-POLITICAL-ORGS-INFO.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SD-P07-T01-INVESTMENTS-OTH-SECURITIES.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SD-P08-T01-INVESTMENTS-PROG-RLTD.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SD-P09-T01-OTH-ASSETS.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SF-P01-T01-FRGN-ACTS-BY-REGION.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SF-P02-T01-FRGN-ORG-GRANTS.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SF-P03-T01-FRGN-INDIV-GRANTS.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SG-P01-T01-FUNDRAISERS-INFO.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SG-P02-T01-FUNDRAISING-EVENTS.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SH-P04-T01-COMPANY-JOINT-VENTURES.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SH-P05-T01-HOSPITAL-FACILITY.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SH-P05-T02-NON-HOSPITAL-FACILITY.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SI-P02-T01-GRANTS-US-ORGS-GOVTS.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SI-P03-T01-GRANTS-US-INDIV.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SJ-P02-T01-COMPENSATION-DTK.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SK-P01-T01-BOND-ISSUES.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SK-P02-T01-BOND-PROCEEDS.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SK-P03-T01-BOND-PRIVATE-BIZ-USE.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SK-P04-T01-BOND-ARBITRAGE.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SK-P05-T01-PROCEDURE-CORRECTIVE-ACT.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SL-P01-T01-EXCESS-BENEFIT-TRANSAC.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SL-P02-T01-LOANS-INTERESTED-PERS.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SL-P03-T01-GRANTS-INTERESTED-PERS.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SL-P04-T01-BIZ-TRANSAC-INTERESTED-PERS.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SM-P01-T01-NONCASH-CONTRIBUTIONS.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SN-P01-T01-LIQUIDATION-TERMINATION-DISSOLUTION.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SN-P02-T01-DISPOSITION-OF-ASSETS.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SO-T99-SUPPLEMENTAL-INFO.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SR-P01-T01-ID-DISREGARDED-ENTITIES.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SR-P02-T01-ID-RLTD-TAX-EXEMPED-ORGS.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SR-P03-T01-ID-RLTD-ORGS-TAXABLE-PARTNERSHIP.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SR-P04-T01-ID-RLTD-ORGS-TAXABLE-CORPORATION.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SR-P05-T01-TRANSACTIONS-RLTD-ORGS.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+* [TABLE-SR-P06-T01-UNRLTD-ORGS-TAXABLE-PARTNERSHIP.html](https://nonprofit-open-data-collective.github.io/efile-rdb-tables/)  
+
+
+```r
+# create markdown list of reports
+f <- dir()
+reports <- f[ grepl( ".html", f ) ]
+root.url <- "https://nonprofit-open-data-collective.github.io/efile-rdb-tables/"
+
+create_bullet <- function( table.name )
+{
+  bullet <- paste0( "* [", table.name, "](", root.url, ")  \n" )
+  return( bullet )
+}
+
+for( i in reports )
+{ cat( create_bullet( i ) ) }
+```
+
+
+---------------
+
+
+
 
 ## IRS 990 Efile Concordance File
 
@@ -85,11 +197,6 @@ head( concordance )
 -------
 
 
-## Table Structure
-
-Reports start with a 1:M table that is present on the 990 form using tables names that are listed in the condordance files. The report gather all xpaths associated with the table across all XML versions. The goal is to convert the hierarchical XML version of the data into a flat, rectangular CSV file. The report includes tree diagrams of the table structure that can help diagnose parsing problems. 
-
-![](img/sched-a-public-charity-status.png)
 
 
 ## All One-to-Many Tables
