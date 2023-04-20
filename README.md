@@ -59,6 +59,17 @@ https://github.com/Nonprofit-Open-Data-Collective/efile-rdb-tables/tree/main/sch
 
 Reports start with a 1:M table that is present on the 990 form using tables names that are listed in the condordance files. The report gather all xpaths associated with the table across all XML versions. The goal is to convert the hierarchical XML version of the data into a flat, rectangular CSV file. The report includes tree diagrams of the table structure that can help diagnose parsing problems. 
 
+In this example the table name and table headers would be: 
+
+```
+## SA-P01-T01-PUBLIC-CHARITY-STATUS
+table.name <- "SA-P01-T01-PUBLIC-CHARITY-STATUS"
+ table.headers <- 
+  c("//Form990ScheduleAPartI/SupportedOrgInformation",
+    "//IRS990ScheduleA/SupportedOrgInformation",
+    "//IRS990ScheduleA/SupportedOrgInformationGrp")
+```
+
 ![](img/sched-a-public-charity-status.png)
 
 
