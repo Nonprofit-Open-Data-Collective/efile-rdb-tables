@@ -134,6 +134,94 @@ for( i in reports )
 ---------------
 
 
+## DEMO BUILD SCRIPT
+
+```r
+library( irs990efile )
+library( dplyr )
+
+source( "https://raw.githubusercontent.com/Nonprofit-Open-Data-Collective/efile-rdb-tables/main/R/rdb-functions-v2.R" )
+source( "https://raw.githubusercontent.com/Nonprofit-Open-Data-Collective/efile-rdb-tables/main/R/utils.R" )
+
+
+# combine index files for all years 
+# 2009-2020 where forms available: 
+# index <- build_index( tax.years=2009:2020 )
+
+
+
+
+# CREATE FOLDER FOR DATA
+dir.create( "RDBTABLES" )
+setwd( "RDBTABLES" )
+
+
+# sample of 10,000 files
+
+index <- 
+  tinyindex %>% 
+  dplyr::filter( FormType %in% c("990","990EZ") )
+
+sample.urls <- index$URL
+
+
+### BUILD ONE TABLE 
+
+## F9-P07-T02-CONTRACTORS
+table.name <- "F9-P07-T02-CONTRACTORS"
+table.headers <-
+  c("//IRS990/ContractorCompensation",
+    "//IRS990/ContractorCompensationGrp",
+    "//IRS990/Form990PartVIISectionB/ContractorCompensation",
+    "//IRS990EZ/CompOfHghstPaidCntrctProfSer",
+    "//IRS990EZ/CompensationOfHghstPdCntrctGrp")
+
+folder.name <- paste0( "TABLE-", table.name )
+dir.create( folder.name )
+setwd( folder.name )
+
+
+start.build.time <- Sys.time()    # --------------------
+
+# erase existing log files
+file.create("FAIL-LOG.txt")
+
+results.list <- list()
+
+for( i in 1:length( sample.urls ) )
+{
+  
+  url <- sample.urls[i]
+  
+  results.list[[i]] <- 
+    build_rdb_table_v2( url, 
+                        table.name, 
+                        table.headers=table.headers )
+  
+  if( i %% 100 == 0 ){ print(i) }
+  
+}
+
+end.build.time <- Sys.time()      # --------------------
+
+
+df <- dplyr::bind_rows( results.list )
+
+
+setwd( ".." )  # return to RDBTABLES
+
+
+
+
+
+###  ALL TABLE NAMES + HEADERS
+###  https://github.com/Nonprofit-Open-Data-Collective/efile-rdb-tables/blob/main/batch.rmd
+
+```
+
+
+------------
+
 
 
 ## IRS 990 Efile Concordance File
