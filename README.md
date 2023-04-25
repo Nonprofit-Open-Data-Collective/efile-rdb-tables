@@ -148,6 +148,10 @@ for( i in reports )
 ## DEMO BUILD SCRIPT
 
 ```r
+# INSTALL PACKAGES
+# devtools::install_github( 'ultinomics/xmltools' )
+# devtools::install_github( 'nonprofit-open-data-collective/irs990efile' )
+
 library( irs990efile )
 library( dplyr )
 
@@ -155,9 +159,7 @@ source( "https://raw.githubusercontent.com/Nonprofit-Open-Data-Collective/efile-
 source( "https://raw.githubusercontent.com/Nonprofit-Open-Data-Collective/efile-rdb-tables/main/R/utils.R" )
 
 
-# combine index files for all years 
-# 2009-2020 where forms available: 
-# index <- build_index( tax.years=2009:2020 )
+
 
 
 
@@ -167,7 +169,11 @@ dir.create( "RDBTABLES" )
 setwd( "RDBTABLES" )
 
 
-# sample of 10,000 files
+# combine index files for all years 
+# 2009-2020 where forms available: 
+# index <- build_index( tax.years=2009:2020 )
+
+# sample of 10,000 files for demo
 
 index <- 
   tinyindex %>% 
