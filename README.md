@@ -172,7 +172,10 @@ setwd( "RDBTABLES" )
 # combine index files for all years 
 # 2009-2020 where forms available: 
 # index <- build_index( tax.years=2009:2020 )
-
+# index <- 
+#   index %>% 
+#   dplyr::filter( FormType %in% c("990","990EZ") )
+  
 # sample of 10,000 files for demo
 
 index <- 
