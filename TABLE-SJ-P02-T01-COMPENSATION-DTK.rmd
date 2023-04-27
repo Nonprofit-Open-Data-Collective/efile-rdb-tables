@@ -318,7 +318,7 @@ setwd( folder.name )
 # create sample
 set.seed( 1234 )
 sample.index <- sample_n( index, sample.size )
-write.csv( index, "sample-index.csv", row.names=F )
+write.csv( sample.index, "sample-index.csv", row.names=F )
 sample.urls <- sample.index$URL
 
 # erase existing log files
