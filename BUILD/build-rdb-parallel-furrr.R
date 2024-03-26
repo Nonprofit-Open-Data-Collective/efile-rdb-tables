@@ -70,7 +70,7 @@ f <- function( url ) {
      "URL", "F9_03_PROG_DESC", "F9_03_PROG_CODE", "F9_03_PROG_GRANT", 
      "F9_03_PROG_EXP", "F9_03_PROG_REV" )
 
-  df <- dplyr::select( dfm, any_of(p.names) )
+  df <- dplyr::select( df, any_of(p.names) )
 
   return( df )
 }
