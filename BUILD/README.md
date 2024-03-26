@@ -1,4 +1,4 @@
-
+```r
 #########################
 #########################   CODE
 #########################
@@ -7,18 +7,17 @@
 # devtools::install_github( 'ultinomics/xmltools' )
 # devtools::install_github( 'nonprofit-open-data-collective/irs990efile' )
 
-setwd( "C:/Users/jdlec/Documents/EFILE/PROGRAMS" )
-
-source( "R/rdb-functions-v3.R" )
-source( "R/build-rdb-table-v3.R" )
-source( "R/build-rdb-parallel-furrr.R" )
-source( "R/utils.R" )
-source( "R/CHUNKS-F9-P03-T00-PROGRAMS.R" )
-
 library( dplyr )
 library( irs990efile )
 library( furrr )
 
+BASE <- "https://raw.githubusercontent.com/Nonprofit-Open-Data-Collective/efile-rdb-tables/main/BUILD/"
+
+source( paste0( BASE, "rdb-functions-v3.R" ) )
+source( paste0( BASE, "build-rdb-table-v3.R" ) )
+source( paste0( BASE, "build-rdb-parallel-furrr.R" ) )
+source( paste0( BASE, "utils.R" ) )
+source( paste0( BASE, "CHUNKS-F9-P03-T00-PROGRAMS.R" ) )
 
 
 
@@ -55,7 +54,6 @@ write.csv( index.2021, "INDEX-2021.csv", row.names=F )
 
 for( i in 2010:2022 )
 {
-
   index.url <- paste0( "https://nccs-efile.s3.us-east-1.amazonaws.com/index/data-commons-index-file-", i, ".csv" )
   index <- read.csv( index.url )
 
@@ -63,11 +61,11 @@ for( i in 2010:2022 )
     index %>% 
     dplyr::filter( FormType %in% c("990","990EZ") )
 
-  # all orgs
   urls <- index$URL
   df.prog <- get_year( urls )
 
   write.csv( df.prog, paste0( "PROGRAMS-", i, ".csv"), row.names=F )
   write.csv( index.2021, paste0( "INDEX-", i, ".csv"), row.names=F )
-
 }
+
+```
