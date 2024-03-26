@@ -37,23 +37,28 @@ get_object_id <- function( url )
 f <- function( url ) {
 
   doc.i <- NULL
-  try( doc.i <- xml2::read_xml( file(url.i) ), silent=T ) 
-  if( is.null(doc.i) ){ return( url.i ) }
+  try( doc.i <- xml2::read_xml( file(url) ), silent=T ) 
+  if( is.null(doc.i) )
+  { 
+    object.id <- get_object_id( url )
+    df <- data.frame( OBJECT_ID = object.id, URL=url )
+    return( df ) 
+  }
 
   xml2::xml_ns_strip( doc.i )
 
   activity.02 <- 
-    build_rdb_table_v3( url=url.i, 
+    build_rdb_table_v3( url=url, 
                         doc=doc.i,
                         table.name="F9-P03-T01-PROGRAMS", 
                         table.headers=table.headers.02 )
   activity.03 <- 
-    build_rdb_table_v3( url=url.i, 
+    build_rdb_table_v3( url=url, 
                         doc=doc.i,
                         table.name="F9-P03-T01-PROGRAMS", 
                         table.headers=table.headers.03 )
   activity.99 <- 
-    build_rdb_table_v3( url=url.i, 
+    build_rdb_table_v3( url=url, 
                         doc=doc.i,
                         table.name="F9-P03-T01-PROGRAMS", 
                         table.headers=table.headers.99 )
@@ -69,6 +74,7 @@ f <- function( url ) {
 
   return( df )
 }
+
 
 
 get_year <- function( urls )
