@@ -1,3 +1,8 @@
+Demo of RDB functions with Part III Programs table: 
+
+https://nonprofit-open-data-collective.github.io/efile-rdb-tables/TABLE-F9-P03-T01-PROGRAMS.html
+
+
 ```r
 #########################
 #########################   CODE
