@@ -53,6 +53,32 @@ write.csv( index.2021, "INDEX-2021.csv", row.names=F )
 
 
 #########################
+#########################   ONE YEAR 
+#########################
+
+YEAR <- 2019
+
+index.url <- paste0( "https://nccs-efile.s3.us-east-1.amazonaws.com/index/data-commons-index-file-", YEAR, ".csv" )
+index <-
+  index.url %>%
+  data.table::fread( colClasses = 'character',
+                     data.table = FALSE,
+                     showProgress = FALSE )
+
+index <- 
+  index %>% 
+  dplyr::filter( FormType %in% c("990","990EZ") )
+
+# all orgs
+urls <- index$URL
+df.prog <- get_year( urls )
+
+write.csv( df.prog, paste0( "PROGRAMS-", YEAR, ".csv", row.names=F )
+write.csv( index, "INDEX-", YEAR, ".csv", row.names=F )
+
+
+
+#########################
 #########################   ALL YEARS 
 #########################
 
