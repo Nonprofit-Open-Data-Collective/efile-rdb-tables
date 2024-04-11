@@ -3,12 +3,13 @@ Demo of RDB functions with Part III Programs table:
 https://nonprofit-open-data-collective.github.io/efile-rdb-tables/TABLE-F9-P03-T01-PROGRAMS.html
 
 
+
 ```r
 #########################
 #########################   CODE
 #########################
 
-# remotes::install_github("DavisVaughan/furrr")
+# remotes::install_github( 'DavisVaughan/furrr' )
 # devtools::install_github( 'ultinomics/xmltools' )
 # devtools::install_github( 'nonprofit-open-data-collective/irs990efile' )
 
@@ -23,33 +24,6 @@ source( paste0( BASE, "build-rdb-table-v3.R" ) )
 source( paste0( BASE, "build-rdb-parallel-furrr.R" ) )
 source( paste0( BASE, "utils.R" ) )
 source( paste0( BASE, "CHUNKS-F9-P03-T00-PROGRAMS.R" ) )
-
-
-
-#########################
-#########################   ONE YEAR 
-#########################
-
-
-index.url.2021 <- "https://nccs-efile.s3.us-east-1.amazonaws.com/index/data-commons-index-file-2021.csv"
-index.2021 <- read.csv( index.url.2021 )
-
-index.2021 <- 
-  index.2021 %>% 
-  dplyr::filter( FormType %in% c("990","990EZ") )
-
-# 100 orgs 
-test.urls <- index.2021$URL[ 1:100 ]
-df.prog <- get_year( test.urls )
-
-# all orgs
-urls.2021 <- index.2021$URL
-df.prog <- get_year( urls.2021 )
-
-write.csv( df.prog, "PROGRAMS-2021.csv", row.names=F )
-write.csv( index.2021, "INDEX-2021.csv", row.names=F )
-
-
 
 
 #########################
@@ -71,10 +45,11 @@ index <-
 
 # all orgs
 urls <- index$URL
-df.prog <- get_year( urls )
+programs <- get_year( urls )
 
-write.csv( df.prog, paste0( "PROGRAMS-", YEAR, ".csv", row.names=F )
-write.csv( index, "INDEX-", YEAR, ".csv", row.names=F )
+write.csv( programs, paste0( "PROGRAMS-", YEAR, ".csv"), row.names=F )
+write.csv( index, paste0( "INDEX-", YEAR, ".csv"), row.names=F )
+
 
 
 
@@ -86,17 +61,17 @@ write.csv( index, "INDEX-", YEAR, ".csv", row.names=F )
 for( i in 2010:2022 )
 {
   index.url <- paste0( "https://nccs-efile.s3.us-east-1.amazonaws.com/index/data-commons-index-file-", i, ".csv" )
-  index <- read.csv( index.url )
+  index.i <- read.csv( index.url )
 
-  index <- 
-    index %>% 
+  index.i <- 
+    index.i %>% 
     dplyr::filter( FormType %in% c("990","990EZ") )
 
-  urls <- index$URL
-  df.prog <- get_year( urls )
+  urls <- index.i$URL
+  df <- get_year( urls )
 
-  write.csv( df.prog, paste0( "PROGRAMS-", i, ".csv"), row.names=F )
-  write.csv( index.2021, paste0( "INDEX-", i, ".csv"), row.names=F )
+  write.csv( df, paste0( "PROGRAMS-", i, ".csv"), row.names=F )
+  write.csv( index.i, paste0( "INDEX-", i, ".csv"), row.names=F )
 }
 
 ```
